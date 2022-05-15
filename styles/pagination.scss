@@ -1,0 +1,27 @@
+.pagination-root {
+    @apply flex justify-end;
+}
+
+.pagination-root .rc-pagination{
+    @apply flex space-x-2;
+}
+.rc-pagination .rc-pagination-prev,.rc-pagination-next {
+            @apply flex justify-center items-center cursor-pointer;
+
+}
+
+.rc-pagination .rc-pagination-item {
+            @apply w-8 h-8 flex justify-center items-center text-dark cursor-pointer text-sm rounded-full;
+
+}
+
+.rc-pagination .rc-pagination-item-active {
+        @apply bg-primary text-light font-semibold;
+    }
+
+.rc-pagination .rc-pagination-jump-next::before,.rc-pagination-jump-prev::before{
+    
+        @apply cursor-pointer flex items-end h-8;
+        content: '...';
+}
+        
