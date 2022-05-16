@@ -64,11 +64,13 @@ function Carousel({ title, img, price, link }) {
         enabled: true,
       }}
       breakpoints={{
-        769: {
+        700: {
           slidesPerView: 1,
           slidesPerGroup: 1,
         },
       }}
+      onSlideChange={() => {/*...*/}}
+    onReachEnd={() => {/*...*/}}
       navigation={true}
       modules={[Keyboard, Scrollbar, Navigation]}
       className="mySwiper px-20"
@@ -77,7 +79,7 @@ function Carousel({ title, img, price, link }) {
         <SwiperSlide key={item.key}>
           <div className="w-full brd rounded-3xl ">
             <div className="px-20 py-15 w-full flex h-auto">
-              <div className="w-7/12 flex flex-col pr-10">
+              <div className="w-7/12 flex flex-col pl-20 pr-10">
                 <div className="">
                   <h2 className="text-6xl font-normal text-white">
                     {item.title}
@@ -85,14 +87,14 @@ function Carousel({ title, img, price, link }) {
                 </div>
                 <div className="pt-6" />
                 <div className="flex">
-                  <div className="flex space-x-1 pt-2">
+                  <div className="flex space-x-2 pt-2">
                     <div className="text-2xl font-bold  text-white">Price:</div>
                     <div className="text-2xl font-normal text-white">
-                      {item.price} $
+                      {item.price}$
                     </div>
                   </div>
                   <div className="px-4" />
-                  <div className="flex space-x-1 pt-2">
+                  <div className="flex space-x-2 pt-2">
                     <div className="text-2xl font-bold  text-white">Links:</div>
                     <div className="text-2xl font-normal text-white">
                       {item.link}
@@ -100,7 +102,7 @@ function Carousel({ title, img, price, link }) {
                   </div>
                 </div>
                 <div className="pt-6" />
-                <div className="">
+                <div className="w-10/12">
                   <p className="font-normal text-3xl text-white">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Sollicitudin id pellentesque risus, turpis amet. Neque donec
@@ -110,10 +112,10 @@ function Carousel({ title, img, price, link }) {
                     varius sit tempor, sit.
                   </p>
                 </div>
-                <div className="pt-10">
+                <div className="mt-auto">
                   <button
                     type="button"
-                    className="text-4xl font-normal bg-orange-alft px-16 py-6 text-white"
+                    className="text-4xl font-normal bg-orange-alft px-16 py-6 text-white rounded-xl"
                   >
                     View all
                   </button>
@@ -124,8 +126,8 @@ function Carousel({ title, img, price, link }) {
                   <Image
                     src={item.img}
                     className="w-full h-full object-cover"
-                    width={576}
-                    height={747}
+                    width={500}
+                    height={650}
                   />
                 </div>
               </div>
