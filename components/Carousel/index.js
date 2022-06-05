@@ -58,26 +58,49 @@ const infoNft = [
 function Carousel({ title, img, price, link }) {
   return (
     <Swiper
-      slidesPerView={1}
+      slidesPerView={1.2}
       slidesPerGroupSkip={1}
+      centeredSlides={true}
       keyboard={{
         enabled: true,
       }}
-      breakpoints={{
-        700: {
-          slidesPerView: 1,
-          slidesPerGroup: 1,
-        },
+      // breakpoints={{
+      //   700: {
+      //     slidesPerView: 1,
+      //     slidesPerGroup: 1,
+      //   },
+      // }}
+
+      onSlideChange={() => {
+        /*...*/
       }}
-      onSlideChange={() => {/*...*/}}
-    onReachEnd={() => {/*...*/}}
-      navigation={true}
+      onReachEnd={() => {
+        /*...*/
+      }}
+      loop={true}
+      navigation={{
+        nextEl: "#next",
+        prevEl: "#prev",
+      }}
       modules={[Keyboard, Scrollbar, Navigation]}
       className="mySwiper px-20"
     >
+      <div
+        className="absolute left-20 top-0 w-20 h-full border-orange-alft border-2 text-center align-baseline flex justify-start rounded-t-3xl rounded-b-3xl"
+        id="next"
+      >
+        <div className="w-16 h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
+          <Image
+            src="/arrow_left.svg"
+            width={12}
+            height={24}
+            className="w-full h-full object-cover mx-auto"
+          />
+        </div>
+      </div>
       {infoNft.map((item) => (
         <SwiperSlide key={item.key}>
-          <div className="w-full brd rounded-3xl ">
+          <div className="w-full border-t-2 border-b-2 border-orange-alft rounded-3xl ">
             <div className="px-20 py-15 w-full flex h-auto">
               <div className="w-7/12 flex flex-col pl-20 pr-10">
                 <div className="">
@@ -135,6 +158,19 @@ function Carousel({ title, img, price, link }) {
           </div>
         </SwiperSlide>
       ))}
+      <div
+        className="absolute right-20 top-0 w-20 h-full border-orange-alft border-2 text-center align-baseline flex justify-start rounded-t-3xl rounded-b-3xl"
+        id="prev"
+      >
+        <div className="w-16 h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
+          <Image
+            src="/arrow_right.svg"
+            width={12}
+            height={24}
+            className="w-full h-full object-cover mx-auto"
+          />
+        </div>
+      </div>
     </Swiper>
   );
 }

@@ -49,7 +49,7 @@ function FutureSeo() {
         <div className="relative flex justify-around bottom-350">
           <div className="relative bottom-5 left-25 z-40">
             <Image
-              src="/images/NFT-md-1000.png"
+              src="/images/NFT-sm-1000.png"
               width={330}
               height={450}
               alt="ABOUTUS_UPDATED"
