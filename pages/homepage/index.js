@@ -54,6 +54,7 @@ const infoNft = [
 ];
 
 function HomePage() {
+
   return (
     <Fragment>
       <Head>
