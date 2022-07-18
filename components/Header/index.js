@@ -9,7 +9,7 @@ import MobileMenu from "./Menu/Mobile";
 const MENU_ITEMS = [
   { label: "About", path: "/" },
   { label: "Packages", path: "/" },
-  { label: "My Account", path: "/account" },
+  // { label: "My Account", path: "/account" },
 ];
 
 function Header() {
