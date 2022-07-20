@@ -5,12 +5,12 @@ function FutureSeo() {
   return (
     <section>
       <Container className="">
-        <div className="w-1280px mx-auto">
-          <h1 className="font-medium text-6xl text-center text-white">
+        <div className="w-full xl:w-1280px mx-auto">
+          <h1 className="font-medium text-base md:text-2xl lg:text-4xl xl:text-6xl text-center text-white">
             Welcome to the future of SEO
           </h1>
           <div className="pt-5" />
-          <h3 className="font-normal text-3xl text-center text-white">
+          <h3 className="font-normal text-sm md:text-xl lg:text-3xl text-center text-white">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus
             laoreet adipiscing tortor. Faucibus sed mattis laoreet tempor enim
             sed posuere neque.

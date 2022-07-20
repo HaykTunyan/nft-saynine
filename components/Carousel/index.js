@@ -102,31 +102,31 @@ function Carousel({ title, img, price, link }) {
         <SwiperSlide key={item.key}>
           <div className="w-full border-t-2 border-b-2 border-orange-alft rounded-3xl ">
             <div className="px-20 py-15 w-full flex h-auto">
-              <div className="w-7/12 flex flex-col pl-20 pr-10">
+              <div className="w-9/12 md:w-7/12 flex flex-col pl-5 md:pl-20 pr-5 md:pr-10">
                 <div className="">
-                  <h2 className="text-6xl font-normal text-white">
+                  <h2 className="text-lg md:text-xl xl:text-6xl font-normal text-white">
                     {item.title}
                   </h2>
                 </div>
                 <div className="pt-6" />
                 <div className="flex">
                   <div className="flex space-x-2 pt-2">
-                    <div className="text-2xl font-bold  text-white">Price:</div>
-                    <div className="text-2xl font-normal text-white">
+                    <div className="text-base md:text-lg xl:text-2xl font-bold  text-white">Price:</div>
+                    <div className="text-base md:text-lg xl:text-2xl font-normal text-white">
                       {item.price}$
                     </div>
                   </div>
                   <div className="px-4" />
                   <div className="flex space-x-2 pt-2">
-                    <div className="text-2xl font-bold  text-white">Links:</div>
-                    <div className="text-2xl font-normal text-white">
+                    <div className="text-base md:text-lg xl:text-2xl font-bold  text-white">Links:</div>
+                    <div className="text-base md:text-lg xl:text-2xl font-normal text-white">
                       {item.link}
                     </div>
                   </div>
                 </div>
                 <div className="pt-6" />
                 <div className="w-10/12">
-                  <p className="font-normal text-3xl text-white">
+                  <p className="font-normal text-base md:text-2xl xl:text-3xl text-white">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Sollicitudin id pellentesque risus, turpis amet. Neque donec
                     magna nibh sem. Pharetra vitae feugiat commodo molestie
@@ -138,13 +138,13 @@ function Carousel({ title, img, price, link }) {
                 <div className="mt-auto">
                   <button
                     type="button"
-                    className="text-4xl font-normal bg-orange-alft px-16 py-6 text-white rounded-xl"
+                    className="text-sm md:text-2xl xl:text-4xl font-normal bg-orange-alft px-16 py-6 text-white rounded-xl"
                   >
                     View all
                   </button>
                 </div>
               </div>
-              <div className="w-5/12 pl-10">
+              <div className="w-3/12 md:w-5/12 pl-5 md:pl-10">
                 <div className="">
                   <Image
                     src={item.img}
