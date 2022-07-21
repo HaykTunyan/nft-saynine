@@ -17,7 +17,7 @@ function Header() {
   return (
     <header className="mt-10 ">
       <Container>
-        <div className="flex items-center justify-between">
+        <div className="flex justify-center flex-col items-center lg:flex-row lg:justify-between">
           <div className="">
             <div className="md:flex hidden">
               <BrandLogo />
@@ -25,22 +25,22 @@ function Header() {
             <div className="md:hidden flex">
               <Link href="/" className="">
                 <Image
-                  src="/saynine-logo-mobile.svg"
-                  width={32}
-                  height={32}
-                  alt="SAYNINE-LOGO-MOBILE"
+                  src="/images/saynine_logo_small.svg"
+                  width={132}
+                  height={44}
+                  alt="SAYNINE-LOGO-SMALL"
                   className="cursor-pointer flex-shrink-0"
                 />
               </Link>
             </div>
           </div>
           <div className="flex">
-            <div className="md:block hidden">
+            <div className="">
               <DesktopMenu items={MENU_ITEMS} asPath={asPath} />
             </div>
-            <div className="md:hidden block ">
+            {/* <div className="md:hidden block ">
               <MobileMenu items={MENU_ITEMS} asPath={asPath} />
-            </div>
+            </div> */}
           </div>
         </div>
       </Container>

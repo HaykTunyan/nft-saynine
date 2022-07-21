@@ -45,10 +45,12 @@ function Account() {
     <>
       <Container>
         <div className="pt-20">
-          <h1 className="text-8xl font-normal text-white">My Account</h1>
+          <h1 className="text-4xl xl:text-8xl font-normal text-white">
+            My Account
+          </h1>
         </div>
-        <div className="pt-20" />
-        <div className="grid grid-cols-3 gap-10">
+        <div className="pt-10 xl:pt-20" />
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
           {card.map((item) => (
             <Fragment key={item.key}>
               <BuyCard
@@ -60,10 +62,12 @@ function Account() {
             </Fragment>
           ))}
         </div>
-        <div className="pt-64" />
-        <h2 className="text-8xl font-normal text-white">Collected</h2>
+        <div className="pt-20 xl:pt-64" />
+        <h2 className="text-4xl xl:text-8xl font-normal text-white">
+          Collected
+        </h2>
         <div className="">
-          <p className="text-4xl text-white">
+          <p className="text-base xl:text-4xl text-white">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus
             laoreet adipiscing tortor. Faucibus sed mattis laoreet tempor enim
             sed posuere neque.
@@ -76,7 +80,7 @@ function Account() {
               src="/images/NFT-sm-200.png"
               width={70}
               height={100}
-              className={`w-17.5 h-25 object-cover  grayscale  `}
+              className={`w-17.5 h-25 object-cover grayscale `}
             />
           </div>
 
@@ -92,9 +96,9 @@ function Account() {
         <div className=" pt-10" />
         <ProfressLine />
         <div className="pt-10">
-          <div className="grid grid-cols-5 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
             {card.map((item) => (
-              <div className="" key={item.key}>
+              <div className="flex justify-center" key={item.key}>
                 <Image
                   src={item.img}
                   width={300}

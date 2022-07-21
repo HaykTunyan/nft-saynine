@@ -7,8 +7,8 @@ import vmContract from "../../../web/Web3clinet";
 
 //
 const classes = {
-  menu: "flex space-x-8 text-white items-center",
-  menuItem: "hover:text-primary text-white text-3xl",
+  menu: "flex space-x-8 text-white items-center justify-between mt-4 lg:mt-0",
+  menuItem: "hover:text-primary text-white text-base lg:text-3xl",
   menuItemActive: "text-white",
 };
 
@@ -69,7 +69,7 @@ const Desktop = ({ items, asPath }) => {
                 [classes.menuItemActive]: isActive,
               })}
             >
-              <Link className="text-white" href={item.path}>
+              <Link className="text-white " href={item.path}>
                 {item.label}
               </Link>
             </li>

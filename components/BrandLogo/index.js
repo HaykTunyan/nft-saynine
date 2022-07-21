@@ -5,10 +5,10 @@ function BrandLogo() {
   return (
     <Link href="/" className="">
       <Image
-        src="/saynine-logo-desktop.svg"
-        width={134}
+        src="/images/saynine_logo_larg.svg"
+        width={132}
         height={44}
-        alt="SAYNIN-LOGO-DESKTOP"
+        alt="SAYNIN-LOGO-LARG"
         className="cursor-pointer flex-shrink-0"
       />
     </Link>

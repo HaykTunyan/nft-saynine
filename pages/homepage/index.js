@@ -65,21 +65,21 @@ function HomePage() {
         />
       </Head>
       <div className="overflow-hidden">
-        <div className="pt-26" />
+        <div className="pt-10 lg:pt-26" />
         <FutureSeo />
-        <div className="pt-64" />
-        <div className="px-5">
+        <div className="md:pt-20 lg:pt-64" />
+        <div className="md:px-5">
           <Carousel />
         </div>
-        <div className="pt-64" />
+        <div className="md:pt-20 lg:pt-64" />
         <Container className="pb-32">
-          <div className="text-center">
-            <h2 className="text-center text-white text-8xl">
+          <div className="text-center pt-10">
+            <h2 className="text-center text-white text-4xl lg:text-8xl">
               Start The link Inovation
             </h2>
           </div>
           <div className="pt-15" />
-          <div className="grid grid-cols-5 gap-10">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10">
             {infoNft.map((item) => (
               <div className="flex" key={item.key}>
                 <NftCard
@@ -94,7 +94,6 @@ function HomePage() {
             ))}
           </div>
         </Container>
-
         <div className=""></div>
       </div>
     </Fragment>

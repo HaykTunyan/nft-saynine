@@ -13,12 +13,12 @@ const Menu = () => {
   const { asPath } = useRouter();
   return (
     <Fragment>
-      <div className="md:block hidden">
+      <div className="brd">
         <DesktopMenu items={MENU_ITEMS} asPath={asPath} />
       </div>
-      <div className="md:hidden block">
+      {/* <div className="md:hidden block">
         <MobileMenu items={MENU_ITEMS} asPath={asPath} />
-      </div>
+      </div> */}
     </Fragment>
   );
 };

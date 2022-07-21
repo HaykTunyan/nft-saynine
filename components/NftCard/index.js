@@ -32,24 +32,24 @@ function NftCard({ title, img, link, price, count, alt }) {
           />
         </div>
         <div className="pt-4" />
-        <h3 className="text-4xl  font-semibold text-white">{title}</h3>
+        <h3 className="text-lg lg:text-4xl  font-semibold text-white">{title}</h3>
         <div className="pt-2" />
         <div className="grid grid-cols-2 gap-5">
           <div className="flex space-x-1">
-            <div className="text-xl font-bold text-orange-alft ">Links:</div>
-            <div className="text-xl font-bold text-orange-alft">{link}</div>
+            <div className="text-xs lg:text-xl font-bold text-orange-alft ">Links:</div>
+            <div className="text-xs lg:text-xl font-bold text-orange-alft">{link}</div>
           </div>
           <div className="flex space-x-1">
-            <div className="text-xl font-bold text-yellow-alfa">Price:</div>
-            <div className="text-xl font-bold text-yellow-alfa">{price}$</div>
+            <div className="text-xs lg:text-xl font-bold text-yellow-alfa">Price:</div>
+            <div className="text-xs lg:text-xl font-bold text-yellow-alfa">{price}$</div>
           </div>
         </div>
         <div className="pt-4" />
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-baseline text-center">
           <div className="">
             <button
               type="button"
-              className="rounded-full w-6 h-6 shadow-icon flex items-center justify-center"
+              className="rounded-full w-4 h-4 lg:w-6 lg:h-6 shadow-icon flex items-center justify-center"
               onClick={decrease}
             >
               <Image
@@ -60,11 +60,11 @@ function NftCard({ title, img, link, price, count, alt }) {
               />
             </button>
           </div>
-          <div className="text-2xl text-yellow-alfa">{counter}</div>
+          <div className="text-sm lg:text-2xl text-yellow-alfa">{counter}</div>
           <div className="">
             <button
               type="button"
-              className="rounded-full w-6 h-6"
+              className="rounded-full w-4 h-4 lg:w-6 lg:h-6"
               onClick={increase}
             >
               <Image
@@ -79,7 +79,7 @@ function NftCard({ title, img, link, price, count, alt }) {
         <div className="pt-5" />
         <button
           type="button"
-          className="py-2 px-10 w-full bg-green text-2xl rounded-lg text-white font-normal"
+          className="py-2 px-10 w-full bg-green text-sm lg:text-2xl rounded-lg text-white font-normal"
           onClick={ () => alert("request for backend") }
         >
           Buy Now
