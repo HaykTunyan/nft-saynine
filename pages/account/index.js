@@ -8,7 +8,6 @@ const card = [
   {
     key: 1,
     img: "/images/NFT-sm-200.png",
-    active: "grayscale",
     title: "Bulgartel",
     number: "12",
     link: "1000",
@@ -16,7 +15,6 @@ const card = [
   {
     key: 2,
     img: "/images/NFT-sm-200.png",
-    active: "grayscale",
     title: "Bulgartel",
     link: "1000",
   },
@@ -29,12 +27,14 @@ const card = [
   {
     key: 4,
     img: "/images/NFT-sm-200.png",
+    active: "grayscale",
     title: "Bulgartel",
     link: "1000",
   },
   {
     key: 5,
     img: "/images/NFT-sm-200.png",
+    active: "grayscale",
     title: "Bulgartel",
     link: "1000",
   },
