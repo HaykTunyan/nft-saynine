@@ -1,12 +1,9 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Keyboard, Scrollbar, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
-
-// import required modules
-import { Keyboard, Scrollbar, Navigation } from "swiper";
-import { useState } from "react";
 
 const infoNft = [
   {
@@ -57,7 +54,6 @@ const infoNft = [
 ];
 
 function Carousel({ title, img, price, link }) {
-  const [mobile, setMobile] = useState();
 
   return (
     <Swiper
@@ -67,12 +63,6 @@ function Carousel({ title, img, price, link }) {
       keyboard={{
         enabled: true,
       }}
-      // breakpoints={{
-      //   700: {
-      //     slidesPerView: 1,
-      //     slidesPerGroup: 1,
-      //   },
-      // }}
 
       onSlideChange={() => {
         /*...*/
@@ -94,10 +84,10 @@ function Carousel({ title, img, price, link }) {
       >
         <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
           <Image
-            src="/arrow_left.svg"
+            src="/arrow_right.svg"
             width={12}
             height={24}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover mx-auto"
           />
         </div>
       </div>
@@ -173,10 +163,10 @@ function Carousel({ title, img, price, link }) {
       >
         <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
           <Image
-            src="/arrow_right.svg"
+            src="/arrow_left.svg"
             width={12}
             height={24}
-            className="w-full h-full object-cover mx-auto"
+            className="w-full h-full object-cover"
           />
         </div>
       </div>
