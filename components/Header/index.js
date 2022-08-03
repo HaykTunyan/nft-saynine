@@ -4,12 +4,10 @@ import BrandLogo from "../BrandLogo";
 import Container from "../Container";
 import { useRouter } from "next/router";
 import DesktopMenu from "./Menu/Desktop";
-import MobileMenu from "./Menu/Mobile";
 
 const MENU_ITEMS = [
   { label: "About", path: "/" },
   { label: "Packages", path: "/" },
-  // { label: "My Account", path: "/account" },
 ];
 
 function Header() {
@@ -38,9 +36,6 @@ function Header() {
             <div className="">
               <DesktopMenu items={MENU_ITEMS} asPath={asPath} />
             </div>
-            {/* <div className="md:hidden block ">
-              <MobileMenu items={MENU_ITEMS} asPath={asPath} />
-            </div> */}
           </div>
         </div>
       </Container>

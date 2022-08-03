@@ -13,14 +13,12 @@ const classes = {
 };
 
 const Desktop = ({ items, asPath }) => {
-  
   let web3;
   const [data, setdata] = useState({
     address: "",
     Balance: null,
   });
-  const [ userWalet, setUserWalet ] = useState();
-
+  const [userWalet, setUserWalet] = useState();
 
   const handleConect = async () => {
     if (window.ethereum) {
@@ -43,19 +41,25 @@ const Desktop = ({ items, asPath }) => {
     }
   };
 
+  const goAccountPage = () => {};
+
   const connectWallets = () => {
-    const {ethereum} = window;
+    const { ethereum } = window;
 
-    if(!ethereum) {
-      console.log(" Metamask installed !  ")
+    if (!ethereum) {
+      console.log(" Metamask installed !  ");
     } else {
-      console.log(" Installed Metamask  ")
+      console.log(" Installed Metamask  ");
     }
-  }
+  };
 
-  useEffect( () => {
-    connectWallets()
-  }, [] )
+  useEffect(() => {
+    connectWallets();
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("userWalet", JSON.stringify(userWalet));
+  });
 
   return (
     <>
@@ -75,14 +79,22 @@ const Desktop = ({ items, asPath }) => {
             </li>
           );
         })}
-        <li className={classes.menuItem}>
-          <button
-            className="text-white px-3 py-1 pb-1"
-            onClick={() => handleConect()}
-          >
-            Login
-          </button>
-        </li>
+        {userWalet ? (
+          <li className={classes.menuItem}>
+            <Link className="text-white " href="/account">
+              My Account
+            </Link>
+          </li>
+        ) : (
+          <li className={classes.menuItem}>
+            <button
+              className="text-white px-3 py-1 pb-1"
+              onClick={() => handleConect()}
+            >
+              Login
+            </button>
+          </li>
+        )}
       </ul>
     </>
   );
