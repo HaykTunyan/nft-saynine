@@ -6,6 +6,7 @@ import ProfressLine from "../../components/ProgressLine";
 import { useEffect, useState } from "react";
 import web3 from "web3";
 import { provider } from "../../api/httpclinet";
+
 const card = [
   {
     key: 1,
@@ -44,32 +45,24 @@ const card = [
 
 function Account() {
   const [userWalet, setUserWalet] = useState();
-
-  const [ balanceOf, setBalanceOf ] = useState(0)
+  const [balanceOf, setBalanceOf] = useState(0);
   console.log(" userWalet ", userWalet);
 
-
-
-
-const logBalance = async () => {
+  const logBalance = async () => {
     let balance = await web3.eth?.getBalance(userWalet);
-
     console.log(balance);
-};
+  };
 
   useEffect(() => {
-    const userWalet = localStorage.getItem('userWalet');
+    const userWalet = localStorage.getItem("userWalet");
     if (userWalet) {
       setUserWalet(userWalet);
     }
   }, []);
 
-
-  useEffect( () => {
+  useEffect(() => {
     logBalance();
-  } )
-
-
+  });
 
   return (
     <>
@@ -79,25 +72,6 @@ const logBalance = async () => {
             My Account
           </h1>
           <div className="pt-6" />
-          <div className="flex flex-col lg:flex-row">
-            <div className="flex space-x-2 pt-2">
-              <div className="text-lg xl:text-2xl font-bold  text-white">
-                Address:
-              </div>
-              <div className="text-lg xl:text-2xl font-normal text-white">
-                {userWalet}
-              </div>
-            </div>
-            <div className="px-4" />
-            <div className="flex space-x-2 pt-2">
-              <div className="text-lg xl:text-2xl font-bold  text-white">
-                Balance:
-              </div>
-              <div className="text-lg xl:text-2xl font-normal text-white">
-                {balanceOf}
-              </div>
-            </div>
-          </div>
         </div>
         <div className="pt-10 xl:pt-20" />
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">

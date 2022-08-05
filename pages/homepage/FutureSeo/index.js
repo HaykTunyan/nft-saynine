@@ -4,7 +4,7 @@ import Image from "next/image";
 function FutureSeo() {
   return (
     <section>
-      <Container className="">
+      <Container className="xl:px-5">
         <div className="w-full xl:w-1280px mx-auto">
           <h1 className="font-medium text-4xl xl:text-6xl text-center text-white">
             Welcome To The Future Of SEO

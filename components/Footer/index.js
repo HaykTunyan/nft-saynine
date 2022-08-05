@@ -20,20 +20,21 @@ const SOCIAL_LINKS = [
 
 function Footer() {
   return (
-    <footer className="pt-8 py-8">
+    <footer className="pt-8 py-8 xl:px-5">
       <Container className="flex flex-col lg:grid lg:flex-row lg:grid-cols-3 gap-2 items-center">
-        <div className="w-72 text-xs flex justify-center">
+        <div className="w-72 text-xs flex">
           <BrandLogo />
         </div>
         <div classNames="w-full ">
           <ul className="flex pt-5 lg:pt-0 space-x-5 items-center">
-            {MENU_ITEMS.map((item) => (
+            {/* Know to Comment */}
+            {/* {MENU_ITEMS.map((item) => (
               <li key={item.path} className="text-center text-base lg:text-3xl text-white">
                 <Link className="w-full" href={item.path}>
                   {item.label}
                 </Link>
               </li>
-            ))}
+            ))} */}
           </ul>
         </div>
         <div className="flex justify-end pt-5 lg:pt-0">

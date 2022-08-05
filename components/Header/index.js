@@ -13,7 +13,7 @@ const MENU_ITEMS = [
 function Header() {
   const { asPath } = useRouter();
   return (
-    <header className="mt-10 ">
+    <header className="mt-10 xl:px-5">
       <Container>
         <div className="flex justify-center flex-col items-center lg:flex-row lg:justify-between">
           <div className="">

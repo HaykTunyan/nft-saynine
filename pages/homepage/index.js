@@ -79,7 +79,7 @@ function HomePage() {
             </h2>
           </div>
           <div className="pt-15" />
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10 xl:px-5">
             {infoNft.map((item) => (
               <div className="flex" key={item.key}>
                 <NftCard

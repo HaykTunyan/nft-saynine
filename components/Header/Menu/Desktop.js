@@ -14,6 +14,7 @@ const classes = {
 
 const Desktop = ({ items, asPath }) => {
   let web3;
+
   const [data, setdata] = useState({
     address: "",
     Balance: null,
@@ -64,7 +65,9 @@ const Desktop = ({ items, asPath }) => {
   return (
     <>
       <ul className={classes.menu}>
-        {items.map((item) => {
+        
+        {/* Know to Comment */}
+        {/* {items.map((item) => {
           const isActive = asPath === item.path;
           return (
             <li
@@ -78,7 +81,7 @@ const Desktop = ({ items, asPath }) => {
               </Link>
             </li>
           );
-        })}
+        })} */}
         {userWalet ? (
           <li className={classes.menuItem}>
             <Link className="text-white " href="/account">
