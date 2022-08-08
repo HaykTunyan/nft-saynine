@@ -6,47 +6,17 @@ import ProfressLine from "../../components/ProgressLine";
 import { useEffect, useState } from "react";
 import web3 from "web3";
 import { provider } from "../../api/httpclinet";
-
-const card = [
-  {
-    key: 1,
-    img: "/images/NFT-sm-200.png",
-    title: "Bulgartel",
-    number: "12",
-    link: "1000",
-  },
-  {
-    key: 2,
-    img: "/images/NFT-sm-200.png",
-    title: "Bulgartel",
-    link: "1000",
-  },
-  {
-    key: 3,
-    img: "/images/NFT-sm-200.png",
-    title: "Bulgartel",
-    link: "1000",
-  },
-  {
-    key: 4,
-    img: "/images/NFT-sm-200.png",
-    active: "grayscale",
-    title: "Bulgartel",
-    link: "1000",
-  },
-  {
-    key: 5,
-    img: "/images/NFT-sm-200.png",
-    active: "grayscale",
-    title: "Bulgartel",
-    link: "1000",
-  },
-];
+import { ABI } from "../../web/contracts";
+import { NFT } from "../../web/contracts";
 
 function Account() {
   const [userWalet, setUserWalet] = useState();
   const [balanceOf, setBalanceOf] = useState(0);
   console.log(" userWalet ", userWalet);
+
+  const abi = ABI;
+
+  console.log(" abi ", abi);
 
   const logBalance = async () => {
     let balance = await web3.eth?.getBalance(userWalet);
@@ -75,7 +45,7 @@ function Account() {
         </div>
         <div className="pt-10 xl:pt-20" />
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
-          {card.map((item) => (
+          {NFT.map((item) => (
             <Fragment key={item.key}>
               <BuyCard
                 title={item.title}
@@ -121,7 +91,7 @@ function Account() {
         <ProfressLine />
         <div className="pt-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-            {card.map((item) => (
+            {NFT.map((item) => (
               <div className="flex justify-center" key={item.key}>
                 <Image
                   src={item.img}

@@ -11,9 +11,8 @@ function FutureSeo() {
           </h1>
           <div className="pt-5" />
           <h3 className="font-normal text-2xl lg:text-3xl text-center text-white">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. At purus
-            laoreet adipiscing tortor. Faucibus sed mattis laoreet tempor enim
-            sed posuere neque.
+            Need backlinks? Pick your favorite SayNine NFT and rank better with
+            the backlink package behind it.
           </h3>
         </div>
         <div className="pt-10" />

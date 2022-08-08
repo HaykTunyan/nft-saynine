@@ -1,60 +1,14 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Scrollbar, Navigation } from "swiper";
+import { NFT } from "../../web/contracts";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 
-const infoNft = [
-  {
-    key: 0,
-    title: "Bulgartel",
-    img: "/images/NFT-sm-200.png",
-    link: "1000",
-    price: "500",
-    alt: "NFT-SM-200",
-    count: "1",
-  },
-  {
-    key: 1,
-    title: "Terminator",
-    img: "/images/NFT-sm-1000.png",
-    link: "1000",
-    price: "500",
-    alt: "NFT-SM-1000",
-    count: "1",
-  },
-  {
-    key: 2,
-    title: "Bulgartel",
-    img: "/images/NFT-sm-200.png",
-    link: "1000",
-    price: "500",
-    alt: "NFT-SM-200",
-    count: "1",
-  },
-  {
-    key: 3,
-    title: "Terminator",
-    img: "/images/NFT-sm-1000.png",
-    link: "1000",
-    price: "500",
-    alt: "NFT-SM-1000",
-    count: "1",
-  },
-  {
-    key: 4,
-    title: "Gangster",
-    img: "/images/NFT-sm-5000.png",
-    link: "1000",
-    price: "500",
-    alt: "NFT-SM-5000",
-    count: "1",
-  },
-];
+
 
 function Carousel({ title, img, price, link }) {
-
   return (
     <Swiper
       slidesPerView={1.2}
@@ -63,7 +17,6 @@ function Carousel({ title, img, price, link }) {
       keyboard={{
         enabled: true,
       }}
-
       onSlideChange={() => {
         /*...*/
       }}
@@ -91,7 +44,7 @@ function Carousel({ title, img, price, link }) {
           />
         </div>
       </div>
-      {infoNft.map((item) => (
+      {NFT.map((item) => (
         <SwiperSlide key={item.key}>
           <div className="w-full border-2 lg:border-t-2 lg:border-b-2 border-orange-alft rounded-3xl ">
             <div className=" lg:px-20  lg:py-10 w-full flex flex-col lg:flex-row h-auto">
@@ -124,12 +77,7 @@ function Carousel({ title, img, price, link }) {
                 <div className="pt-6" />
                 <div className="w-full lg:w-10/12">
                   <p className="font-normal text-base md:text-xl xl:text-3xl text-white">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Sollicitudin id pellentesque risus, turpis amet. Neque donec
-                    magna nibh sem. Pharetra vitae feugiat commodo molestie
-                    egestas gravida auctor nisl, suspendisse. Facilisi sit metus
-                    nunc ultricies a in. Sed quis tellus sollicitudin enim
-                    varius sit tempor, sit.
+                    {item.text}
                   </p>
                 </div>
                 <div className="pt-10" />
