@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Image from "next/image";
 
-function NftCard({ title, img, link, price, count, alt }) {
+function NftCard({ title, img, link, price }) {
   const [counter, setCounter] = useState(1);
 
   //increase counter
@@ -28,7 +28,6 @@ function NftCard({ title, img, link, price, count, alt }) {
             width={300}
             height={390}
             className="w-full h-full object-cover obj-center"
-            alt={alt}
           />
         </div>
         <div className="pt-4" />

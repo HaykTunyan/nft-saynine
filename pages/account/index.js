@@ -15,7 +15,6 @@ function Account() {
   console.log(" userWalet ", userWalet);
 
   const abi = ABI;
-
   console.log(" abi ", abi);
 
   const logBalance = async () => {

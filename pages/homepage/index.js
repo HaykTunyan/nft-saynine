@@ -4,57 +4,9 @@ import FutureSeo from "./FutureSeo";
 import Carousel from "../../components/Carousel";
 import NftCard from "../../components/NftCard";
 import Container from "../../components/Container";
-
-const infoNft = [
-  {
-    key: 0,
-    title: "Bulgartel",
-    img: "/images/NFT-sm-200.png",
-    link: "1000",
-    price: "500",
-    alt: "NFT-SM-200",
-    count: "1",
-  },
-  {
-    key: 1,
-    title: "Terminator",
-    img: "/images/NFT-sm-1000.png",
-    link: "1000",
-    price: "500",
-    alt: "NFT-SM-1000",
-    count: "1",
-  },
-  {
-    key: 2,
-    title: "Bulgartel",
-    img: "/images/NFT-sm-200.png",
-    link: "1000",
-    price: "500",
-    alt: "NFT-SM-200",
-    count: "1",
-  },
-  {
-    key: 3,
-    title: "Terminator",
-    img: "/images/NFT-sm-1000.png",
-    link: "1000",
-    price: "500",
-    alt: "NFT-SM-1000",
-    count: "1",
-  },
-  {
-    key: 4,
-    title: "Gangster",
-    img: "/images/NFT-sm-5000.png",
-    link: "1000",
-    price: "500",
-    alt: "NFT-SM-5000",
-    count: "1",
-  },
-];
+import { NFT } from "../../web/contracts";
 
 function HomePage() {
-
   return (
     <Fragment>
       <Head>
@@ -80,7 +32,7 @@ function HomePage() {
           </div>
           <div className="pt-15" />
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10 xl:px-5">
-            {infoNft.map((item) => (
+            {NFT.map((item) => (
               <div className="flex" key={item.key}>
                 <NftCard
                   title={item.title}
