@@ -25,7 +25,7 @@ function Footer() {
         <div className="w-72 text-xs flex">
           <BrandLogo />
         </div>
-        <div classNames="w-full ">
+        <div classNames="w-full">
           <ul className="flex pt-5 lg:pt-0 space-x-5 items-center">
             {/* Know to Comment */}
             {/* {MENU_ITEMS.map((item) => (

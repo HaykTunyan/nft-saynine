@@ -12,14 +12,11 @@ import { NFT } from "../../web/contracts";
 function Account() {
   const [userWalet, setUserWalet] = useState();
   const [balanceOf, setBalanceOf] = useState(0);
-  console.log(" userWalet ", userWalet);
 
   const abi = ABI;
-  console.log(" abi ", abi);
 
   const logBalance = async () => {
     let balance = await web3.eth?.getBalance(userWalet);
-    console.log(balance);
   };
 
   useEffect(() => {
@@ -70,19 +67,18 @@ function Account() {
         <div className="flex justify-between">
           <div className="w-17.5 h-25">
             <Image
-              src="/images/NFT-sm-200.png"
+              src="/images/NFT-1.png"
               width={70}
               height={100}
               className={`w-17.5 h-25 object-cover grayscale `}
             />
           </div>
-
           <div className="w-17.5 h-25">
             <Image
-              src="/images/NFT-sm-200.png"
+              src="/images/NFT-1.png"
               width={70}
               height={100}
-              className={`w-17.5 h-25 object-cover   `}
+              className={`w-17.5 h-25 object-cover`}
             />
           </div>
         </div>

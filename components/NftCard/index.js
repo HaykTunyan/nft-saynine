@@ -31,24 +31,24 @@ function NftCard({ title, img, link, price }) {
           />
         </div>
         <div className="pt-4" />
-        <h3 className="text-lg lg:text-4xl  font-semibold text-white">
+        <h3 className="text-lg lg:text-3xl  font-semibold text-white">
           {title}
         </h3>
         <div className="pt-2" />
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-flow-col gap-4">
           <div className="flex space-x-1">
-            <div className="text-xs lg:text-xl font-bold text-orange-alft ">
+            <div className="text-xs lg:text-base font-bold text-orange-alft ">
               Links:
             </div>
-            <div className="text-xs lg:text-xl font-bold text-orange-alft">
+            <div className="text-xs lg:text-base font-bold text-orange-alft">
               {link}
             </div>
           </div>
           <div className="flex space-x-1">
-            <div className="text-xs lg:text-xl font-bold text-yellow-alfa">
+            <div className="text-xs lg:text-base font-bold text-yellow-alfa">
               Price:
             </div>
-            <div className="text-xs lg:text-xl font-bold text-yellow-alfa">
+            <div className="text-xs lg:text-base font-bold text-yellow-alfa">
               {price}$
             </div>
           </div>

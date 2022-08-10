@@ -6,8 +6,6 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 
-
-
 function Carousel({ title, img, price, link }) {
   return (
     <Swiper

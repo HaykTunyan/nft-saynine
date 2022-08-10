@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ethers, providers } from "ethers";
@@ -29,8 +28,6 @@ const Desktop = ({ items, asPath }) => {
             method: "eth_requestAccounts",
           })
           .then((res) => {
-            console.log("  res request Accounts", res);
-            // accountChangeHandler(res[0]);
             setUserWalet(res[0]);
             setdata({ address: res[0] });
           });
@@ -41,8 +38,6 @@ const Desktop = ({ items, asPath }) => {
       console.log("install metamask extension!!");
     }
   };
-
-  const goAccountPage = () => {};
 
   const connectWallets = () => {
     const { ethereum } = window;
@@ -65,7 +60,6 @@ const Desktop = ({ items, asPath }) => {
   return (
     <>
       <ul className={classes.menu}>
-        
         {/* Know to Comment */}
         {/* {items.map((item) => {
           const isActive = asPath === item.path;
