@@ -11,7 +11,12 @@ const classes = {
   main: "flex-1",
 };
 
+
 function MyApp({ Component, pageProps }) {
+
+ const Contract_Addres = '0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E';
+
+
   return (
     <Fragment>
       <Head>
@@ -23,8 +28,10 @@ function MyApp({ Component, pageProps }) {
           content="https://saynine.ai/_next/image?url=%2Fimages%2Fhome_page%2Fautomation_tools.svg&w=384&q=75"
         />
       </Head>
+
       <div className={classes.root}>
         <Header />
+
         <main className={classes.main}>
           <Component {...pageProps} />
         </main>

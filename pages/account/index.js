@@ -4,20 +4,30 @@ import Container from "../../components/Container";
 import Image from "next/image";
 import ProfressLine from "../../components/ProgressLine";
 import { useEffect, useState } from "react";
-import web3 from "web3";
+import Web3 from "web3";
 import { provider } from "../../api/httpclinet";
+
 import { ABI } from "../../web/contracts";
 import { NFT } from "../../web/contracts";
 
 function Account() {
+  // Hooks.
   const [userWalet, setUserWalet] = useState();
   const [balanceOf, setBalanceOf] = useState(0);
+  const [tokendId, setTokenId] = useState(10);
+  const [account, setAccount] = useState();
+  const [contactList, setContactList] = useState();
+  const [contacts, setContacts] = useState([]);
 
-  const abi = ABI;
+  console.log(" userWalet ", userWalet);
 
   const logBalance = async () => {
-    let balance = await web3.eth?.getBalance(userWalet);
+    // let balance = await web3.eth?.getBalance(userWalet);
   };
+
+  //**  Read Contract uri **//
+``
+  const CONTACT_ADDRESS = "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E";
 
   useEffect(() => {
     const userWalet = localStorage.getItem("userWalet");
@@ -29,6 +39,7 @@ function Account() {
   useEffect(() => {
     logBalance();
   });
+
 
   return (
     <>
