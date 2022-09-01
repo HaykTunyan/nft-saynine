@@ -1,12 +1,42 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Head from "next/head";
 import FutureSeo from "./FutureSeo";
 import Carousel from "../../components/Carousel";
 import NftCard from "../../components/NftCard";
 import Container from "../../components/Container";
 import { NFT } from "../../web/contracts";
+import { vmContract } from "../../web/Web3clinet";
 
 function HomePage() {
+  const [buyNFT, setBuyNFT] = useState();
+  const [amountN, setAmoutn] = useState();
+
+  const handleTransver = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(
+      passFactoryNFTAddress,
+      passFactory.abi,
+      signer
+    );
+    const response = await contract.transferFrom(
+      accounts[0],
+      "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E",
+      1
+    );
+    console.log("log transfer", response);
+  };
+  //  id 4
+  const Mint = async () => {
+    const res = await vmContract.methods
+      .mint(userWalet, 4, "1000000000000000000")
+      .send({
+        from: userWalet,
+      });
+
+    console.log("res", res);
+  };
+
   return (
     <Fragment>
       <Head>
@@ -35,6 +65,8 @@ function HomePage() {
             {NFT.map((item) => (
               <div className="flex" key={item.key}>
                 <NftCard
+                  key={item.key}
+                  nftId={item.nftId}
                   title={item.title}
                   img={item.img}
                   link={item.link}
@@ -44,6 +76,8 @@ function HomePage() {
                 />
               </div>
             ))}
+
+            {/* <NftCard NFT={NFT} /> */}
           </div>
         </Container>
         <div className=""></div>

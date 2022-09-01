@@ -1,7 +1,11 @@
 import Container from "../../../components/Container";
 import Image from "next/image";
+import { useState } from "react";
 
 function FutureSeo() {
+
+  const [ buyNFT, setBuyNFT ] = useState();
+
   return (
     <section>
       <Container className="xl:px-5">

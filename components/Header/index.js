@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import BrandLogo from "../BrandLogo";
 import Container from "../Container";
 import { useRouter } from "next/router";
@@ -12,6 +13,25 @@ const MENU_ITEMS = [
 
 function Header() {
   const { asPath } = useRouter();
+
+  const [accounts, setAccounts ]= useState([])
+
+  const isConnected = Boolean(accounts[0]);
+
+  async function connectAccount(){
+      if(window.ethereum){
+          const accounts = await window.ethereum.request({
+              method:"eth_requestAccounts"
+          });
+          setAccounts(accounts)
+      }
+  };
+
+  useEffect( () => {
+    connectAccount();
+  }, []);
+
+  console.log(" isConnected ", isConnected);
   return (
     <header className="mt-10 xl:px-5">
       <Container>
@@ -34,7 +54,7 @@ function Header() {
           </div>
           <div className="flex">
             <div className="">
-              <DesktopMenu items={MENU_ITEMS} asPath={asPath} />
+              <DesktopMenu isConnected={isConnected} items={MENU_ITEMS} asPath={asPath} />
             </div>
           </div>
         </div>

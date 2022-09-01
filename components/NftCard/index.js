@@ -1,22 +1,32 @@
 import React, { Fragment, useState } from "react";
 import Image from "next/image";
+import BuyModal from "../Modal/BuyModal";
 
-function NftCard({ title, img, link, price }) {
+function NftCard({ nftId, key, title, img, link, price, count }) {
   const [counter, setCounter] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+  const [buyImage, setBuyImage] = useState();
 
-  //increase counter
+  console.log(" nftId ", nftId);
+  console.log(" title ", title);
+  console.log(" img ", img);
+  console.log(" link ", link);
+  console.log(" price ", price);
+  console.log(" count ", count);
+
+
   const increase = () => {
-    setCounter((count) => count + 1);
+    setCounter((counter) => counter + 1);
   };
 
-  //decrease counter
   const decrease = () => {
-    setCounter((count) => count - 1);
+    setCounter((counter) => counter - 1);
   };
 
-  //reset counter
-  const reset = () => {
-    setCounter(0);
+  const buyMyNFT = ( nftId, key, img, title, link, counter, price) => {
+    setShowModal(true);
+    setBuyImage({ nftId, key, img, title, link, counter, price });
+    console.log(" all data ", { nftId, key, img, title, link, counter, price });
   };
 
   return (
@@ -59,7 +69,7 @@ function NftCard({ title, img, link, price }) {
             <button
               type="button"
               className="rounded-full w-4 h-4 lg:w-6 lg:h-6 shadow-icon flex items-center justify-center"
-              onClick={decrease}
+              onClick={() => decrease()}
               disabled={counter === 0}
             >
               <Image
@@ -76,6 +86,7 @@ function NftCard({ title, img, link, price }) {
               type="button"
               className="rounded-full w-4 h-4 lg:w-6 lg:h-6"
               onClick={increase}
+              disabled={counter > 4}
             >
               <Image
                 src="/decrement-icon.svg"
@@ -87,14 +98,18 @@ function NftCard({ title, img, link, price }) {
           </div>
         </div>
         <div className="pt-5" />
+
         <button
           type="button"
           className="py-2 px-10 w-full bg-green text-sm lg:text-2xl rounded-lg text-white font-normal"
-          onClick={() => alert("request for backend")}
+          onClick={() => buyMyNFT(nftId, key, img, title, link, counter, price)}
         >
           Buy Now
         </button>
       </div>
+      {showModal && (
+        <BuyModal setShowModal={setShowModal} buyImage={buyImage} />
+      )}
     </Fragment>
   );
 }

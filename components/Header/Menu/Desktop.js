@@ -1,8 +1,5 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { ethers, providers } from "ethers";
-import Web3 from "web3";
-import vmContract from "../../../web/Web3clinet";
+import { Fragment, useEffect, useState } from "react";
 
 //
 const classes = {
@@ -11,13 +8,13 @@ const classes = {
   menuItemActive: "text-white",
 };
 
-const Desktop = ({ items, asPath }) => {
-  let web3;
+const Desktop = ({ items, asPath, isConnected }) => {
 
   const [data, setdata] = useState({
     address: "",
     Balance: null,
   });
+
   const [userWalet, setUserWalet] = useState();
 
   const handleConect = async () => {
@@ -58,24 +55,8 @@ const Desktop = ({ items, asPath }) => {
   });
 
   return (
-    <>
+    <Fragment>
       <ul className={classes.menu}>
-        {/* Know to Comment */}
-        {/* {items.map((item) => {
-          const isActive = asPath === item.path;
-          return (
-            <li
-              key={item.path}
-              className={classNames(classes.menuItem, {
-                [classes.menuItemActive]: isActive,
-              })}
-            >
-              <Link className="text-white " href={item.path}>
-                {item.label}
-              </Link>
-            </li>
-          );
-        })} */}
         {userWalet ? (
           <li className={classes.menuItem}>
             <Link className="text-white " href="/account">
@@ -93,7 +74,7 @@ const Desktop = ({ items, asPath }) => {
           </li>
         )}
       </ul>
-    </>
+    </Fragment>
   );
 };
 

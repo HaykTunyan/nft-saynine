@@ -7,7 +7,7 @@ function ProfressLine() {
     <Fragment>
       <Line
         className="rounded-md bg-green-secta"
-        percent={40}
+        percent={100}
         strokeWidth={1}
         strokeColor={theme.extend.colors.green.DEFAULT}
         trailWidth={2}
