@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import Head from "next/head";
 import FutureSeo from "./FutureSeo";
 import Carousel from "../../components/Carousel";
@@ -7,7 +7,7 @@ import Container from "../../components/Container";
 import { NFT } from "../../web/contracts";
 import { vmContract } from "../../web/Web3clinet";
 
-function HomePage() {
+function HomeView() {
   const [buyNFT, setBuyNFT] = useState();
   const [amountN, setAmoutn] = useState();
 
@@ -76,14 +76,12 @@ function HomePage() {
                 />
               </div>
             ))}
-
-            {/* <NftCard NFT={NFT} /> */}
           </div>
         </Container>
-        <div className=""></div>
+
       </div>
     </Fragment>
   );
 }
 
-export default HomePage;
+export default HomeView;

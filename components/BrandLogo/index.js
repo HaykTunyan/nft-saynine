@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function BrandLogo() {
   return (
-    <Link href="/homepage" className="">
+    <Link href="/homeview" className="">
       <Image
         src="/images/saynine_logo_larg.svg"
         width={132}

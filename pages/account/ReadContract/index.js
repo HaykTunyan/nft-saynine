@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {ethers,BigNumber} from "ethers";
 import { ABI } from "../../../web/contracts";
 
 const CONTACT_ADDRESS = "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E";
@@ -15,7 +14,6 @@ const ReadContract = () => {
     }
   }, []);
 
-  console.log(" ether ", ethers);
 
   async function handleTransver(){
     const provider = new ethers.providers.Web3Provider(window.ethereum);

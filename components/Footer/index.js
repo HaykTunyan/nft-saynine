@@ -1,4 +1,3 @@
-import Link from "next/link";
 import BrandLogo from "../BrandLogo";
 import FacebookIcon from "../../components/Icons/facebook";
 import LinkedinIcon from "../../components/Icons/linkedin";
@@ -24,18 +23,6 @@ function Footer() {
       <Container className="flex flex-col lg:grid lg:flex-row lg:grid-cols-3 gap-2 items-center">
         <div className="w-72 text-xs flex">
           <BrandLogo />
-        </div>
-        <div classNames="w-full">
-          <ul className="flex pt-5 lg:pt-0 space-x-5 items-center">
-            {/* Know to Comment */}
-            {/* {MENU_ITEMS.map((item) => (
-              <li key={item.path} className="text-center text-base lg:text-3xl text-white">
-                <Link className="w-full" href={item.path}>
-                  {item.label}
-                </Link>
-              </li>
-            ))} */}
-          </ul>
         </div>
         <div className="flex justify-end pt-5 lg:pt-0">
           <ul className="flex space-x-5">

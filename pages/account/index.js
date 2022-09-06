@@ -4,11 +4,11 @@ import Container from "../../components/Container";
 import Image from "next/image";
 import ProfressLine from "../../components/ProgressLine";
 import { useEffect, useState } from "react";
-import { ethers } from "ethers";
 import { ABI } from "../../web/contracts";
 import { NFT } from "../../web/contracts";
 import ReadContract from "./ReadContract";
 import { vmContract } from "../../web/Web3clinet";
+import Web3 from "web3";
 
 function Account() {
   // Hooks.
@@ -34,9 +34,9 @@ function Account() {
   // Call to NFT contract
   async function Mint() {
     const res = await vmContract.methods
-      .mint(userWalet, 4, 100)
+      .mint('0xb5486f52fD5eeA4CCeCdA89C9559cD31B457E6D6', 4, "100000000000000000")
       .send({
-        from: userWalet,
+        from: '0x5A4Ef4eCD643049f5225844DD3B4ba34B1Ba7b40',
       });
 
     // const res = await vmContract.methods
@@ -44,6 +44,38 @@ function Account() {
     //   .call();
 
     console.log("res", res);
+  }
+
+  async function getMegaNFT() {
+    const res = await vmContract.methods
+    .getMegaNFT(userWalet, 4)
+    .send({
+      from: userWalet,
+    });
+
+  console.log("res getMegaNFT", res);
+  }
+
+
+  async function safeTransferFrom() {
+    const res = await vmContract.methods
+    .safeTransferFrom(userWalet, 4)
+    .send({
+      from: userWalet,
+    });
+
+  console.log("res safeTransferFrom", res);
+  };
+
+
+  async function useTokens() {
+    const res = await vmContract.methods
+    .useTokens(userWalet, 4)
+    .send({
+      from: userWalet,
+    });
+
+  console.log("res useTokens", res);
   }
 
   return (
