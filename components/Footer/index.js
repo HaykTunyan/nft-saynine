@@ -20,7 +20,7 @@ const SOCIAL_LINKS = [
 function Footer() {
   return (
     <footer className="pt-8 py-8 xl:px-5">
-      <Container className="flex flex-col lg:grid lg:flex-row lg:grid-cols-3 gap-2 items-center">
+      <Container className="flex flex-col lg:flex-row lg:justify-between items-center">
         <div className="w-72 text-xs flex">
           <BrandLogo />
         </div>

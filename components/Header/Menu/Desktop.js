@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
+import { ethers } from "ethers";
 
 //
 const classes = {
@@ -15,49 +16,56 @@ const Desktop = ({ items, asPath, isConnected }) => {
     Balance: null,
   });
 
-  const [userWalet, setUserWalet] = useState();
-
-  const handleConect = async () => {
+  console.log(" data ", data);
+  
+  const loginBtn = () => {
     if (window.ethereum) {
-      try {
-        await window.ethereum
-          .request({
-            method: "eth_requestAccounts",
-          })
-          .then((res) => {
-            setUserWalet(res[0]);
-            setdata({ address: res[0] });
-          });
-      } catch (error) {
-        console.log(" error ", error.messages);
-      }
+      window.ethereum
+        .request({ method: "eth_requestAccounts" })
+        .then((res) => accountChangeHandler(res[0]));
     } else {
-      console.log("install metamask extension!!");
+      alert("install metamask extension!!");
     }
   };
 
-  const connectWallets = () => {
-    const { ethereum } = window;
-
-    if (!ethereum) {
-      console.log(" Metamask installed !  ");
-    } else {
-      console.log(" Installed Metamask  ");
-    }
+  const getbalance = (address) => {
+  
+    // Requesting balance method
+    window.ethereum
+      .request({ 
+        method: "eth_getBalance", 
+        params: [address, "latest"] 
+      })
+      .then((balance) => {
+        // Setting balance
+        setdata({
+          Balance: ethers.utils.formatEther(balance),
+        });
+      });
   };
-
-  useEffect(() => {
-    connectWallets();
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("userWalet", JSON.stringify(userWalet));
-  });
+  
+  const accountChangeHandler = (account) => {
+    // Setting an address data
+    setdata({
+      address: account,
+    });
+  
+    // Setting a balance
+    getbalance(account);
+  };
 
   return (
     <Fragment>
       <ul className={classes.menu}>
-        {userWalet ? (
+      {/* <li className={classes.menuItem}>
+            <button
+              className="text-white px-3 py-1 pb-1"
+              onClick={loginBtn}
+            >
+              Login
+            </button>
+          </li> */}
+        {data ? (
           <li className={classes.menuItem}>
             <Link className="text-white " href="/account">
               My Account
@@ -67,7 +75,7 @@ const Desktop = ({ items, asPath, isConnected }) => {
           <li className={classes.menuItem}>
             <button
               className="text-white px-3 py-1 pb-1"
-              onClick={() => handleConect()}
+              onClick={btnhandler}
             >
               Login
             </button>

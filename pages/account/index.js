@@ -78,6 +78,7 @@ function Account() {
   console.log("res useTokens", res);
   }
 
+
   return (
     <Container>
       <div className="pt-20">
@@ -92,7 +93,7 @@ function Account() {
         <div className="px-4 py-3 border-orange rounded-2xl border-1px flex">
           <div className="w-4/12">
             {/* <Image
-          src={buyImage?.img}
+          src={`.` + `${String(buyImage?.img)}` }
           width={143}
           height={186}
           className="w-full h-full object-cover"
