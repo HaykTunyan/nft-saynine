@@ -33,7 +33,7 @@ function Carousel() {
         className="mySwiper px-20"
       >
         <div
-          className="z-50 absolute left-10 md:left-20   top-0 lg:w-20 h-full lg:border-orange-alft  lg:border-2 text-center align-baseline flex justify-start rounded-t-3xl rounded-b-3xl"
+          className="z-50 absolute left-12 sm:left-20 md:left-20  top-0 lg:w-20 h-full lg:border-orange-alft  lg:border-2 text-center align-baseline flex justify-start rounded-t-3xl rounded-b-3xl"
           id="next"
         >
           <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
@@ -108,7 +108,7 @@ function Carousel() {
           </SwiperSlide>
         ))}
         <div
-          className="z-50 absolute right-10 md:right-20 top-0 lg:w-20 h-full lg:border-orange-alft lg:border-2 text-center align-baseline flex justify-start rounded-t-3xl rounded-b-3xl"
+          className="z-50 absolute right-12 sm:right-20 md:right-20 top-0 lg:w-20 h-full lg:border-orange-alft lg:border-2 text-center align-baseline flex justify-start rounded-t-3xl rounded-b-3xl"
           id="prev"
         >
           <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
