@@ -24,17 +24,14 @@ function MY() {
       "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E",
       1
     );
-    console.log("log transfer", response);
   };
-  //  id 4
+
   const Mint = async () => {
     const res = await vmContract.methods
       .mint(userWalet, 4, "1000000000000000000")
       .send({
         from: userWalet,
       });
-
-    console.log("res", res);
   };
 
   return (
@@ -63,7 +60,7 @@ function MY() {
           <div className="pt-15" />
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10 xl:px-5">
             {NFT.map((item) => (
-              <div className="flex" key={item.key}>
+              <div className="flex " key={item.key}>
                 <NftCard
                   key={item.key}
                   nftId={item.nftId}

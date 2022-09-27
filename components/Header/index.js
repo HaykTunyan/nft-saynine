@@ -14,28 +14,27 @@ const MENU_ITEMS = [
 function Header() {
   const { asPath } = useRouter();
 
-  const [accounts, setAccounts ]= useState([])
+  const [accounts, setAccounts] = useState([]);
 
   const isConnected = Boolean(accounts[0]);
 
-  async function connectAccount(){
-      if(window.ethereum){
-          const accounts = await window.ethereum.request({
-              method:"eth_requestAccounts"
-          });
-          setAccounts(accounts)
-      }
-  };
+  async function connectAccount() {
+    if (window.ethereum) {
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      setAccounts(accounts);
+    }
+  }
 
-  useEffect( () => {
+  useEffect(() => {
     connectAccount();
   }, []);
 
-  console.log(" isConnected ", isConnected);
   return (
     <header className="mt-10 xl:px-5">
       <Container>
-        <div className="flex justify-center flex-col items-center lg:flex-row lg:justify-between">
+        <div className="flex justify-center flex-col items-center md:flex-row md:justify-between">
           <div className="">
             <div className="md:flex hidden">
               <BrandLogo />
@@ -52,10 +51,12 @@ function Header() {
               </Link>
             </div>
           </div>
-          <div className="flex">
-            <div className="">
-              <DesktopMenu isConnected={isConnected} items={MENU_ITEMS} asPath={asPath} />
-            </div>
+          <div className="">
+            <DesktopMenu
+              isConnected={isConnected}
+              items={MENU_ITEMS}
+              asPath={asPath}
+            />
           </div>
         </div>
       </Container>

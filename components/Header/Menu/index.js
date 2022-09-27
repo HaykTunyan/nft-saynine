@@ -16,9 +16,6 @@ const Menu = () => {
       <div className="brd">
         <DesktopMenu items={MENU_ITEMS} asPath={asPath} />
       </div>
-      {/* <div className="md:hidden block">
-        <MobileMenu items={MENU_ITEMS} asPath={asPath} />
-      </div> */}
     </Fragment>
   );
 };

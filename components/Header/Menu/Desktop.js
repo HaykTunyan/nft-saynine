@@ -2,22 +2,18 @@ import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { ethers } from "ethers";
 
-//
 const classes = {
-  menu: "flex space-x-8 text-white items-center justify-between mt-4 lg:mt-0",
-  menuItem: "hover:text-primary text-white text-base lg:text-3xl",
+  menu: "flex space-x-8 text-white items-center justify-between mt-4 md:mt-0",
+  menuItem: "hover:text-primary text-white text-base md:text-3xl",
   menuItemActive: "text-white",
 };
 
 const Desktop = ({ items, asPath, isConnected }) => {
-
   const [data, setdata] = useState({
     address: "",
     Balance: null,
   });
 
-  console.log(" data ", data);
-  
   const loginBtn = () => {
     if (window.ethereum) {
       window.ethereum
@@ -29,12 +25,11 @@ const Desktop = ({ items, asPath, isConnected }) => {
   };
 
   const getbalance = (address) => {
-  
     // Requesting balance method
     window.ethereum
-      .request({ 
-        method: "eth_getBalance", 
-        params: [address, "latest"] 
+      .request({
+        method: "eth_getBalance",
+        params: [address, "latest"],
       })
       .then((balance) => {
         // Setting balance
@@ -43,13 +38,13 @@ const Desktop = ({ items, asPath, isConnected }) => {
         });
       });
   };
-  
+
   const accountChangeHandler = (account) => {
     // Setting an address data
     setdata({
       address: account,
     });
-  
+
     // Setting a balance
     getbalance(account);
   };
@@ -57,14 +52,6 @@ const Desktop = ({ items, asPath, isConnected }) => {
   return (
     <Fragment>
       <ul className={classes.menu}>
-      {/* <li className={classes.menuItem}>
-            <button
-              className="text-white px-3 py-1 pb-1"
-              onClick={loginBtn}
-            >
-              Login
-            </button>
-          </li> */}
         {data ? (
           <li className={classes.menuItem}>
             <Link className="text-white " href="/account">
@@ -73,10 +60,7 @@ const Desktop = ({ items, asPath, isConnected }) => {
           </li>
         ) : (
           <li className={classes.menuItem}>
-            <button
-              className="text-white px-3 py-1 pb-1"
-              onClick={btnhandler}
-            >
+            <button className="text-white px-3 py-1 pb-1" onClick={btnhandler}>
               Login
             </button>
           </li>

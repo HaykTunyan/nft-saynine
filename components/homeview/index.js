@@ -24,7 +24,7 @@ function HomeView() {
       "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E",
       1
     );
-    console.log("log transfer", response);
+
   };
   //  id 4
   const Mint = async () => {
@@ -34,7 +34,6 @@ function HomeView() {
         from: userWalet,
       });
 
-    console.log("res", res);
   };
 
   return (

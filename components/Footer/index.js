@@ -20,11 +20,11 @@ const SOCIAL_LINKS = [
 function Footer() {
   return (
     <footer className="pt-8 py-8 xl:px-5">
-      <Container className="flex flex-col lg:flex-row lg:justify-between items-center">
+      <Container className="flex flex-row justify-between items-center">
         <div className="w-72 text-xs flex">
           <BrandLogo />
         </div>
-        <div className="flex justify-end pt-5 lg:pt-0">
+        <div className="flex justify-end pt-5">
           <ul className="flex space-x-5">
             {SOCIAL_LINKS.map(({ Icon, path }) => (
               <li key={path} className="text-xs">

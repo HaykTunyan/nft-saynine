@@ -14,12 +14,8 @@ const classes = {
 function MyApp({ Component, pageProps }) {
 
  const Contract_Addres = '0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E';
-
  const [accounts, SetAccounts]= useState([])
-
  const isConnected = Boolean(accounts[0]);
-
- console.log(" is Connected ", isConnected);
 
  async function connectAccount(){
      if(window.ethereum){

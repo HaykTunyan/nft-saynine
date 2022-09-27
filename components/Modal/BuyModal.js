@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 export default function BuyModal({ setShowModal, buyImage }) {
-  console.log(" buyImage ", buyImage);
-
   const router = useRouter();
 
   const saveNFT = () => {
     localStorage.setItem("buyImage", JSON.stringify(buyImage));
     setShowModal(false);
     router.push("/account");
-    
   };
 
   return (
