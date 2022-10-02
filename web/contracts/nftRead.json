@@ -1,0 +1,27 @@
+[
+    {
+        "key": 1,
+        "nftId": "1",
+        "img": "/nfts/Fight_1.png"
+    },
+    {
+        "key": 2,
+        "nftId": "2",
+        "img": "/nfts/Fight_2.png"
+    },
+    {
+        "key": 3,
+        "nftId": "3",
+        "img": "/nfts/Fight_3.png"
+    },
+    {
+        "key": 4,
+        "nftId": "4",
+        "img": "/nfts/Fight_4.png"
+    },
+    {
+        "key": 5,
+        "nftId": "5",
+        "img": "/nfts/Fight_5.png"
+    }
+]

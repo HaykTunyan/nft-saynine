@@ -6,6 +6,7 @@ function NftCard({ nftId, key, title, img, link, price, count }) {
   const [counter, setCounter] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [buyImage, setBuyImage] = useState();
+  const [countNft, setCountNft ] = useState()
 
   const increase = () => {
     setCounter((counter) => counter + 1);
@@ -17,7 +18,8 @@ function NftCard({ nftId, key, title, img, link, price, count }) {
 
   const buyMyNFT = (nftId, key, img, title, link, counter, price) => {
     setShowModal(true);
-    setBuyImage({ nftId, key, img, title, link, counter, price });
+    setBuyImage({ nftId, key, img, title, link, price });
+    setCountNft(counter);
   };
 
   return (
@@ -99,7 +101,7 @@ function NftCard({ nftId, key, title, img, link, price, count }) {
         </button>
       </div>
       {showModal && (
-        <BuyModal setShowModal={setShowModal} buyImage={buyImage} />
+        <BuyModal setShowModal={setShowModal} buyImage={buyImage} countNft={countNft} />
       )}
     </Fragment>
   );

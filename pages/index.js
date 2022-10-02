@@ -46,7 +46,7 @@ function MY() {
       <div className="overflow-hidden">
         <div className="pt-10 lg:pt-26" />
         <FutureSeo />
-        <div className="md:pt-20 lg:pt-64" />
+        <div className="pt-20 lg:pt-35" />
         <div className="md:px-5">
           <Carousel />
         </div>

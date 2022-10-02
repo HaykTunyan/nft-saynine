@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ABI } from "../../../web/contracts";
+import { ethers } from "ethers";
 
 const CONTACT_ADDRESS = "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E";
 

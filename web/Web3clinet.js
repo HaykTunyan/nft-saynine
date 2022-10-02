@@ -10,5 +10,5 @@ const provider = new Web3.providers.HttpProvider(
 );
 
 export const web3 = new Web3(provider);
-
 export const vmContract = new web3.eth.Contract(ABI, token);
+

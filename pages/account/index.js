@@ -3,26 +3,32 @@ import Image from "next/image";
 import ProfressLine from "../../components/ProgressLine";
 import { useEffect, useState } from "react";
 import { ABI } from "../../web/contracts";
-import { NFT } from "../../web/contracts";
+import { NFT, NFTread } from "../../web/contracts";
 import ReadContract from "./ReadContract";
 import { vmContract } from "../../web/Web3clinet";
 import Web3 from "web3";
+import { ethers } from "ethers";
 import axios from "axios";
-import UseContract from "./UseContract";
+import TransferNft from "./TransferNft";
 import MintContract from "./MintContract";
 import GetMegaNFT from "./GetMegaNft";
+import MinNFT from "./MintNft";
+import UseNFT from "../../components/Modal/UseNft";
 
 function Account() {
   // Hooks.
   const [userWalet, setUserWalet] = useState();
   const [buyImage, useBuyImage] = useState();
   const [nftImages, setByImages] = useState();
+  const [showModal, setShowModal] = useState(false);
+  const [usedNft, getUsedNft] = useState();
+  const [count, getCount] = useState();
 
   // Call to NFT contract
   async function Mint() {
     const res = await vmContract.methods
       .mint(
-        "0xb5486f52fD5eeA4CCeCdA89C9559cD31B457E6D6",
+        "0x5a4ef4ecd643049f5225844dd3b4ba34b1ba7b40",
         4,
         "100000000000000000"
       )
@@ -70,13 +76,26 @@ function Account() {
     }
   };
 
+  const showUseModal = (buyImage) => {
+    setShowModal(true);
+    getUsedNft(buyImage);
+  };
+
   useEffect(() => {
     showDisplayImages();
     const buyImage = JSON.parse(localStorage.getItem("buyImage"));
+    const countNft = JSON.parse(localStorage.getItem("count"));
     if (buyImage) {
       useBuyImage(buyImage);
+      getCount(countNft);
     }
-  }, []);
+  }, [showModal, count]);
+
+  useEffect(() => {
+    if (count === 0) {
+      localStorage.removeItem("buyImage");
+    }
+  }, [count]);
 
   useEffect(() => {
     axios.get("/api/NFTdata").then(console.log);
@@ -92,7 +111,7 @@ function Account() {
       </div>
       <div className="pt-10 xl:pt-20" />
       {/* Buy NFT */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-10">
         {buyImage && (
           <div className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex">
             <div className="w-4/12">
@@ -109,9 +128,9 @@ function Account() {
                   {buyImage?.title}
                 </h4>
                 <div className="pr-2">
-                  {buyImage?.counter && (
+                  {count && (
                     <span className="text-white text-xl xl:text-4xl font-bold">
-                      {buyImage?.counter}
+                      {count}
                     </span>
                   )}
                 </div>
@@ -136,6 +155,7 @@ function Account() {
               <div className="pt-6 xl:pt-8" />
               <button
                 type="button"
+                onClick={() => showUseModal(buyImage)}
                 className="py-2 px-10  w-full bg-green-alfa text-xl xl:text-2xl rounded-lg text-white font-normal"
               >
                 Use
@@ -145,12 +165,15 @@ function Account() {
         )}
       </div>
       <div className="pt-10 xl:pt-20" />
-      <UseContract />
+      <TransferNft />
       <div className="pt-10 xl:pt-20" />
       <MintContract />
       <div className="pt-10 xl:pt-20" />
       <GetMegaNFT />
+      <div className="pt-20 xl:pt-20" />
+      <MinNFT />
       <div className="pt-20 xl:pt-64" />
+
       <h2 className="text-4xl xl:text-8xl font-normal text-white">Collected</h2>
       <div className="">
         <p className="text-base xl:text-4xl text-white">
@@ -160,9 +183,9 @@ function Account() {
       </div>
       <div className="pt-10" />
       <div className="flex justify-between">
-        <div className="w-17.5 h-25">
+        <div className="">
           <Image
-            src="/images/NFT-1.png"
+            src="/nfts/Fight_1.png"
             width={70}
             height={100}
             className={`w-17.5 h-25 object-cover grayscale `}
@@ -181,7 +204,7 @@ function Account() {
       <ProfressLine />
       <div className="pt-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          {NFT.map((item) => (
+          {NFTread.map((item) => (
             <div className="flex justify-center" key={item.key}>
               <Image
                 src={item.img}
@@ -194,6 +217,7 @@ function Account() {
         </div>
       </div>
       <div className="pb-52" />
+      {showModal && <UseNFT setShowModal={setShowModal} usedNft={usedNft} />}
     </Container>
   );
 }

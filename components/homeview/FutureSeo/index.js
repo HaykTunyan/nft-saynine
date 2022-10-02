@@ -1,10 +1,18 @@
+import { useState } from "react";
 import Container from "../../../components/Container";
 import Image from "next/image";
-import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { NFT } from "../../../web/contracts";
+
+// import required modules
+import { Autoplay, Navigation } from "swiper";
 
 function FutureSeo() {
-
-  const [ buyNFT, setBuyNFT ] = useState();
+  const [buyNFT, setBuyNFT] = useState();
 
   return (
     <section>
@@ -19,75 +27,109 @@ function FutureSeo() {
             the backlink package behind it.
           </h3>
         </div>
-        <div className="pt-10" />
-        <div className="relative flex justify-center lg:justify-between">
-          <div className="z-10 relative top-64 lg:top-4 hidden lg:block ">
-            <Image
-              src="/images/NFT-2.png"
-              alt="ABOUTUS_UPDATED"
-              width={330}
-              height={450}
-              className="w-full md:w-96"
-            />
+        <div className="hidden lg:block ">
+          <div className="pt-10" />
+          <div className="relative flex justify-center lg:justify-between">
+            <div className="z-10 relative top-64 lg:top-4 hidden lg:block ">
+              <Image
+                src="/images/NFT-2.png"
+                alt="ABOUTUS_UPDATED"
+                width={330}
+                height={450}
+                className="w-full md:w-96"
+              />
+            </div>
+            <div className="z-50">
+              <Image
+                src="/images/NFT-5.png"
+                width={330}
+                height={450}
+                alt="ABOUTUS_UPDATED"
+                className="w-full md:w-96"
+              />
+            </div>
+            <div className="z-10 relative top-64 hidden lg:top-4 lg:block ">
+              <Image
+                src="/images/NFT-1.png"
+                width={330}
+                height={450}
+                alt="ABOUTUS_UPDATED"
+                className="w-full md:w-96"
+              />
+            </div>
           </div>
-          <div className="z-50">
-            <Image
-              src="/images/NFT-5.png"
-              width={330}
-              height={450}
-              alt="ABOUTUS_UPDATED"
-              className="w-full md:w-96"
-            />
+          <div className="relative flex justify-between lg:justify-around bottom-350">
+            <div className="relative top-40 lg:top-0 lg:bottom-5 -left-5 lg:left-25 z-40 ">
+              <Image
+                src="/images/NFT-1.png"
+                width={330}
+                height={450}
+                alt="ABOUTUS_UPDATED"
+                className="w-full md:w-96"
+              />
+            </div>
+            <div className="relative top-40 lg:top-0 lg:bottom-5 -right-5 lg:right-25 z-40 ">
+              <Image
+                src="/images/NFT-2.png"
+                width={330}
+                height={450}
+                alt="ABOUTUS_UPDATED"
+                className="w-full md:w-96"
+              />
+            </div>
           </div>
-          <div className="z-10 relative top-64 hidden lg:top-4 lg:block ">
-            <Image
-              src="/images/NFT-1.png"
-              width={330}
-              height={450}
-              alt="ABOUTUS_UPDATED"
-              className="w-full md:w-96"
-            />
+          <div className="relative flex justify-between bottom-60">
+            <div className="z-10 relative -left-25 lg:top-4 lg:hidden ">
+              <Image
+                src="/images/NFT-2.png"
+                alt="ABOUTUS_UPDATED"
+                width={330}
+                height={450}
+                className="w-full md:w-96"
+              />
+            </div>
+            <div className="z-10 relative -right-25 lg:top-4 lg:hidden ">
+              <Image
+                src="/images/NFT-1.png"
+                width={330}
+                height={450}
+                alt="ABOUTUS_UPDATED"
+                className="w-full md:w-96"
+              />
+            </div>
           </div>
         </div>
-        <div className="relative flex justify-between lg:justify-around bottom-350">
-          <div className="relative top-40 lg:top-0 lg:bottom-5 -left-5 lg:left-25 z-40 ">
-            <Image
-              src="/images/NFT-1.png"
-              width={330}
-              height={450}
-              alt="ABOUTUS_UPDATED"
-              className="w-full md:w-96"
-            />
-          </div>
-          <div className="relative top-40 lg:top-0 lg:bottom-5 -right-5 lg:right-25 z-40 ">
-            <Image
-              src="/images/NFT-2.png"
-              width={330}
-              height={450}
-              alt="ABOUTUS_UPDATED"
-              className="w-full md:w-96"
-            />
-          </div>
-        </div>
-        <div className="relative flex justify-between bottom-60">
-          <div className="z-10 relative -left-25 lg:top-4 lg:hidden ">
-            <Image
-              src="/images/NFT-2.png"
-              alt="ABOUTUS_UPDATED"
-              width={330}
-              height={450}
-              className="w-full md:w-96"
-            />
-          </div>
-          <div className="z-10 relative -right-25 lg:top-4 lg:hidden ">
-            <Image
-              src="/images/NFT-1.png"
-              width={330}
-              height={450}
-              alt="ABOUTUS_UPDATED"
-              className="w-full md:w-96"
-            />
-          </div>
+
+        <div className="block py-10 lg:hidden">
+          <Swiper
+            slidesPerView={1.2}
+            slidesPerGroupSkip={1}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={false}
+            modules={[Autoplay, Navigation]}
+            className="mySwiper"
+          >
+            {NFT.map((item) => (
+              <SwiperSlide key={item.key}>
+                <div className="z-10 flex justify-center w-full  ">
+                  <Image
+                    src={item.img}
+                    alt="ABOUTUS_UPDATED"
+                    width={330}
+                    height={450}
+                    className="w-full "
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </Container>
     </section>

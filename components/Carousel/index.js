@@ -1,7 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Keyboard, Scrollbar, Navigation } from "swiper";
+import {
+  Keyboard,
+  Scrollbar,
+  Navigation,
+  EffectCreative,
+  Autoplay,
+} from "swiper";
 import { NFT } from "../../web/contracts";
 import "swiper/css";
 import "swiper/css/scrollbar";
@@ -15,6 +21,14 @@ function Carousel() {
         slidesPerView={1.2}
         slidesPerGroupSkip={1}
         centeredSlides={true}
+        // spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         keyboard={{
           enabled: true,
         }}
@@ -29,11 +43,11 @@ function Carousel() {
           nextEl: "#next",
           prevEl: "#prev",
         }}
-        modules={[Keyboard, Scrollbar, Navigation]}
+        modules={[ Keyboard, Scrollbar, Navigation, EffectCreative]}
         className="mySwiper px-20"
       >
         <div
-          className="z-50 absolute left-12 sm:left-20 md:left-20  top-0 lg:w-20 h-full lg:border-orange-alft  lg:border-2 text-center align-baseline flex justify-start rounded-t-3xl rounded-b-3xl"
+          className="hidden z-50 absolute left-2 top-0 lg:w-20 h-full text-center align-baseline md:flex justify-start rounded-t-3xl rounded-b-3xl"
           id="next"
         >
           <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
@@ -47,7 +61,7 @@ function Carousel() {
         </div>
         {NFT.map((item) => (
           <SwiperSlide key={item.key}>
-            <div className="w-full border-2 lg:border-y-2 lg:border-x-0 border-orange-alft rounded-3xl">
+            <div className="md:w-10/12 md:mx-auto border-2 lg:border border-orange-alft rounded-3xl brd ">
               <div className=" lg:px-20 lg:py-10 w-full flex flex-col lg:flex-row h-auto">
                 <div className="w-full md:h-full order-2 flex flex-col py-5 px-14 lg:px-5 lg:py-0 xl:pl-0 xl:py-0 xl:pr-5 lg:order-1 lg:w-7/12 ">
                   <div className="">
@@ -58,7 +72,7 @@ function Carousel() {
                   <div className="md:pt-4 xl:pt-6" />
                   <div className="flex flex-col lg:flex-row">
                     <div className="flex space-x-2 pt-2">
-                      <div className="text-lg xl:text-2xl font-bold  text-white">
+                      <div className="text-lg xl:text-2xl font-bold text-white">
                         Price:
                       </div>
                       <div className="text-lg xl:text-2xl font-normal text-white">
@@ -108,7 +122,7 @@ function Carousel() {
           </SwiperSlide>
         ))}
         <div
-          className="z-50 absolute right-12 sm:right-20 md:right-20 top-0 lg:w-20 h-full lg:border-orange-alft lg:border-2 text-center align-baseline flex justify-start rounded-t-3xl rounded-b-3xl"
+          className="hidden z-50 absolute right-2 top-0 lg:w-20 h-full text-center align-baseline md:flex justify-start rounded-t-3xl rounded-b-3xl"
           id="prev"
         >
           <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">

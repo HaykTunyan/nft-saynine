@@ -24,7 +24,6 @@ function HomeView() {
       "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E",
       1
     );
-
   };
   //  id 4
   const Mint = async () => {
@@ -33,7 +32,6 @@ function HomeView() {
       .send({
         from: userWalet,
       });
-
   };
 
   return (
@@ -48,7 +46,7 @@ function HomeView() {
       <div className="overflow-hidden">
         <div className="pt-10 lg:pt-26" />
         <FutureSeo />
-        <div className="md:pt-20 lg:pt-64" />
+        <div className="pt-20 lg:pt-35" />
         <div className="md:px-5">
           <Carousel />
         </div>
@@ -77,7 +75,6 @@ function HomeView() {
             ))}
           </div>
         </Container>
-
       </div>
     </Fragment>
   );

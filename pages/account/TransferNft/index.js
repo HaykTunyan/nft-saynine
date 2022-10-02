@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { vmContract } from "../../../web/Web3clinet";
+import React from "react";
 import { useForm } from "react-hook-form";
 
-function GetMegaNFT() {
-  const [megaData, getMegaData] = useState();
-
+function TransferNft() {
   const {
     register,
     handleSubmit,
@@ -13,14 +10,8 @@ function GetMegaNFT() {
   } = useForm();
   const onSubmit = (data) => alert.log(data);
 
-  async function getMegaNFT() {
-    const res = await vmContract.methods.getMegaNFT(userWalet, 4).send({
-      from: userWalet,
-    });
-  }
-
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div className="grid grid-cols-1  md:grid-cols-3 gap-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col"
@@ -28,32 +19,59 @@ function GetMegaNFT() {
         <div className="w-full ">
           <div className="flex ">
             <h4 className="text-2xl lg:text-4xl font-semibold text-white">
-              Get for MegaNFT
+              Transfer NFT
             </h4>
+
           </div>
           <div className="grid grid-cols-2 pt-5">
             <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-              usedTokenId:
+              From:
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft">
               <input
                 class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
-                placeholder="Used Token Id ..."
-                {...register("usedTokenId")}
+                placeholder="From ..."
+                {...register("from")}
               />
             </div>
           </div>
           <div className="grid grid-cols-2 pt-5">
             <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-              maxNumberToSpend:
+              To:
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft">
               <input
                 class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
-                placeholder="Max Number To Spend ..."
-                {...register("maxNumberToSpend")}
+                placeholder="To ..."
+                {...register("to")}
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 pt-5">
+            <div className="text-base xl:text-2xl font-bold text-orange-alft ">
+              Id:
+            </div>
+            <div className="text-base xl:text-2xl font-normal text-orange-alft">
+              <input
+                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                defaultValue=""
+                placeholder="ID ..."
+                {...register("id")}
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 pt-5">
+            <div className="text-base xl:text-2xl font-bold text-orange-alft ">
+              Amount:
+            </div>
+            <div className="text-base xl:text-2xl font-normal text-orange-alft">
+              <input
+                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                defaultValue=""
+                placeholder="Amount ..."
+                {...register("amount")}
               />
             </div>
           </div>
@@ -72,4 +90,4 @@ function GetMegaNFT() {
   );
 }
 
-export default GetMegaNFT;
+export default TransferNft;

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { ethers } from "ethers";
 
 const classes = {
@@ -10,7 +10,7 @@ const classes = {
 
 const Desktop = ({ items, asPath, isConnected }) => {
   const [data, setdata] = useState({
-    address: "",
+    address: null,
     Balance: null,
   });
 
