@@ -9,7 +9,13 @@ import "swiper/css/navigation";
 import { NFT } from "../../../web/contracts";
 
 // import required modules
-import { Autoplay, Navigation } from "swiper";
+import {
+  Autoplay,
+  EffectCreative,
+  Navigation,
+  Scrollbar,
+  Keyboard,
+} from "swiper";
 
 function FutureSeo() {
   const [buyNFT, setBuyNFT] = useState();
@@ -112,13 +118,29 @@ function FutureSeo() {
             pagination={{
               clickable: true,
             }}
+            keyboard={{
+              enabled: true,
+            }}
             navigation={false}
-            modules={[Autoplay, Navigation]}
+            loop={true}
+            modules={[
+              Autoplay,
+              Navigation,
+              Keyboard,
+              Scrollbar,
+              EffectCreative,
+            ]}
+            onSlideChange={() => {
+              /*...*/
+            }}
+            onReachEnd={() => {
+              /*...*/
+            }}
             className="mySwiper"
           >
             {NFT.map((item) => (
               <SwiperSlide key={item.key}>
-                <div className="z-10 flex justify-center w-full  ">
+                <div className="w-11/12 mx-5 z-10 flex justify-center md:w-full  ">
                   <Image
                     src={item.img}
                     alt="ABOUTUS_UPDATED"

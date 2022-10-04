@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { vmContract } from "../../../web/Web3clinet";
 import { useForm } from "react-hook-form";
 
-function GetMegaNFT() {
+function GetMegaNFT({ userToken ,receiverAddress  }) {
   const [megaData, getMegaData] = useState();
 
   const {
@@ -14,8 +14,8 @@ function GetMegaNFT() {
   const onSubmit = (data) => alert.log(data);
 
   async function getMegaNFT() {
-    const res = await vmContract.methods.getMegaNFT(userWalet, 4).send({
-      from: userWalet,
+    const res = await vmContract.methods.getMegaNFT(userToken, 4).send({
+      from: userToken,
     });
   }
 
@@ -25,17 +25,17 @@ function GetMegaNFT() {
         onSubmit={handleSubmit(onSubmit)}
         className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col"
       >
-        <div className="w-full ">
-          <div className="flex ">
+        <div className="w-full">
+          <div className="flex">
             <h4 className="text-2xl lg:text-4xl font-semibold text-white">
               Get for MegaNFT
             </h4>
           </div>
-          <div className="grid grid-cols-2 pt-5">
-            <div className="text-base xl:text-2xl font-bold text-orange-alft ">
+          <div className="grid grid-cols-1  md:grid-cols-2 pt-5">
+            <div className="text-base xl:text-2xl font-bold text-orange-alft">
               usedTokenId:
             </div>
-            <div className="text-base xl:text-2xl font-normal text-orange-alft">
+            <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
                 class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
@@ -44,11 +44,11 @@ function GetMegaNFT() {
               />
             </div>
           </div>
-          <div className="grid grid-cols-2 pt-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
             <div className="text-base xl:text-2xl font-bold text-orange-alft ">
               maxNumberToSpend:
             </div>
-            <div className="text-base xl:text-2xl font-normal text-orange-alft">
+            <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
                 class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""

@@ -6,10 +6,8 @@ export default function UseNFT({ setShowModal, usedNft }) {
   const [count, setCount] = useState();
 
   const checkNft = () => {
-    console.log(" counter ", count);
     if (count > 0) {
       const counterNumber = count - 1;
-      console.log(" counterNumber ", counterNumber);
       localStorage.setItem("count", JSON.stringify(counterNumber));
     }
     setShowModal(false)

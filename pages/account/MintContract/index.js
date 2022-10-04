@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { vmContract } from "../../../web/Web3clinet";
 
-function MintContract() {
+function MintContract({ userToken,receiverAddress  }) {
 
   const {
     register,
@@ -23,11 +24,11 @@ function MintContract() {
               Mint NFT to Contract Address
             </h4>
           </div>
-          <div className="grid grid-cols-2 pt-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
             <div className="text-base xl:text-2xl font-bold text-orange-alft ">
               Account:
             </div>
-            <div className="text-base xl:text-2xl font-normal text-orange-alft">
+            <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
                 class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
@@ -37,11 +38,11 @@ function MintContract() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 pt-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
             <div className="text-base xl:text-2xl font-bold text-orange-alft ">
               Id:
             </div>
-            <div className="text-base xl:text-2xl font-normal text-orange-alft">
+            <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
                 class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
@@ -50,11 +51,11 @@ function MintContract() {
               />
             </div>
           </div>
-          <div className="grid grid-cols-2 pt-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
             <div className="text-base xl:text-2xl font-bold text-orange-alft ">
               Amount:
             </div>
-            <div className="text-base xl:text-2xl font-normal text-orange-alft">
+            <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
                 class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""

@@ -48,7 +48,8 @@ function Carousel() {
       >
         <div
           className="hidden z-50 absolute left-2 top-0 lg:w-20 h-full text-center align-baseline md:flex justify-start rounded-t-3xl rounded-b-3xl"
-          id="next"
+         
+          id="prev"
         >
           <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
             <Image
@@ -61,9 +62,9 @@ function Carousel() {
         </div>
         {NFT.map((item) => (
           <SwiperSlide key={item.key}>
-            <div className="md:w-10/12 md:mx-auto border-2 lg:border border-orange-alft rounded-3xl brd ">
+            <div className="w-11/12 mx-auto lg:mx-16 border-2 lg:border border-orange-alft rounded-3xl brd ">
               <div className=" lg:px-20 lg:py-10 w-full flex flex-col lg:flex-row h-auto">
-                <div className="w-full md:h-full order-2 flex flex-col py-5 px-14 lg:px-5 lg:py-0 xl:pl-0 xl:py-0 xl:pr-5 lg:order-1 lg:w-7/12 ">
+                <div className="w-full md:h-full lg:mt-auto lg:mb-auto order-2 flex flex-col py-5 px-5 md:px-14 lg:px-5 lg:py-0 xl:pl-0 xl:py-0 xl:pr-5 lg:order-1 lg:w-7/12 ">
                   <div className="">
                     <h2 className="text-2xl md:text-3xl xl:text-6xl font-normal text-white">
                       {item.title}
@@ -96,7 +97,7 @@ function Carousel() {
                     </p>
                   </div>
                   <div className="pt-5 md:pt-10" />
-                  <div className="mt-auto flex justify-center lg:justify-start">
+                  <div className="hidden mt-auto justify-center lg:justify-start">
                     <CarouselModal
                       title={item.title}
                       img={item.img}
@@ -107,7 +108,7 @@ function Carousel() {
                     />
                   </div>
                 </div>
-                <div className="w-full order-1 flex justify-center py-5 px-14 lg:px-5 lg:py-0 xl:pr-0 xl:py-0 xl:pl-5 lg:order-2 lg:w-5/12">
+                <div className="w-full order-1 flex justify-center py-5 px-5 md:px-14 lg:px-5 lg:py-0 xl:pr-0 xl:py-0 xl:pl-5 lg:order-2 lg:w-5/12">
                   <div className="w-60 h-80 xl:w-full xl:h-full">
                     <Image
                       src={item.img}
@@ -123,7 +124,9 @@ function Carousel() {
         ))}
         <div
           className="hidden z-50 absolute right-2 top-0 lg:w-20 h-full text-center align-baseline md:flex justify-start rounded-t-3xl rounded-b-3xl"
-          id="prev"
+         
+
+          id="next"
         >
           <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
             <Image

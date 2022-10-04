@@ -23,6 +23,9 @@ function Account() {
   const [showModal, setShowModal] = useState(false);
   const [usedNft, getUsedNft] = useState();
   const [count, getCount] = useState();
+  const [userToken, getUserToken] = useState(null);
+
+  const receiverAddress = "0x92d96c53D4e89F0BA9fcb20444358A639d1492D5";
 
   // Call to NFT contract
   async function Mint() {
@@ -97,6 +100,12 @@ function Account() {
     }
   }, [count]);
 
+
+  useEffect( () => {
+    const token = JSON.parse(localStorage.getItem("userToken"));
+    getUserToken(token);
+  }, [] )
+
   useEffect(() => {
     axios.get("/api/NFTdata").then(console.log);
   }, []);
@@ -165,13 +174,13 @@ function Account() {
         )}
       </div>
       <div className="pt-10 xl:pt-20" />
-      <TransferNft />
+      <TransferNft userToken={userToken} receiverAddress={receiverAddress} />
       <div className="pt-10 xl:pt-20" />
-      <MintContract />
+      <MintContract userToken={userToken} receiverAddress={receiverAddress} />
       <div className="pt-10 xl:pt-20" />
-      <GetMegaNFT />
+      <GetMegaNFT userToken={userToken}  receiverAddress={receiverAddress}/>
       <div className="pt-20 xl:pt-20" />
-      <MinNFT />
+      <MinNFT  userToken={userToken} receiverAddress={receiverAddress} />
       <div className="pt-20 xl:pt-64" />
 
       <h2 className="text-4xl xl:text-8xl font-normal text-white">Collected</h2>

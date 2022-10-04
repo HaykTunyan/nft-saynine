@@ -40,18 +40,18 @@ function NftCard({ nftId, key, title, img, link, price, count }) {
         <div className="pt-2" />
         <div className="grid grid-flow-col gap-4">
           <div className="flex space-x-1">
-            <div className="text-xs lg:text-base font-bold text-orange-alft ">
+            <div className="text-sm lg:text-base font-bold text-orange-alft ">
               Links:
             </div>
-            <div className="text-xs lg:text-base font-bold text-orange-alft">
+            <div className="text-sm lg:text-base font-bold text-orange-alft">
               {link}
             </div>
           </div>
           <div className="flex space-x-1">
-            <div className="text-xs lg:text-base font-bold text-yellow-alfa">
+            <div className="text-sm lg:text-base font-bold text-yellow-alfa">
               Price:
             </div>
-            <div className="text-xs lg:text-base font-bold text-yellow-alfa">
+            <div className="text-sm lg:text-base font-bold text-yellow-alfa">
               {price}$
             </div>
           </div>
@@ -61,7 +61,7 @@ function NftCard({ nftId, key, title, img, link, price, count }) {
           <div className="">
             <button
               type="button"
-              className="rounded-full w-4 h-4 lg:w-6 lg:h-6 shadow-icon flex items-center justify-center"
+              className="rounded-full w-7 h-7 lg:w-6 lg:h-6 shadow-icon flex items-center justify-center"
               onClick={() => decrease()}
               disabled={counter === 0}
             >
@@ -73,11 +73,11 @@ function NftCard({ nftId, key, title, img, link, price, count }) {
               />
             </button>
           </div>
-          <div className="text-sm lg:text-2xl text-yellow-alfa">{counter}</div>
+          <div className="text-md lg:text-2xl text-yellow-alfa">{counter}</div>
           <div className="">
             <button
               type="button"
-              className="rounded-full w-4 h-4 lg:w-6 lg:h-6"
+              className="rounded-full w-7 h-7 lg:w-6 lg:h-6"
               onClick={increase}
               disabled={counter > 4}
             >
@@ -94,7 +94,7 @@ function NftCard({ nftId, key, title, img, link, price, count }) {
 
         <button
           type="button"
-          className="py-2 px-10 w-full bg-green text-sm lg:text-2xl rounded-lg text-white font-normal"
+          className="py-2 px-10 w-full bg-green text-md lg:text-2xl rounded-lg text-white font-normal"
           onClick={() => buyMyNFT(nftId, key, img, title, link, counter, price)}
         >
           Buy Now
