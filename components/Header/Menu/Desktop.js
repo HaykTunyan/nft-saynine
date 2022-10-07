@@ -14,6 +14,9 @@ const Desktop = ({ items, asPath, isConnected }) => {
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
   const [user, getUser] = useState(null);
+  const [ tok, getTok ]  = useState();
+
+  console.log(" tok ", tok)
 
   const connectWollett = () => {
     if (window.ethereum) {
@@ -53,6 +56,14 @@ const Desktop = ({ items, asPath, isConnected }) => {
       });
   };
 
+  async function connectToMetamask() {
+     const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const accounts = await provider.send("eth_requestAccounts", []);
+    const balance = await provider.getBalance(accounts[0]);
+    const balanceInEther = ethers.utils.formatEther(balance);
+    getTok({  selectedAddress: accounts[0], balance: balanceInEther })
+  }
+
   useEffect(() => {
     if (defaultAccount) {
       localStorage.setItem("userToken", JSON.stringify(defaultAccount));
@@ -65,6 +76,13 @@ const Desktop = ({ items, asPath, isConnected }) => {
     }
   }, [userBalance]);
 
+
+  useEffect(() => {
+    if (tok) {
+      localStorage.setItem("userToken", JSON.stringify(tok.selectedAddress));
+    }
+  }, [tok]);
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userToken"));
     getUser(user);
@@ -76,13 +94,13 @@ const Desktop = ({ items, asPath, isConnected }) => {
         <li className={classes.menuItem}>
           <button
             className="text-white px-3 py-1 pb-1"
-            onClick={connectWollett}
+            onClick={connectToMetamask}
           >
             Contect Wollet
           </button>
         </li>
 
-        {user !== "null" && (
+        {tok?.selectedAddress  && (
           <li className={classes.menuItem}>
             <Link className="text-white " href="/account">
               My Account

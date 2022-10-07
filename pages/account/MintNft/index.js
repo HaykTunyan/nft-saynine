@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { vmContract } from "../../../web/Web3clinet";
 import { useForm } from "react-hook-form";
+import { vmContract } from "../../../web/Web3clinet";
+import { ethers } from "ethers";
+import { ABI } from "../../../web/contracts";
+const CONTACT_ADDRESS = "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E";
 
-function MinNFT({ userToken, receiverAddress  }) {
+function MinNFT({ userToken, receiverAddress }) {
   const [mintData, getMintData] = useState();
   const {
     register,
@@ -10,44 +13,22 @@ function MinNFT({ userToken, receiverAddress  }) {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => alert.log(data);
+  const onSubmit = (data) => {
+    onMint(data)
+  } 
 
-  async function Mint() {
-    const res = await vmContract.methods
-      .mint(
-        userToken,
-        4,
-        "100000000000000000"
-      )
-      .send({
-        from: receiverAddress,
-      });
 
-    getMintData(res);
-    // const res = await vmContract.methods
-    //   .owner()
-    //   .call();
-  }
 
-  async function onMint() {
-    vmContract.methods
-  .safeTransferFrom(
-    receiverAddress, 
-    "4",
-    "100",
-   )
-  .send({ 
-    account: userToken, 
-    id: 4,
-    amount: '100',
-    }, 
-    function (err, res) {
-    if (err) {
-      console.log("An error occured", err)
-      return
-    }
-    console.log("Hash of the transaction: " + res)
-  })
+  async function onMint(data) {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(CONTACT_ADDRESS, ABI, signer);
+    console.log(" contract ", contract);
+    const response = await contract.mint(
+      userToken,
+      data.id,
+      data.amount,
+    );
   }
 
   return (
@@ -69,7 +50,9 @@ function MinNFT({ userToken, receiverAddress  }) {
             <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
                 class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
-                defaultValue=""
+                defaultValue={userToken}
+                value={userToken}
+                disabled="true"
                 placeholder="Account ..."
                 {...register("account")}
               />

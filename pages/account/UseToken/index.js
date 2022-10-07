@@ -1,16 +1,30 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { vmContract } from "../../../web/Web3clinet";
+import { ethers } from "ethers";
+import { ABI } from "../../../web/contracts";
 
-function MintContract({ userToken,receiverAddress  }) {
+const CONTACT_ADDRESS = "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E";
 
+function UseToken({ userToken, receiverAddress }) {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => alert.log(data);
+  const onSubmit = (data) => console.log(data);
+
+  async function useTokens() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(CONTACT_ADDRESS, ABI, signer);
+    console.log(" contract ", contract);
+    const response = await contract.useTokens(
+      userToken,
+      1001
+    );
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -21,21 +35,8 @@ function MintContract({ userToken,receiverAddress  }) {
         <div className="w-full ">
           <div className="flex ">
             <h4 className="text-2xl lg:text-4xl font-semibold text-white">
-              Mint NFT to Contract Address
+              Use Tokens
             </h4>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
-            <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-              Account:
-            </div>
-            <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
-              <input
-                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
-                defaultValue=""
-                placeholder="Account ..."
-                {...register("account")}
-              />
-            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
@@ -68,7 +69,8 @@ function MintContract({ userToken,receiverAddress  }) {
         <div className="w-full flex justify-end pt-5">
           <div className="pt-6 md:pt-0" />
           <button
-            type="submit"
+            // type="submit"
+            onClick={useTokens}
             className="py-2 px-10  bg-green-alfa text-xl xl:text-2xl rounded-lg text-white font-normal"
           >
             Send
@@ -79,4 +81,4 @@ function MintContract({ userToken,receiverAddress  }) {
   );
 }
 
-export default MintContract;
+export default UseToken;

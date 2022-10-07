@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { vmContract } from "../../../web/Web3clinet";
 import { useForm } from "react-hook-form";
+import { ethers } from "ethers";
+import { ABI } from "../../../web/contracts";
+const CONTACT_ADDRESS = "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E";
 
-function GetMegaNFT({ userToken ,receiverAddress  }) {
+function GetMegaNFT({ userToken, buyImage }) {
   const [megaData, getMegaData] = useState();
 
   const {
@@ -11,20 +14,32 @@ function GetMegaNFT({ userToken ,receiverAddress  }) {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => alert.log(data);
 
-  async function getMegaNFT() {
-    const res = await vmContract.methods.getMegaNFT(userToken, 4).send({
-      from: userToken,
-    });
+
+  const onSubmit = (data) => { 
+    getMegaNFT(data)
+  };
+
+  async function getMegaNFT(data ) {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(CONTACT_ADDRESS, ABI, signer);
+    const response = await contract.getMegaNFTs(
+      userToken,
+      data.maxNumberToSpend,
+    )
+    console.log(" response ", res);
+    getMegaData(response);
   }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-      <form
+     <form
         onSubmit={handleSubmit(onSubmit)}
         className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col"
       >
+
+        
         <div className="w-full">
           <div className="flex">
             <h4 className="text-2xl lg:text-4xl font-semibold text-white">
@@ -67,7 +82,7 @@ function GetMegaNFT({ userToken ,receiverAddress  }) {
             Send
           </button>
         </div>
-      </form>
+        </form>
     </div>
   );
 }

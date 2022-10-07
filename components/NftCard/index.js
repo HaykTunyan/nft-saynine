@@ -73,13 +73,14 @@ function NftCard({ nftId, key, title, img, link, price, count }) {
               />
             </button>
           </div>
-          <div className="text-md lg:text-2xl text-yellow-alfa">{counter}</div>
+          <div className="text-md lg:text-2xl text-yellow-alfa w-20 ">
+            {counter}
+          </div>
           <div className="">
             <button
               type="button"
               className="rounded-full w-7 h-7 lg:w-6 lg:h-6"
               onClick={increase}
-              disabled={counter > 4}
             >
               <Image
                 src="/decrement-icon.svg"

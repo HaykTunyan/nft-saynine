@@ -2,22 +2,16 @@ import Container from "../../components/Container";
 import Image from "next/image";
 import ProfressLine from "../../components/ProgressLine";
 import { useEffect, useState } from "react";
-import { ABI } from "../../web/contracts";
 import { NFT, NFTread } from "../../web/contracts";
-import ReadContract from "./ReadContract";
-import { vmContract } from "../../web/Web3clinet";
-import Web3 from "web3";
-import { ethers } from "ethers";
 import axios from "axios";
 import TransferNft from "./TransferNft";
-import MintContract from "./MintContract";
+import UseToken from "./UseToken";
 import GetMegaNFT from "./GetMegaNft";
 import MinNFT from "./MintNft";
 import UseNFT from "../../components/Modal/UseNft";
 
 function Account() {
   // Hooks.
-  const [userWalet, setUserWalet] = useState();
   const [buyImage, useBuyImage] = useState();
   const [nftImages, setByImages] = useState();
   const [showModal, setShowModal] = useState(false);
@@ -26,41 +20,6 @@ function Account() {
   const [userToken, getUserToken] = useState(null);
 
   const receiverAddress = "0x92d96c53D4e89F0BA9fcb20444358A639d1492D5";
-
-  // Call to NFT contract
-  async function Mint() {
-    const res = await vmContract.methods
-      .mint(
-        "0x5a4ef4ecd643049f5225844dd3b4ba34b1ba7b40",
-        4,
-        "100000000000000000"
-      )
-      .send({
-        from: "0x5A4Ef4eCD643049f5225844DD3B4ba34B1Ba7b40",
-      });
-
-    // const res = await vmContract.methods
-    //   .owner()
-    //   .call();
-  }
-
-  async function getMegaNFT() {
-    const res = await vmContract.methods.getMegaNFT(userWalet, 4).send({
-      from: userWalet,
-    });
-  }
-
-  async function safeTransferFrom() {
-    const res = await vmContract.methods.safeTransferFrom(userWalet, 4).send({
-      from: userWalet,
-    });
-  }
-
-  async function useTokens() {
-    const res = await vmContract.methods.useTokens(userWalet, 4).send({
-      from: userWalet,
-    });
-  }
 
   const showDisplayImages = () => {
     switch (buyImage?.nftId) {
@@ -99,7 +58,6 @@ function Account() {
       localStorage.removeItem("buyImage");
     }
   }, [count]);
-
 
   useEffect( () => {
     const token = JSON.parse(localStorage.getItem("userToken"));
@@ -174,11 +132,12 @@ function Account() {
         )}
       </div>
       <div className="pt-10 xl:pt-20" />
-      <TransferNft userToken={userToken} receiverAddress={receiverAddress} />
+      <GetMegaNFT userToken={userToken}  receiverAddress={receiverAddress} buyImage={buyImage}/>
       <div className="pt-10 xl:pt-20" />
-      <MintContract userToken={userToken} receiverAddress={receiverAddress} />
+      <TransferNft userToken={userToken} receiverAddress={receiverAddress} buyImage={buyImage} />
       <div className="pt-10 xl:pt-20" />
-      <GetMegaNFT userToken={userToken}  receiverAddress={receiverAddress}/>
+      <UseToken userToken={userToken} receiverAddress={receiverAddress} />
+  
       <div className="pt-20 xl:pt-20" />
       <MinNFT  userToken={userToken} receiverAddress={receiverAddress} />
       <div className="pt-20 xl:pt-64" />
