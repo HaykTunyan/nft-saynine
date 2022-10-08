@@ -16,8 +16,6 @@ const Desktop = ({ items, asPath, isConnected }) => {
   const [user, getUser] = useState(null);
   const [ tok, getTok ]  = useState();
 
-  console.log(" tok ", tok)
-
   const connectWollett = () => {
     if (window.ethereum) {
       window.ethereum
@@ -26,9 +24,18 @@ const Desktop = ({ items, asPath, isConnected }) => {
         })
         .then((result) => {
           accountChangeHandler(result[0]);
+          toast.success(' Success Metamask Login ', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         });
     } else {
-      toast.error("🦄 Wow so easy!", {
+      toast.error(" Try Agine ", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,

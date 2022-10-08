@@ -17,7 +17,7 @@ function Account() {
   const [showModal, setShowModal] = useState(false);
   const [usedNft, getUsedNft] = useState();
   const [count, getCount] = useState();
-  const [userToken, getUserToken] = useState(null);
+  const [userToken, getUserToken] = useState();
 
   const receiverAddress = "0x92d96c53D4e89F0BA9fcb20444358A639d1492D5";
 
@@ -125,7 +125,7 @@ function Account() {
                 onClick={() => showUseModal(buyImage)}
                 className="py-2 px-10  w-full bg-green-alfa text-xl xl:text-2xl rounded-lg text-white font-normal"
               >
-                Use
+                Burn NFT
               </button>
             </div>
           </div>
@@ -185,7 +185,7 @@ function Account() {
         </div>
       </div>
       <div className="pb-52" />
-      {showModal && <UseNFT setShowModal={setShowModal} usedNft={usedNft} />}
+      {showModal && <UseNFT setShowModal={setShowModal} usedNft={usedNft} userToken={userToken} />}
     </Container>
   );
 }

@@ -3,10 +3,11 @@ import { vmContract } from "../../../web/Web3clinet";
 import { useForm } from "react-hook-form";
 import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
-const CONTACT_ADDRESS = "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E";
+const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
 function GetMegaNFT({ userToken, buyImage }) {
   const [megaData, getMegaData] = useState();
+  const [errorMessage, setErrorMessage] = useState();
 
   const {
     register,
@@ -15,31 +16,35 @@ function GetMegaNFT({ userToken, buyImage }) {
     formState: { errors },
   } = useForm();
 
-
-  const onSubmit = (data) => { 
-    getMegaNFT(data)
+  const onSubmit = (data) => {
+    getMegaNFT(data);
   };
 
-  async function getMegaNFT(data ) {
+  async function getMegaNFT(data) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(CONTACT_ADDRESS, ABI, signer);
-    const response = await contract.getMegaNFTs(
-      userToken,
-      data.maxNumberToSpend,
-    )
-    console.log(" response ", res);
-    getMegaData(response);
+    try {
+      const response = await contract.getMegaNFTs(
+        userToken,
+        data.maxNumberToSpend
+      );
+      getMegaData(response);
+    } catch (error) {
+      setErrorMessage(error);
+    }
   }
+
+  console.log(" errorMessage ", errorMessage);
+
+  console.log(" megaData ", megaData);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-     <form
+      <form
         onSubmit={handleSubmit(onSubmit)}
         className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col"
       >
-
-        
         <div className="w-full">
           <div className="flex">
             <h4 className="text-2xl lg:text-4xl font-semibold text-white">
@@ -82,7 +87,7 @@ function GetMegaNFT({ userToken, buyImage }) {
             Send
           </button>
         </div>
-        </form>
+      </form>
     </div>
   );
 }

@@ -7,6 +7,7 @@ const CONTACT_ADDRESS = "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E";
 
 function MinNFT({ userToken, receiverAddress }) {
   const [mintData, getMintData] = useState();
+  const [errorMessage, setErrorMessage] = useState();
   const {
     register,
     handleSubmit,
@@ -14,22 +15,24 @@ function MinNFT({ userToken, receiverAddress }) {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    onMint(data)
-  } 
-
-
+    onMint(data);
+  };
 
   async function onMint(data) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(CONTACT_ADDRESS, ABI, signer);
     console.log(" contract ", contract);
-    const response = await contract.mint(
-      userToken,
-      data.id,
-      data.amount,
-    );
+    try {
+      const response = await contract.mint(userToken, data.id, data.amount);
+      getMintData(response);
+    } catch (error) {
+      setErrorMessage(error);
+    }
   }
+
+  console.log(" errorMessage ", errorMessage);
+  console.log(" mintData ", mintData);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -50,9 +53,7 @@ function MinNFT({ userToken, receiverAddress }) {
             <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
                 class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
-                defaultValue={userToken}
-                value={userToken}
-                disabled="true"
+                defaultValue=""
                 placeholder="Account ..."
                 {...register("account")}
               />

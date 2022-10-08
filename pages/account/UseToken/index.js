@@ -1,30 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { vmContract } from "../../../web/Web3clinet";
 import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
 
-const CONTACT_ADDRESS = "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E";
+const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
 function UseToken({ userToken, receiverAddress }) {
+  const [tokenRes, getTokenRes] = useState();
+  const [errorMessage, setErrorMessage] = useState();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    useTokens(data);
+  };
 
-  async function useTokens() {
+  async function useTokens(data) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(CONTACT_ADDRESS, ABI, signer);
-    console.log(" contract ", contract);
-    const response = await contract.useTokens(
-      userToken,
-      1001
-    );
+    try {
+      const response = await contract.useTokens(data.id, data.amount);
+      getTokenRes(response);
+    } catch (error) {
+      setErrorMessage(error);
+    }
   }
+
+  console.log(" tokenRes  ", tokenRes);
+
+  console.log(" errorMessage  ", errorMessage);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">

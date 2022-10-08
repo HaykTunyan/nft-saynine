@@ -5,7 +5,7 @@ import Carousel from "../components/Carousel";
 import NftCard from "../components/NftCard";
 import Container from "../components/Container";
 import { NFT } from "../web/contracts";
-import { vmContract,  } from "../web/Web3clinet";
+import { vmContract  } from "../web/Web3clinet";
 
 function MY() {
   const [userToken, getUserToken] = useState();
@@ -14,7 +14,6 @@ function MY() {
   const [balanceThree, getBalanceThree] = useState();
   const [balanceFour, getBalanceFour] = useState();
   const [balanceFive, getBalanceFive] = useState();
-
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("userToken"));
@@ -34,10 +33,8 @@ function MY() {
         )
         .call(function (err, res) {
           if (err) {
-            console.log("An error occured", err);
             return;
           }
-          console.log("The balance is: ", res);
           getBalanceOne(res);
         });
     }
@@ -54,10 +51,8 @@ function MY() {
         )
         .call(function (err, res) {
           if (err) {
-            console.log("An error occured", err);
             return;
           }
-          console.log("The balance is: ", res);
           getBalanceTwo(res)
         });
     }
@@ -76,7 +71,6 @@ function MY() {
             console.log("An error occured", err);
             return;
           }
-          console.log("The balance is: ", res);
           getBalanceThree(res);
         });
     }
@@ -96,7 +90,6 @@ function MY() {
             console.log("An error occured", err);
             return;
           }
-          console.log("The balance is: ", res);
           getBalanceFour(res);
 
         });
@@ -117,19 +110,34 @@ function MY() {
             console.log("An error occured", err);
             return;
           }
-          console.log("The balance is: ", res);
           getBalanceFive(res)
         });
     }
   }, [userToken]);
 
 
+  // Balance Of 
 
-  console.log(" balanceOne ", balanceOne);
-  console.log(" balanceTwo ", balanceTwo);
-  console.log(" balanceTwo ", balanceThree);
-  console.log(" balanceTwo ", balanceFour);
-  console.log(" balanceTwo ", balanceFive);
+  useEffect( () => {
+    vmContract.methods.uri
+    (1).call(function (error, response) {
+      if (error) {
+        console.log("An error occured", error)
+        return
+      }
+      console.log("The balance is: ", response)
+    })
+  }, []);
+
+  console.log(", balanceOne  ", 
+  {
+    balanceOne,
+    balanceTwo,
+    balanceThree,
+    balanceFour,
+    balanceFive
+  }  
+  )
   
 
   return (
