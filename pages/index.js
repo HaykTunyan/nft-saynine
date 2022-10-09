@@ -5,7 +5,8 @@ import Carousel from "../components/Carousel";
 import NftCard from "../components/NftCard";
 import Container from "../components/Container";
 import { NFT } from "../web/contracts";
-import { vmContract  } from "../web/Web3clinet";
+import { vmContract } from "../web/Web3clinet";
+import axios from "axios";
 
 function MY() {
   const [userToken, getUserToken] = useState();
@@ -53,7 +54,7 @@ function MY() {
           if (err) {
             return;
           }
-          getBalanceTwo(res)
+          getBalanceTwo(res);
         });
     }
   }, [userToken]);
@@ -91,7 +92,6 @@ function MY() {
             return;
           }
           getBalanceFour(res);
-
         });
     }
   }, [userToken]);
@@ -110,35 +110,34 @@ function MY() {
             console.log("An error occured", err);
             return;
           }
-          getBalanceFive(res)
+          getBalanceFive(res);
         });
     }
   }, [userToken]);
 
+  // Balance Of
 
-  // Balance Of 
-
-  useEffect( () => {
-    vmContract.methods.uri
-    (1).call(function (error, response) {
+  useEffect(() => {
+    vmContract.methods.uri(1).call(function (error, response) {
       if (error) {
-        console.log("An error occured", error)
-        return
+        console.log("An error occured", error);
+        return;
       }
-      console.log("The balance is: ", response)
-    })
+      console.log("The balance is: ", response);
+    });
   }, []);
 
-  console.log(", balanceOne  ", 
-  {
+  console.log({
     balanceOne,
     balanceTwo,
     balanceThree,
     balanceFour,
-    balanceFive
-  }  
-  )
-  
+    balanceFive,
+  });
+
+  useEffect(() => {
+    axios.get("/api/NFTdata").then(console.log);
+  }, []);
 
   return (
     <Fragment>

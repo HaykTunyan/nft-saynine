@@ -35,10 +35,6 @@ function GetMegaNFT({ userToken, buyImage }) {
     }
   }
 
-  console.log(" errorMessage ", errorMessage);
-
-  console.log(" megaData ", megaData);
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
       <form

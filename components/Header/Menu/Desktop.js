@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useLayoutEffect, useState } from "react";
 import { ethers } from "ethers";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { vmContract } from "../../../web/Web3clinet";
 
 const classes = {
   menu: "flex space-x-8 text-white items-center justify-between mt-4 md:mt-0",
@@ -14,7 +15,7 @@ const Desktop = ({ items, asPath, isConnected }) => {
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
   const [user, getUser] = useState(null);
-  const [ tok, getTok ]  = useState();
+  const [tok, getTok] = useState();
 
   const connectWollett = () => {
     if (window.ethereum) {
@@ -24,7 +25,7 @@ const Desktop = ({ items, asPath, isConnected }) => {
         })
         .then((result) => {
           accountChangeHandler(result[0]);
-          toast.success(' Success Metamask Login ', {
+          toast.success(" Success Metamask Login ", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -32,7 +33,7 @@ const Desktop = ({ items, asPath, isConnected }) => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            });
+          });
         });
     } else {
       toast.error(" Try Agine ", {
@@ -64,11 +65,11 @@ const Desktop = ({ items, asPath, isConnected }) => {
   };
 
   async function connectToMetamask() {
-     const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
     const accounts = await provider.send("eth_requestAccounts", []);
     const balance = await provider.getBalance(accounts[0]);
     const balanceInEther = ethers.utils.formatEther(balance);
-    getTok({  selectedAddress: accounts[0], balance: balanceInEther })
+    getTok({ selectedAddress: accounts[0], balance: balanceInEther });
   }
 
   useEffect(() => {
@@ -82,7 +83,6 @@ const Desktop = ({ items, asPath, isConnected }) => {
       localStorage.setItem("userBalance", JSON.stringify(userBalance));
     }
   }, [userBalance]);
-
 
   useEffect(() => {
     if (tok) {
@@ -107,7 +107,7 @@ const Desktop = ({ items, asPath, isConnected }) => {
           </button>
         </li>
 
-        {tok?.selectedAddress  && (
+        {tok?.selectedAddress && (
           <li className={classes.menuItem}>
             <Link className="text-white " href="/account">
               My Account

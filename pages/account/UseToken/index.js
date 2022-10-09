@@ -31,10 +31,6 @@ function UseToken({ userToken, receiverAddress }) {
     }
   }
 
-  console.log(" tokenRes  ", tokenRes);
-
-  console.log(" errorMessage  ", errorMessage);
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
       <form
@@ -78,8 +74,8 @@ function UseToken({ userToken, receiverAddress }) {
         <div className="w-full flex justify-end pt-5">
           <div className="pt-6 md:pt-0" />
           <button
-            // type="submit"
-            onClick={useTokens}
+            type="submit"
+            // onClick={useTokens}
             className="py-2 px-10  bg-green-alfa text-xl xl:text-2xl rounded-lg text-white font-normal"
           >
             Send

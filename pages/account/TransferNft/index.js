@@ -37,9 +37,6 @@ function TransferNft({ userToken, receiverAddress, buyImage }) {
     }
   }
 
-  console.log(" transferData ", transferData);
-  console.log(" errorMessage ", errorMessage);
-
   useEffect(() => {
     vmContract.methods
       .balanceOf(
