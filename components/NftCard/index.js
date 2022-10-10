@@ -1,10 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import Image from "next/image";
-import BuyModal from "../Modal/BuyModal";
 
-function NftCard({ nftId, key, title, img, link, price, count }) {
+function NftCard({ nftId, key, title, img, link, price, count, router }) {
   return (
-    <Fragment>
+    <Fragment key={key}>
       <div className="flex flex-col">
         <div className="relative">
           <Image
@@ -42,7 +41,9 @@ function NftCard({ nftId, key, title, img, link, price, count }) {
           type="button"
           className="py-2 px-10 w-full bg-green text-md lg:text-2xl rounded-lg text-white font-normal"
         >
-          Buy Now
+          <a target="_blank" href={router} rel="noopener noreferrer">
+            Buy Now
+          </a>
         </button>
       </div>
     </Fragment>

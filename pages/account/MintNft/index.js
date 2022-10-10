@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form";
 import { vmContract } from "../../../web/Web3clinet";
 import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
-const CONTACT_ADDRESS = "0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
 function MinNFT({ userToken, receiverAddress }) {
   const [mintData, getMintData] = useState();
@@ -22,14 +24,26 @@ function MinNFT({ userToken, receiverAddress }) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(CONTACT_ADDRESS, ABI, signer);
-    console.log(" contract ", contract);
     try {
-      const response = await contract.mint(userToken, data.id, data.amount);
+      const response = await contract.mint(data.account, data.id, data.amount);
       getMintData(response);
+      toast.success(" Success Mint NFT ", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (error) {
       setErrorMessage(error);
     }
   }
+
+  console.log(" errorMessage ", errorMessage);
+
+  console.log(" mintData ", mintData);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -49,7 +63,7 @@ function MinNFT({ userToken, receiverAddress }) {
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
-                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
                 placeholder="Account ..."
                 {...register("account")}
@@ -62,7 +76,7 @@ function MinNFT({ userToken, receiverAddress }) {
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
-                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
                 placeholder="NFT ID ..."
                 {...register("id")}
@@ -75,7 +89,7 @@ function MinNFT({ userToken, receiverAddress }) {
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
-                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
                 placeholder="Amount ..."
                 {...register("amount")}
@@ -93,6 +107,17 @@ function MinNFT({ userToken, receiverAddress }) {
           </button>
         </div>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

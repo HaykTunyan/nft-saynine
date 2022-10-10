@@ -36,7 +36,7 @@ function GetMegaNFT({ userToken, buyImage }) {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div className=" gap-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col"
@@ -53,7 +53,7 @@ function GetMegaNFT({ userToken, buyImage }) {
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
-                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
                 placeholder="Used Token Id ..."
                 {...register("usedTokenId")}
@@ -66,7 +66,7 @@ function GetMegaNFT({ userToken, buyImage }) {
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
-                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
                 placeholder="Max Number To Spend ..."
                 {...register("maxNumberToSpend")}

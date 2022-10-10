@@ -403,23 +403,33 @@ function Account() {
           </div>
         )}
       </div>
-      <div className="pt-10 xl:pt-20" />
-      <GetMegaNFT
-        userToken={userToken}
-        receiverAddress={receiverAddress}
-        buyImage={buyImage}
-      />
+      <div className="pt-10" />
+      <div className=" border-1px border-orange " />
       <div className="pt-10 xl:pt-20" />
       <TransferNft
         userToken={userToken}
         receiverAddress={receiverAddress}
         buyImage={buyImage}
       />
-      <div className="pt-10 xl:pt-20" />
-      <UseToken userToken={userToken} receiverAddress={receiverAddress} />
-
       <div className="pt-20 xl:pt-20" />
       <MinNFT userToken={userToken} receiverAddress={receiverAddress} />
+      <div className="pt-20" />
+      <div className=" border-1px border-orange " />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="">
+          <div className="pt-10 xl:pt-20" />
+          <GetMegaNFT
+            userToken={userToken}
+            receiverAddress={receiverAddress}
+            buyImage={buyImage}
+          />
+        </div>
+        <div className="">
+          <div className="pt-10 xl:pt-20" />
+          <UseToken userToken={userToken} receiverAddress={receiverAddress} />
+        </div>
+      </div>
+
       <div className="pt-20 xl:pt-64" />
 
       <h2 className="text-4xl xl:text-8xl font-normal text-white">Collected</h2>

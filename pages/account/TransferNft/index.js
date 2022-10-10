@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { vmContract } from "../../../web/Web3clinet";
 import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
 function TransferNft({ userToken, receiverAddress, buyImage }) {
@@ -32,10 +34,24 @@ function TransferNft({ userToken, receiverAddress, buyImage }) {
         "0x"
       );
       getTransferData(response);
+      toast.success(" Transfer NFT success ", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (error) {
       setErrorMessage(error);
     }
   }
+
+  console.log(" errorMessage ", errorMessage);
+
+  console.log(" transferData ", transferData);
+
 
   useEffect(() => {
     vmContract.methods
@@ -70,7 +86,7 @@ function TransferNft({ userToken, receiverAddress, buyImage }) {
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
-                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
                 placeholder="From ..."
                 {...register("from")}
@@ -83,7 +99,7 @@ function TransferNft({ userToken, receiverAddress, buyImage }) {
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
-                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
                 placeholder="To ..."
                 {...register("to")}
@@ -96,7 +112,7 @@ function TransferNft({ userToken, receiverAddress, buyImage }) {
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
-                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="ID ..."
                 {...register("id")}
               />
@@ -108,7 +124,7 @@ function TransferNft({ userToken, receiverAddress, buyImage }) {
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
               <input
-                class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                 defaultValue=""
                 placeholder="Amount ..."
                 {...register("amount")}
@@ -126,6 +142,17 @@ function TransferNft({ userToken, receiverAddress, buyImage }) {
           </button>
         </div>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

@@ -99,7 +99,7 @@ export default function UseNFT({ setShowModal, userToken }) {
                   </div>
                   <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
                     <input
-                      class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                       defaultValue=""
                       placeholder="account ..."
                       {...register("account")}
@@ -112,7 +112,7 @@ export default function UseNFT({ setShowModal, userToken }) {
                   </div>
                   <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
                     <input
-                      class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                       defaultValue=""
                       placeholder="id (uint256) ..."
                       {...register("id")}
@@ -125,7 +125,7 @@ export default function UseNFT({ setShowModal, userToken }) {
                   </div>
                   <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
                     <input
-                      class="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                       defaultValue=""
                       placeholder="value (uint256) ..."
                       {...register("value")}

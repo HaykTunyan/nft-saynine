@@ -21,17 +21,11 @@ function MY() {
     getUserToken(token);
   }, []);
 
-  // Balance NFT
-
   // NFT 1
   useEffect(() => {
     if (userToken) {
       vmContract.methods
-        .balanceOf(
-          String(userToken),
-          // "0x5a4ef4ecd643049f5225844dd3b4ba34b1ba7b40"
-          1
-        )
+        .balanceOf(String(userToken), 1)
         .call(function (err, res) {
           if (err) {
             return;
@@ -45,11 +39,7 @@ function MY() {
   useEffect(() => {
     if (userToken) {
       vmContract.methods
-        .balanceOf(
-          String(userToken),
-          // "0x5a4ef4ecd643049f5225844dd3b4ba34b1ba7b40"
-          2
-        )
+        .balanceOf(String(userToken), 2)
         .call(function (err, res) {
           if (err) {
             return;
@@ -63,10 +53,7 @@ function MY() {
   useEffect(() => {
     if (userToken) {
       vmContract.methods
-        .balanceOf(
-          String(userToken), // "0x5a4ef4ecd643049f5225844dd3b4ba34b1ba7b40"
-          3
-        )
+        .balanceOf(String(userToken), 3)
         .call(function (err, res) {
           if (err) {
             console.log("An error occured", err);
@@ -81,11 +68,7 @@ function MY() {
   useEffect(() => {
     if (userToken) {
       vmContract.methods
-        .balanceOf(
-          String(userToken),
-          // "0x5a4ef4ecd643049f5225844dd3b4ba34b1ba7b40"
-          4
-        )
+        .balanceOf(String(userToken), 4)
         .call(function (err, res) {
           if (err) {
             console.log("An error occured", err);
@@ -100,11 +83,7 @@ function MY() {
   useEffect(() => {
     if (userToken) {
       vmContract.methods
-        .balanceOf(
-          String(userToken),
-          // "0x5a4ef4ecd643049f5225844dd3b4ba34b1ba7b40"
-          5
-        )
+        .balanceOf(String(userToken), 5)
         .call(function (err, res) {
           if (err) {
             console.log("An error occured", err);
@@ -114,26 +93,6 @@ function MY() {
         });
     }
   }, [userToken]);
-
-  // Balance Of
-
-  useEffect(() => {
-    vmContract.methods.uri(1).call(function (error, response) {
-      if (error) {
-        console.log("An error occured", error);
-        return;
-      }
-      console.log("The balance is: ", response);
-    });
-  }, []);
-
-  console.log({
-    balanceOne,
-    balanceTwo,
-    balanceThree,
-    balanceFour,
-    balanceFive,
-  });
 
   useEffect(() => {
     axios.get("/api/NFTdata").then(console.log);
@@ -175,6 +134,7 @@ function MY() {
                   price={item.price}
                   alt={item.alt}
                   count={item.count}
+                  router={item.url}
                 />
               </div>
             ))}
