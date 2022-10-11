@@ -429,14 +429,11 @@ function Account() {
           <UseToken userToken={userToken} receiverAddress={receiverAddress} />
         </div>
       </div>
-
       <div className="pt-20 xl:pt-64" />
-
       <h2 className="text-4xl xl:text-8xl font-normal text-white">Collected</h2>
-      <div className="">
+      <div className="pt-5">
         <p className="text-base xl:text-4xl text-white">
-          Pick your favorite SayNine NFT and rank better with the backlink
-          package behind it
+        Check out the NFTs you've used and collect more.
         </p>
       </div>
       <div className="pt-10" />
