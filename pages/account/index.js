@@ -10,6 +10,7 @@ import GetMegaNFT from "./GetMegaNft";
 import MinNFT from "./MintNft";
 import UseNFT from "../../components/Modal/UseNft";
 import { vmContract } from "../../web/Web3clinet";
+import UseNFTComponent from "./UseNft/useNft";
 
 function Account() {
   // Hooks.
@@ -25,7 +26,7 @@ function Account() {
   const [balanceFour, getBalanceFour] = useState();
   const [balanceFive, getBalanceFive] = useState();
 
-  // NFT 1
+  // NFT 1 id = 1 => 2
   useEffect(() => {
     if (userToken) {
       vmContract.methods
@@ -43,14 +44,14 @@ function Account() {
     }
   }, [userToken]);
 
-  // NFT 2
+  // NFT 2  id = 3  => 4
   useEffect(() => {
     if (userToken) {
       vmContract.methods
         .balanceOf(
           String(userToken),
           // "0x5a4ef4ecd643049f5225844dd3b4ba34b1ba7b40"
-          2
+          3
         )
         .call(function (err, res) {
           if (err) {
@@ -61,13 +62,13 @@ function Account() {
     }
   }, [userToken]);
 
-  // NFT 3
+  // NFT 3  id = 5 => 6
   useEffect(() => {
     if (userToken) {
       vmContract.methods
         .balanceOf(
           String(userToken), // "0x5a4ef4ecd643049f5225844dd3b4ba34b1ba7b40"
-          3
+          5
         )
         .call(function (err, res) {
           if (err) {
@@ -79,14 +80,14 @@ function Account() {
     }
   }, [userToken]);
 
-  // NFT 4
+  // NFT 4  id = 7 => 8
   useEffect(() => {
     if (userToken) {
       vmContract.methods
         .balanceOf(
           String(userToken),
           // "0x5a4ef4ecd643049f5225844dd3b4ba34b1ba7b40"
-          4
+          7
         )
         .call(function (err, res) {
           if (err) {
@@ -98,14 +99,14 @@ function Account() {
     }
   }, [userToken]);
 
-  // NFT 5
+  // NFT 5 id = 9 = 10
   useEffect(() => {
     if (userToken) {
       vmContract.methods
         .balanceOf(
           String(userToken),
           // "0x5a4ef4ecd643049f5225844dd3b4ba34b1ba7b40"
-          5
+          9
         )
         .call(function (err, res) {
           if (err) {
@@ -405,6 +406,9 @@ function Account() {
       </div>
       <div className="pt-10" />
       <div className=" border-1px border-orange " />
+      <UseNFTComponent />
+      <div className=" border-1px border-orange " />
+      <div className="pt-10" />
       <div className="pt-10 xl:pt-20" />
       <TransferNft
         userToken={userToken}
