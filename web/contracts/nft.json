@@ -14,7 +14,7 @@
     },
     {
         "key": 1,
-        "nftId": "2",
+        "nftId": "3",
         "title": "Cyberpunk",
         "img": "/images/NFT-2.png",
         "link": "51-60 DR",
@@ -27,7 +27,7 @@
     },
     {
         "key": 2,
-        "nftId": "3",
+        "nftId": "5",
         "title": "P.I.M.P",
         "img": "/images/NFT-3.png",
         "link": "61-70 DR",
@@ -40,7 +40,7 @@
     },
     {
         "key": 3,
-        "nftId": "4",
+        "nftId": "7",
         "title": "ZOG",
         "img": "/images/NFT-4.png",
         "link": "71-80 DR",
@@ -53,7 +53,7 @@
     },
     {
         "key": 4,
-        "nftId": "5",
+        "nftId": "9",
         "title": "Master Dharma",
         "img": "/images/NFT-5.png",
         "link": "80 DR+",

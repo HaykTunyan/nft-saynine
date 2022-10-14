@@ -12,7 +12,6 @@ import { NFT } from "../../web/contracts";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
-import CarouselModal from "../Modal/CarouselModal";
 
 function Carousel() {
   return (
@@ -43,12 +42,11 @@ function Carousel() {
           nextEl: "#next",
           prevEl: "#prev",
         }}
-        modules={[ Keyboard, Scrollbar, Navigation, EffectCreative]}
+        modules={[Keyboard, Scrollbar, Navigation, EffectCreative]}
         className="mySwiper px-20"
       >
         <div
           className="hidden z-50 absolute left-2 top-0 lg:w-20 h-full text-center align-baseline md:flex justify-start rounded-t-3xl rounded-b-3xl"
-         
           id="prev"
         >
           <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
@@ -97,16 +95,6 @@ function Carousel() {
                     </p>
                   </div>
                   <div className="pt-5 md:pt-10" />
-                  <div className="hidden mt-auto justify-center lg:justify-start">
-                    <CarouselModal
-                      title={item.title}
-                      img={item.img}
-                      count={item.count}
-                      price={item.price}
-                      number={item.number}
-                      link={item.link}
-                    />
-                  </div>
                 </div>
                 <div className="w-full order-1 flex justify-center py-5 px-5 md:px-14 lg:px-5 lg:py-0 xl:pr-0 xl:py-0 xl:pl-5 lg:order-2 lg:w-5/12">
                   <div className="w-60 h-80 xl:w-full xl:h-full">
@@ -124,8 +112,6 @@ function Carousel() {
         ))}
         <div
           className="hidden z-50 absolute right-2 top-0 lg:w-20 h-full text-center align-baseline md:flex justify-start rounded-t-3xl rounded-b-3xl"
-         
-
           id="next"
         >
           <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">

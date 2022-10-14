@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Container from "../../../components/Container";
+import Container from "../Container";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { NFT } from "../../../web/contracts";
+import { NFT } from "../../web/contracts";
 
 // import required modules
 import {

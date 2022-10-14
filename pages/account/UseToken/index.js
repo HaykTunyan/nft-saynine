@@ -6,7 +6,7 @@ import { ABI } from "../../../web/contracts";
 
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
-function UseToken({ userToken, receiverAddress }) {
+function UseToken() {
   const [tokenRes, getTokenRes] = useState();
   const [errorMessage, setErrorMessage] = useState();
   const {

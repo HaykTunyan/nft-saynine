@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
-function GetMegaNFT({ userToken, buyImage }) {
+function GetMegaNFT() {
   const [megaData, getMegaData] = useState();
   const [errorMessage, setErrorMessage] = useState();
 
@@ -17,6 +17,7 @@ function GetMegaNFT({ userToken, buyImage }) {
   } = useForm();
 
   const onSubmit = (data) => {
+
     getMegaNFT(data);
   };
 
@@ -25,8 +26,9 @@ function GetMegaNFT({ userToken, buyImage }) {
     const signer = provider.getSigner();
     const contract = new ethers.Contract(CONTACT_ADDRESS, ABI, signer);
     try {
+      console.log(" data ", data)
       const response = await contract.getMegaNFTs(
-        userToken,
+        data.usedTokenId,
         data.maxNumberToSpend
       );
       getMegaData(response);

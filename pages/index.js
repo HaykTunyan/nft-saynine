@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Head from "next/head";
-import FutureSeo from "../components/homeview/FutureSeo";
+import FutureSeo from "../components/FutureSeo";
 import Carousel from "../components/Carousel";
 import NftCard from "../components/NftCard";
 import Container from "../components/Container";

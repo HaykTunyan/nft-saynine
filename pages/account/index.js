@@ -2,22 +2,20 @@ import Container from "../../components/Container";
 import Image from "next/image";
 import ProfressLine from "../../components/ProgressLine";
 import { useEffect, useState } from "react";
-import { NFT, NFTread } from "../../web/contracts";
-import axios from "axios";
-import TransferNft from "./TransferNft";
+import { NFTread } from "../../web/contracts";
 import UseToken from "./UseToken";
 import GetMegaNFT from "./GetMegaNft";
 import MinNFT from "./MintNft";
-import UseNFT from "../../components/Modal/UseNft";
 import { vmContract } from "../../web/Web3clinet";
 import UseNFTComponent from "./UseNft/useNft";
+import MorganNFT from "./UserNFT/MorganNFT";
+import Cyberpunk from "./UserNFT/Cyberpunk";
+import PimpNFT from "./UserNFT/PimpNFT";
+import ZogNFT from "./UserNFT/ZogNFT";
+import DharmaNFT from "./UserNFT/DharmaNFT";
 
 function Account() {
   // Hooks.
-  const [buyImage, useBuyImage] = useState();
-  const [showModal, setShowModal] = useState(false);
-  const [usedNft, getUsedNft] = useState();
-  const [count, getCount] = useState();
   const [userToken, getUserToken] = useState();
   const receiverAddress = "0x92d96c53D4e89F0BA9fcb20444358A639d1492D5";
   const [balanceOne, getBalanceOne] = useState();
@@ -25,6 +23,7 @@ function Account() {
   const [balanceThree, getBalanceThree] = useState();
   const [balanceFour, getBalanceFour] = useState();
   const [balanceFive, getBalanceFive] = useState();
+  const [successRes, setSuccessRes] = useState(false);
 
   // NFT 1 id = 1 => 2
   useEffect(() => {
@@ -42,7 +41,7 @@ function Account() {
           getBalanceOne(res);
         });
     }
-  }, [userToken]);
+  }, [userToken, successRes]);
 
   // NFT 2  id = 3  => 4
   useEffect(() => {
@@ -60,7 +59,7 @@ function Account() {
           getBalanceTwo(res);
         });
     }
-  }, [userToken]);
+  }, [userToken, successRes]);
 
   // NFT 3  id = 5 => 6
   useEffect(() => {
@@ -78,7 +77,7 @@ function Account() {
           getBalanceThree(res);
         });
     }
-  }, [userToken]);
+  }, [userToken, successRes]);
 
   // NFT 4  id = 7 => 8
   useEffect(() => {
@@ -97,7 +96,7 @@ function Account() {
           getBalanceFour(res);
         });
     }
-  }, [userToken]);
+  }, [userToken, successRes]);
 
   // NFT 5 id = 9 = 10
   useEffect(() => {
@@ -116,46 +115,27 @@ function Account() {
           getBalanceFive(res);
         });
     }
-  }, [userToken]);
+  }, [userToken, successRes]);
 
-  useEffect(() => {
-    const buyImage = JSON.parse(localStorage.getItem("buyImage"));
-    const countNft = JSON.parse(localStorage.getItem("count"));
-    if (buyImage) {
-      useBuyImage(buyImage);
-      getCount(countNft);
-    }
-  }, [showModal, count]);
+  // useEffect(() => {
+  //   const buyImage = JSON.parse(localStorage.getItem("buyImage"));
+  //   const countNft = JSON.parse(localStorage.getItem("count"));
+  //   if (buyImage) {
+  //     useBuyImage(buyImage);
+  //     getCount(countNft);
+  //   }
+  // }, [showModal, count]);
 
-  useEffect(() => {
-    if (count === 0) {
-      localStorage.removeItem("buyImage");
-    }
-  }, [count]);
+  // useEffect(() => {
+  //   if (count === 0) {
+  //     localStorage.removeItem("buyImage");
+  //   }
+  // }, [count]);
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("userToken"));
     getUserToken(token);
   }, []);
-
-  // async function getBalanceOfAll() {
-  //   const res = vmContract.methods
-  //     .balanceOfBatch(
-  //       [userToken, userToken, userToken, userToken, userToken],
-  //       [1, 2, 3, 4, 5]
-  //     ).call((err, res) => {
-  //       console.log("log res", [err, res]);
-  //       if (err) {
-  //         getErrorMessage(err);
-  //         return;
-  //       }
-  //       getBalanceOf(res);
-  //     });
-  // }
-
-  // useEffect(() => {
-  //   getBalanceOfAll();
-  // }, []);
 
   return (
     <Container className="lg:px-4">
@@ -167,277 +147,80 @@ function Account() {
       </div>
       <div className="pt-10 xl:pt-20" />
       {/* Buy NFT */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
         {/* NFT 1 */}
         {balanceOne > 0 && (
-          <div className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex">
-            <div className="w-4/12">
-              <Image
-                src="/images/NFT-1.png"
-                width={143}
-                height={186}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-8/12 pl-4">
-              <div className="flex justify-between pt-0 xl:pt-5">
-                <h4 className="text-2xl lg:text-4xl font-semibold text-white">
-                  Morgan
-                </h4>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Links:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  30-50 DR
-                </div>
-              </div>
-
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Nft Id:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  1
-                </div>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Count:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  {balanceOne}
-                </div>
-              </div>
-              <div className="pt-6 xl:pt-8" />
-            </div>
-          </div>
-        )}
-
-        {/* NFT 2 */}
-        {balanceTwo > 0 && (
-          <div className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex">
-            <div className="w-4/12">
-              <Image
-                src="/images/NFT-2.png"
-                width={143}
-                height={186}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-8/12 pl-4">
-              <div className="flex justify-between pt-0 xl:pt-5">
-                <h4 className="text-2xl lg:text-4xl font-semibold text-white">
-                  Cyberpunk
-                </h4>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Links:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  51-60 DR
-                </div>
-              </div>
-
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Nft Id:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  2
-                </div>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Count:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  {balanceTwo}
-                </div>
-              </div>
-              <div className="pt-6 xl:pt-8" />
-            </div>
-          </div>
+          <MorganNFT
+            balance={balanceOne}
+            userToken={userToken}
+            nftId={1}
+            setSuccessRes={setSuccessRes}
+          />
         )}
 
         {/* NFT 3 */}
-        {balanceThree > 0 && (
-          <div className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex">
-            <div className="w-4/12">
-              <Image
-                src="/images/NFT-3.png"
-                width={143}
-                height={186}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-8/12 pl-4">
-              <div className="flex justify-between pt-0 xl:pt-5">
-                <h4 className="text-2xl lg:text-4xl font-semibold text-white">
-                  P.I.M.P
-                </h4>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Links:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  61-70 DR
-                </div>
-              </div>
-
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Nft Id:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  3
-                </div>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Count:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  {balanceThree}
-                </div>
-              </div>
-              <div className="pt-6 xl:pt-8" />
-            </div>
-          </div>
-        )}
-
-        {/* NFT 4 */}
-        {balanceFour > 0 && (
-          <div className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex">
-            <div className="w-4/12">
-              <Image
-                src="/images/NFT-4.png"
-                width={143}
-                height={186}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-8/12 pl-4">
-              <div className="flex justify-between pt-0 xl:pt-5">
-                <h4 className="text-2xl lg:text-4xl font-semibold text-white">
-                  ZOG
-                </h4>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Links:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  71-80 DR
-                </div>
-              </div>
-
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Nft Id:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  4
-                </div>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Count:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  {balanceFour}
-                </div>
-              </div>
-              <div className="pt-6 xl:pt-8" />
-            </div>
-          </div>
+        {balanceTwo > 0 && (
+          <Cyberpunk
+            balance={balanceTwo}
+            userToken={userToken}
+            nftId={3}
+            setSuccessRes={setSuccessRes}
+          />
         )}
 
         {/* NFT 5 */}
+        {balanceThree > 0 && (
+          <PimpNFT
+            balance={balanceThree}
+            userToken={userToken}
+            nftId={5}
+            setSuccessRes={setSuccessRes}
+          />
+        )}
 
+        {/* NFT 7 */}
+        {balanceFour > 0 && (
+          <ZogNFT
+            balance={balanceFour}
+            userToken={userToken}
+            nftId={7}
+            setSuccessRes={setSuccessRes}
+          />
+        )}
+
+        {/* NFT 9 */}
         {balanceFive > 0 && (
-          <div className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex">
-            <div className="w-4/12">
-              <Image
-                src="/images/NFT-5.png"
-                width={143}
-                height={186}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-8/12 pl-4">
-              <div className="flex justify-between pt-0 xl:pt-5">
-                <h4 className="text-2xl lg:text-4xl font-semibold text-white">
-                  Master Dharma
-                </h4>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Links:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  80 DR+
-                </div>
-              </div>
-
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Nft Id:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  5
-                </div>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Count:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  {balanceFive}
-                </div>
-              </div>
-              <div className="pt-6 xl:pt-8" />
-            </div>
-          </div>
+          <DharmaNFT
+            balance={balanceFive}
+            userToken={userToken}
+            nftId={9}
+            setSuccessRes={setSuccessRes}
+          />
         )}
       </div>
       <div className="pt-10" />
       <div className=" border-1px border-orange " />
       <UseNFTComponent />
       <div className=" border-1px border-orange " />
-      <div className="pt-10" />
-      <div className="pt-10 xl:pt-20" />
-      <TransferNft
-        userToken={userToken}
-        receiverAddress={receiverAddress}
-        buyImage={buyImage}
-      />
       <div className="pt-20 xl:pt-20" />
-      <MinNFT userToken={userToken} receiverAddress={receiverAddress} />
+      <MinNFT />
       <div className="pt-20" />
       <div className=" border-1px border-orange " />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="">
           <div className="pt-10 xl:pt-20" />
-          <GetMegaNFT
-            userToken={userToken}
-            receiverAddress={receiverAddress}
-            buyImage={buyImage}
-          />
+          <GetMegaNFT userToken={userToken} />
         </div>
         <div className="">
           <div className="pt-10 xl:pt-20" />
-          <UseToken userToken={userToken} receiverAddress={receiverAddress} />
+          <UseToken />
         </div>
-      </div>
+      </div> */}
       <div className="pt-20 xl:pt-64" />
       <h2 className="text-4xl xl:text-8xl font-normal text-white">Collected</h2>
       <div className="pt-5">
         <p className="text-base xl:text-4xl text-white">
-        Check out the NFTs you've used and collect more.
+          Check out the NFTs you've used and collect more.
         </p>
       </div>
       <div className="pt-10" />
@@ -476,13 +259,6 @@ function Account() {
         </div>
       </div>
       <div className="pb-52" />
-      {showModal && (
-        <UseNFT
-          setShowModal={setShowModal}
-          usedNft={usedNft}
-          userToken={userToken}
-        />
-      )}
     </Container>
   );
 }

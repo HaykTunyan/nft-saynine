@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { vmContract } from "../../../web/Web3clinet";
+import MorganUsed from "./MorganUsed";
 
 function UseNFTComponent() {
   // Hooks.
@@ -128,8 +129,6 @@ function UseNFTComponent() {
     getUserToken(token);
   }, []);
 
-  console.log(" balance two  ", balanceOne);
-
   return (
     <div className="py-10">
       <div className="py-5">
@@ -138,177 +137,53 @@ function UseNFTComponent() {
         </h3>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
-        {/* NFT 2 */}
         {balanceOne > 0 && (
-          <div className="flex flex-col justify-center p-4 border-orange rounded-2xl border-1px">
-            
-            <div className="w-full flex justify-center">
-      
-              <Image
-                src="/nfts/Fight_1.png"
-                width={143}
-                height={186}
-                className="w-full h-full object-cover"
-              />
-             
-            </div>
-            <div className="w-full flex flex-col justify-center text-center items-center">
-              <div className="flex pt-0 xl:pt-5">
-                <h5 className="text-xl font-semibold text-white">Morgan</h5>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base font-bold text-orange-alft ">
-                  Nft Id:
-                </div>
-                <div className="text-base  font-normal text-orange-alft">2</div>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base font-bold text-orange-alft ">
-                  Count:
-                </div>
-                <div className="text-base  font-normal text-orange-alft">
-                    {balanceOne}
-                </div>
-              </div>
-            </div>
-          </div>
+          <MorganUsed
+            balance={balanceOne}
+            id={2}
+            img={"/nfts/Fight_1.png"}
+            name={"Morgan"}
+          />
         )}
 
         {/* NFT 4 */}
         {balanceTwo > 0 && (
-          <div className="flex flex-col justify-center p-4 border-orange rounded-2xl border-1px">
-            <div className="w-full flex justify-center">
-              <Image
-                src="/nfts/Fight_2.png"
-                width={143}
-                height={186}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-full flex flex-col justify-center text-center items-center">
-              <div className="flex justify-between pt-0 xl:pt-5">
-                <h5 className="text-xl font-semibold text-white">Cyberpunk</h5>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base font-bold text-orange-alft ">
-                  Nft Id:
-                </div>
-                <div className="text-base font-normal text-orange-alft">4</div>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base font-bold text-orange-alft ">
-                  Count:
-                </div>
-                <div className="text-base  font-normal text-orange-alft">
-                    {balanceTwo}
-                </div>
-              </div>
-            </div>
-          </div>
+          <MorganUsed
+            balance={balanceTwo}
+            id={4}
+            img={"/nfts/Fight_2.png"}
+            name={"Cyberpunk"}
+          />
         )}
 
         {/* NFT 6 */}
         {balanceThree > 0 && (
-          <div className="flex flex-col justify-center p-4 border-orange rounded-2xl border-1px">
-            <div className="w-full flex justify-center">
-              <Image
-                src="/nfts/Fight_3.png"
-                width={143}
-                height={186}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-full flex flex-col justify-center items-center text-center">
-              <div className="flex justify-between pt-0 xl:pt-5">
-                <h5 className="text-xl font-semibold text-white">P.I.M.P</h5>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base  font-bold text-orange-alft ">
-                  Nft Id:
-                </div>
-                <div className="text-base  font-normal text-orange-alft">6</div>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base font-bold text-orange-alft ">
-                  Count:
-                </div>
-                <div className="text-base  font-normal text-orange-alft">
-                    {balanceThree}
-                </div>
-              </div>
-            </div>
-          </div>
+          <MorganUsed
+            balance={balanceThree}
+            id={6}
+            img={"/nfts/Fight_3.png"}
+            name={"P.I.M.P"}
+          />
         )}
 
         {/* NFT 8 */}
         {balanceFour > 0 && (
-          <div className="flex flex-col justify-center p-4 border-orange rounded-2xl border-1px">
-            <div className="w-full flex justify-center">
-              <Image
-                src="/nfts/Fight_4.png"
-                width={143}
-                height={186}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-full flex flex-col justify-center text-center items-center">
-              <div className="flex justify-between pt-0 xl:pt-5">
-                <h5 className="text-xl  font-semibold text-white">ZOG</h5>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
-                  Nft Id:
-                </div>
-                <div className="text-base xl:text-2xl font-normal text-orange-alft">
-                  8
-                </div>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base font-bold text-orange-alft ">
-                  Count:
-                </div>
-                <div className="text-base  font-normal text-orange-alft">
-                    {balanceFour}
-                </div>
-              </div>
-            </div>
-          </div>
+          <MorganUsed
+            balance={balanceFour}
+            id={8}
+            img={"/nfts/Fight_4.png"}
+            name={"ZOG"}
+          />
         )}
 
-        {/* NFT 5 */}
-
+        {/* NFT 10 */}
         {balanceFive > 0 && (
-          <div className="flex flex-col justify-center p-4 border-orange rounded-2xl border-1px">
-            <div className="w-full flex justify-center">
-              <Image
-                src="/nfts/Fight_5.png"
-                width={143}
-                height={186}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-full flex flex-col justify-center text-center items-center">
-              <div className="flex justify-between pt-0 xl:pt-5">
-                <h5 className="text-xl font-semibold text-white">
-                  Master Dharma
-                </h5>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base font-bold text-orange-alft ">
-                  Nft Id:
-                </div>
-                <div className="text-base font-normal text-orange-alft">10</div>
-              </div>
-              <div className="flex space-x-1 pt-2">
-                <div className="text-base font-bold text-orange-alft ">
-                  Count:
-                </div>
-                <div className="text-base  font-normal text-orange-alft">
-                    {balanceFive}
-                </div>
-              </div>
-            </div>
-          </div>
+          <MorganUsed
+            balance={balanceFive}
+            id={10}
+            img={"/nfts/Fight_5.png"}
+            name={"Master Dharma"}
+          />
         )}
       </div>
     </div>

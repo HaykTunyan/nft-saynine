@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
-function MinNFT({ userToken, receiverAddress }) {
+function MinNFT() {
   const [mintData, getMintData] = useState();
   const [errorMessage, setErrorMessage] = useState();
   const {
