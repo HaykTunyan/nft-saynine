@@ -50,12 +50,19 @@ function Carousel() {
           id="prev"
         >
           <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
-            <Image
+         
+          <Image
+              src="/arrow_left.svg"
+              width={12}
+              height={24}
+              className="w-full h-full object-cover"
+            />
+            {/* <Image
               src="/arrow_right.svg"
               width={12}
               height={24}
               className="w-full h-full object-cover mx-auto"
-            />
+            /> */}
           </div>
         </div>
         {NFT.map((item) => (
@@ -115,11 +122,18 @@ function Carousel() {
           id="next"
         >
           <div className="w-8 h-8 lg:w-16 lg:h-16 border-2 border-orange-alft mx-auto rounded-full text-center items-center flex justify-center m-auto px-3">
-            <Image
+            {/* <Image
               src="/arrow_left.svg"
               width={12}
               height={24}
               className="w-full h-full object-cover"
+            /> */}
+
+<Image
+              src="/arrow_right.svg"
+              width={12}
+              height={24}
+              className="w-full h-full object-cover mx-auto"
             />
           </div>
         </div>
