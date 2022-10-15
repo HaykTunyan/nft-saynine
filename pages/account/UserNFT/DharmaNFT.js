@@ -104,7 +104,7 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
       <div className="flex  ">
         <div className="w-4/12">
           <Image
-            src="/images/NFT-4.png"
+            src="/images/NFT-5.png"
             width={143}
             height={186}
             className="w-full h-full object-cover"
