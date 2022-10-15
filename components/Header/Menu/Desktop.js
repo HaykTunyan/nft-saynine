@@ -90,6 +90,14 @@ const Desktop = ({ items, asPath, isConnected }) => {
     }
   }, [tok]);
 
+  console.log(" getUser ", user);
+
+  console.log(" userBalance, ",  userBalance );
+
+  useEffect( () => {
+    
+  }, [])
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userToken"));
     getUser(user);
@@ -103,11 +111,11 @@ const Desktop = ({ items, asPath, isConnected }) => {
             className="text-white px-3 py-1 pb-1"
             onClick={connectToMetamask}
           >
-            Contect Wollet
+           Wallet Connect
           </button>
         </li>
 
-        {tok?.selectedAddress && (
+        {user && (
           <li className={classes.menuItem}>
             <Link className="text-white " href="/account">
               My Account
