@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { vmContract } from "../../../web/Web3clinet";
 import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
@@ -14,7 +13,7 @@ function MorganNFT({ balance, userToken, nftId, setSuccessRes }) {
   const [transferData, getTransferData] = useState();
   const [tokenData, getTokenData] = useState();
   const [errorMessage, setErrorMessage] = useState();
-  
+
   const toggleTransfer = () => {
     setShowTransfer(!showTransfer);
     setShowToken(false);
@@ -95,9 +94,9 @@ function MorganNFT({ balance, userToken, nftId, setSuccessRes }) {
 
   useEffect(() => {
     reset({
-      data: "to"
-    })
-  }, [transferData])
+      data: "to",
+    });
+  }, [transferData]);
 
   return (
     <div className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col">
@@ -216,7 +215,6 @@ function MorganNFT({ balance, userToken, nftId, setSuccessRes }) {
             className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col"
           >
             <div className="w-full ">
-            
               <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
                 <div className="text-base xl:text-2xl font-bold text-orange-alft ">
                   Amount:

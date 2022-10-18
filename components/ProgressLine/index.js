@@ -1,8 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Line } from "rc-progress";
 import { theme } from "../../tailwind.config";
 
 function ProfressLine() {
+
+  const [lading, setLoading] = useState()
   return (
     <Fragment>
       <Line

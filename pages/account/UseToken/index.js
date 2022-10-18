@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { vmContract } from "../../../web/Web3clinet";
 import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
-
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
 function UseToken() {
@@ -32,7 +30,7 @@ function UseToken() {
   }
 
   return (
-    <div className=" gap-10">
+    <div className="gap-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col"
@@ -43,7 +41,6 @@ function UseToken() {
               Use Tokens
             </h4>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
             <div className="text-base xl:text-2xl font-bold text-orange-alft ">
               Id:
@@ -75,7 +72,6 @@ function UseToken() {
           <div className="pt-6 md:pt-0" />
           <button
             type="submit"
-            // onClick={useTokens}
             className="py-2 px-10  bg-green-alfa text-xl xl:text-2xl rounded-lg text-white font-normal"
           >
             Send

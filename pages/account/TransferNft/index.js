@@ -48,11 +48,6 @@ function TransferNft({ userToken }) {
     }
   }
 
-  console.log(" errorMessage ", errorMessage);
-
-  console.log(" transferData ", transferData);
-
-
   useEffect(() => {
     vmContract.methods
       .balanceOf(
@@ -62,7 +57,7 @@ function TransferNft({ userToken }) {
       )
       .call(function (err, res) {
         if (err) {
-          console.log("An error occured", err);
+          setErrorMessage(error);
           return;
         }
       });

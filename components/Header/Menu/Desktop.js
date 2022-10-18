@@ -90,14 +90,6 @@ const Desktop = ({ items, asPath, isConnected }) => {
     }
   }, [tok]);
 
-  console.log(" getUser ", user);
-
-  console.log(" userBalance, ",  userBalance );
-
-  useEffect( () => {
-    
-  }, [])
-
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userToken"));
     getUser(user);

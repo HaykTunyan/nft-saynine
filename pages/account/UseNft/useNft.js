@@ -10,12 +10,12 @@ function UseNFTComponent() {
   const [usedNft, getUsedNft] = useState();
   const [count, getCount] = useState();
   const [userToken, getUserToken] = useState();
-  const receiverAddress = "0x92d96c53D4e89F0BA9fcb20444358A639d1492D5";
   const [balanceOne, getBalanceOne] = useState();
   const [balanceTwo, getBalanceTwo] = useState();
   const [balanceThree, getBalanceThree] = useState();
   const [balanceFour, getBalanceFour] = useState();
   const [balanceFive, getBalanceFive] = useState();
+  const [ errorMessage, setErrorMessage ] = useState();
 
   // NFT 1 id = 1 => 2
   useEffect(() => {
@@ -28,6 +28,7 @@ function UseNFTComponent() {
         )
         .call(function (err, res) {
           if (err) {
+            setErrorMessage(err);
             return;
           }
           getBalanceOne(res);
@@ -46,6 +47,7 @@ function UseNFTComponent() {
         )
         .call(function (err, res) {
           if (err) {
+            setErrorMessage(err);
             return;
           }
           getBalanceTwo(res);
@@ -63,7 +65,7 @@ function UseNFTComponent() {
         )
         .call(function (err, res) {
           if (err) {
-            console.log("An error occured", err);
+            setErrorMessage(err);
             return;
           }
           getBalanceThree(res);
@@ -82,7 +84,7 @@ function UseNFTComponent() {
         )
         .call(function (err, res) {
           if (err) {
-            console.log("An error occured", err);
+            setErrorMessage(err);
             return;
           }
           getBalanceFour(res);
@@ -101,7 +103,7 @@ function UseNFTComponent() {
         )
         .call(function (err, res) {
           if (err) {
-            console.log("An error occured", err);
+            setErrorMessage(err);
             return;
           }
           getBalanceFive(res);
@@ -133,7 +135,7 @@ function UseNFTComponent() {
     <div className="py-10">
       <div className="py-5">
         <h3 className="text-1xl xl:text-2xl font-normal text-white">
-          Your Use NFTs
+          Used NFT
         </h3>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">

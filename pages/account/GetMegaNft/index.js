@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { vmContract } from "../../../web/Web3clinet";
 import { useForm } from "react-hook-form";
 import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
@@ -17,7 +16,6 @@ function GetMegaNFT() {
   } = useForm();
 
   const onSubmit = (data) => {
-
     getMegaNFT(data);
   };
 
@@ -26,7 +24,6 @@ function GetMegaNFT() {
     const signer = provider.getSigner();
     const contract = new ethers.Contract(CONTACT_ADDRESS, ABI, signer);
     try {
-      console.log(" data ", data)
       const response = await contract.getMegaNFTs(
         data.usedTokenId,
         data.maxNumberToSpend
