@@ -18,6 +18,7 @@ import CyberpunkChild from "./Colections/CyberpunkChild";
 import PimpChild from "./Colections/PimpChild";
 import ZogChild from "./Colections/ZogChild";
 import DharmaChild from "./Colections/DharmaChild";
+import CheckNFT from "./CheckNFT/CheckNFT";
 
 function Account() {
   // Hooks.
@@ -214,6 +215,9 @@ function Account() {
       <MinNFT />
       <div className="pt-20" />
       <div className=" border-1px border-orange " />
+      <div className="pt-20" />
+      <CheckNFT />
+
       {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="">
           <div className="pt-10 xl:pt-20" />
@@ -267,29 +271,22 @@ function Account() {
         </div>
       </div> */}
       <div className="pt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          <MorganChild userToken={userToken} successRes={successRes} />
-        </div>
+
+        <MorganChild userToken={userToken} successRes={successRes} />
+
+      </div>
+
+      <div className="pt-10">
+        <CyberpunkChild userToken={userToken} successRes={successRes} />
       </div>
       <div className="pt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          <CyberpunkChild userToken={userToken} successRes={successRes} />
-        </div>
+        <PimpChild userToken={userToken} successRes={successRes} />
       </div>
       <div className="pt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          <PimpChild userToken={userToken} successRes={successRes} />
-        </div>
+        <ZogChild userToken={userToken} successRes={successRes} />
       </div>
       <div className="pt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          <ZogChild userToken={userToken} successRes={successRes} />
-        </div>
-      </div>
-      <div className="pt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          <DharmaChild userToken={userToken} successRes={successRes} />
-        </div>
+        <DharmaChild userToken={userToken} successRes={successRes} />
       </div>
       <div className="pb-52" />
     </Container>

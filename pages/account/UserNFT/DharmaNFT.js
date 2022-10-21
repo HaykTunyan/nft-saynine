@@ -187,6 +187,7 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
                 </div>
                 <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
                   <input
+                   type="number"
                     className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                     defaultValue=""
                     placeholder="Amount ..."

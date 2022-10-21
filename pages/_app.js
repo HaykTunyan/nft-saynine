@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import Head from "next/head";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -12,19 +12,6 @@ const classes = {
 };
 
 function MyApp({ Component, pageProps }) {
-
- const Contract_Addres = '0xA1bdf27AEdaDb00f9f48b8e0Bc3d90052934205E';
- const [accounts, SetAccounts]= useState([])
- const isConnected = Boolean(accounts[0]);
-
- async function connectAccount(){
-     if(window.ethereum){
-         const accounts =await window.ethereum.request({
-             method:"eth_requestAccounts"
-         });
-         setAccounts(accounts)
-     }
- }
 
   return (
     <Fragment>

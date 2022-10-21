@@ -1,19 +1,30 @@
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Image from "next/image";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
-function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
+
+const schema = yup.object().shape({
+  amount: yup.number()
+    .min(1, "Must be at least 1 characters")
+    .max(255)
+    .required("Email is requried"),
+});
+
+function CardNFT({ balance, userToken, nftId, setSuccessRes }) {
+
   const [showTransfer, setShowTransfer] = useState(false);
   const [showToken, setShowToken] = useState(false);
   const [transferData, getTransferData] = useState();
   const [tokenData, getTokenData] = useState();
   const [errorMessage, setErrorMessage] = useState();
-  
+
   const toggleTransfer = () => {
     setShowTransfer(!showTransfer);
     setShowToken(false);
@@ -30,7 +41,9 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
     watch,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = (data) => {
     if (showTransfer) {
@@ -94,16 +107,22 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
 
   useEffect(() => {
     reset({
-      data: "to"
-    })
-  }, [transferData])
+      data: {
+        do: "",
+        amount: "",
+      }
+    });
+  }, []);
+
+
+  console.log(" errors ", errors.amount)
 
   return (
     <div className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col">
       <div className="flex  ">
         <div className="w-4/12">
           <Image
-            src="/images/NFT-3.png"
+            src="/images/NFT-1.png"
             width={143}
             height={186}
             className="w-full h-full object-cover"
@@ -112,7 +131,7 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
         <div className="w-8/12 pl-4">
           <div className="flex justify-between pt-0 xl:pt-5">
             <h4 className="text-2xl lg:text-4xl font-semibold text-white">
-            P.I.M.P
+              Morgan
             </h4>
           </div>
           <div className="flex space-x-1 pt-2">
@@ -120,7 +139,7 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
               Links:
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft">
-            61-70 DR
+              30-50 DR
             </div>
           </div>
 
@@ -129,7 +148,7 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
               Nft Id:
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft">
-              5
+              1
             </div>
           </div>
           <div className="flex space-x-1 pt-2">
@@ -187,7 +206,7 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
                 </div>
                 <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
                   <input
-                   type="number"
+                    type="number"
                     className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                     defaultValue=""
                     placeholder="Amount ..."
@@ -195,6 +214,14 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
                   />
                 </div>
               </div>
+            </div>
+            <div className="full pt-5">
+              {errors.amount && (
+                <div class="p-3 text-sm bg-red-700 rounded-lg" role="alert">
+                  <span className="font-extrabold text-white">Must be at least 1 NFT</span>
+                </div>
+              )}
+
             </div>
             <div className="w-full flex justify-end pt-5">
               <div className="pt-6 md:pt-0" />
@@ -216,14 +243,13 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
             className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col"
           >
             <div className="w-full ">
-            
               <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
                 <div className="text-base xl:text-2xl font-bold text-orange-alft ">
                   Amount:
                 </div>
                 <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
                   <input
-                   type="number"
+                    type="number"
                     className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                     defaultValue=""
                     placeholder="Amount ..."
@@ -231,6 +257,14 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
                   />
                 </div>
               </div>
+            </div>
+            <div className="full pt-5">
+              {errors.amount && (
+                <div class="p-3 text-sm bg-red-700 rounded-lg" role="alert">
+                  <span className="font-extrabold text-white">Must be at least 1 NFT</span>
+                </div>
+              )}
+
             </div>
             <div className="w-full flex justify-end pt-5">
               <div className="pt-6 md:pt-0" />
@@ -249,4 +283,4 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
   );
 }
 
-export default PimpNFT;
+export default CardNFT;

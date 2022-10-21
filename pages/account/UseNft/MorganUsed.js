@@ -38,6 +38,7 @@ function MorganUsed({ balance, id, img, name }) {
         progress: undefined,
       });
       getMegaData(response);
+      console.log(" successfuly ")
     } catch (error) {
       setErrorMessage(error);
     }
