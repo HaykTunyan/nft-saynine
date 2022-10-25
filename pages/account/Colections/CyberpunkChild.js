@@ -12,7 +12,7 @@ function CyberpunkChild({ userToken, successRes }) {
   const [megaData, getMegaData] = useState();
   const [errorMessage, setErrorMessage] = useState();
 
-  const listData = new Array(5).fill([1]);
+  const listData = new Array(10).fill([1]);
 
   // NFT 4
   useEffect(() => {
@@ -71,9 +71,18 @@ function CyberpunkChild({ userToken, successRes }) {
   
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
-      {listData.map((index) => (
-        <div className="flex justify-center" key={index}>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+       <div className="flex justify-center lg:hidden">
+        <Image
+          src="/nfts/Fight_2.png"
+          width={300}
+          height={390}
+          className={`w-full h-full object-cover `}
+        />
+      </div>
+      {/*  */}
+      {balanceTwo < 10 && lastNFT.map((index) => (
+        <div className="hidden lg:flex lg:justify-center" key={index} >
           <Image
             src="/nfts/Fight_2.png"
             width={300}
@@ -82,15 +91,47 @@ function CyberpunkChild({ userToken, successRes }) {
           />
         </div>
       ))}
+      {/*  */}
+      {balanceTwo > 9 && listData.map((index) => (
+        <div className="hidden lg:flex  lg:justify-center" key={index} >
+          <Image
+            src="/nfts/Fight_5.png"
+            width={300}
+            height={390}
+            className={`w-full h-full object-cover `}
+          />
+        </div>
+      ))}
+      {/*  */}
+    
+      <div className="flex flex-col lg:justify-center items-center">
+      <div className="py-5 lg:hidden">
+          <span className="text-xs font-semibold  px-5 py-2 rounded-3xl bg-orange text-white ">
+            {balanceTwo}
+          </span>
+        </div>
+
+        <div className="">
+          {balanceTwo > 9 && (
+            <button
+              className="bg-emerald-500 text-white active:bg-emerald-600 font-bold  text-sm p-5 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150"
+              type="button"
+              onClick={getMegaNFT}
+            >
+              Send
+            </button>
+          )}
+        </div>
+      </div>
       <div className="flex justify-center items-center">
         <div className="">
-          <button
+          {/* <button
             className="bg-emerald-500 text-white active:bg-emerald-600 font-bold  text-sm p-5 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="button"
             onClick={getMegaNFT}
           >
             Send
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

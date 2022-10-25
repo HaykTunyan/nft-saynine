@@ -19,7 +19,8 @@ function MorganUsed({ balance, id, img, name }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    getMegaNFT(data);
+    console.log(" data ",data)
+    //  getMegaNFT(data);
   };
 
   async function getMegaNFT(data) {
@@ -46,7 +47,7 @@ function MorganUsed({ balance, id, img, name }) {
 
   useEffect(() => {
     reset({
-      data: "maxNumberToSpend",
+      maxNumberToSpend: "",
     });
   }, [megaData]);
 

@@ -272,7 +272,7 @@ function Account() {
       </div> */}
       <div className="pt-10">
 
-        <MorganChild userToken={userToken} successRes={successRes} />
+        <MorganChild userToken={userToken} successRes={successRes} ID={2}  NFT={2} />
 
       </div>
 
