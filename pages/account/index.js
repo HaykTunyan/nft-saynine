@@ -32,6 +32,7 @@ function Account() {
   const [successRes, setSuccessRes] = useState(false);
   const [errorMessagess, setErrorMessages] = useState();
 
+
   // NFT 1 id = 1 => 2
   useEffect(() => {
     if (userToken) {
@@ -126,20 +127,12 @@ function Account() {
     }
   }, [userToken, successRes]);
 
-  // useEffect(() => {
-  //   const buyImage = JSON.parse(localStorage.getItem("buyImage"));
-  //   const countNft = JSON.parse(localStorage.getItem("count"));
-  //   if (buyImage) {
-  //     useBuyImage(buyImage);
-  //     getCount(countNft);
-  //   }
-  // }, [showModal, count]);
-
-  // useEffect(() => {
-  //   if (count === 0) {
-  //     localStorage.removeItem("buyImage");
-  //   }
-  // }, [count]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSuccessRes(!successRes)
+    }, 20000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("userToken"));
@@ -209,25 +202,13 @@ function Account() {
       </div>
       <div className="pt-10" />
       <div className=" border-1px border-orange " />
-      <UseNFTComponent />
-      <div className=" border-1px border-orange " />
+      
       <div className="pt-20 xl:pt-20" />
       <MinNFT />
       <div className="pt-20" />
       <div className=" border-1px border-orange " />
       <div className="pt-20" />
       <CheckNFT />
-
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="">
-          <div className="pt-10 xl:pt-20" />
-          <GetMegaNFT userToken={userToken} />
-        </div>
-        <div className="">
-          <div className="pt-10 xl:pt-20" />
-          <UseToken />
-        </div>
-      </div> */}
       <div className="pt-20 xl:pt-64" />
       <h2 className="text-4xl xl:text-8xl font-normal text-white">Collected</h2>
       <div className="pt-5">
@@ -256,37 +237,23 @@ function Account() {
       </div>
       <div className=" pt-10" />
       <ProfressLine />
-      {/* <div className="pt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          {NFTread.map((item) => (
-            <div className="flex justify-center" key={item.key}>
-              <Image
-                src={item.img}
-                width={300}
-                height={390}
-                className={`w-full h-full object-cover ${item.active} `}
-              />
-            </div>
-          ))}
-        </div>
-      </div> */}
       <div className="pt-10">
-
-        <MorganChild userToken={userToken} successRes={successRes} ID={2}  NFT={2} />
-
+        <MorganChild userToken={userToken} successRes={successRes} />
       </div>
-
       <div className="pt-10">
         <CyberpunkChild userToken={userToken} successRes={successRes} />
       </div>
       <div className="pt-10">
         <PimpChild userToken={userToken} successRes={successRes} />
+        
       </div>
       <div className="pt-10">
         <ZogChild userToken={userToken} successRes={successRes} />
+        
       </div>
       <div className="pt-10">
         <DharmaChild userToken={userToken} successRes={successRes} />
+        
       </div>
       <div className="pb-52" />
     </Container>

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
 function ZogChild({ userToken, successRes }) {
-  const [balanceTwo, getBalanceTwo] = useState();
+  const [balanaceNFT, getBalanceNFT] = useState();
   const [morgan, setMorgan] = useState();
   const [megaData, getMegaData] = useState();
   const [errorMessage, setErrorMessage] = useState();
@@ -23,17 +23,17 @@ function ZogChild({ userToken, successRes }) {
           if (err) {
             return;
           }
-          getBalanceTwo(res);
+          getBalanceNFT(res);
         });
     }
   }, [userToken, successRes]);
 
   useEffect(() => {
-    if (balanceTwo > 0) {
-      const list = Array(Number(balanceTwo)).fill([1]);
+    if (balanaceNFT > 0) {
+      const list = Array(Number(balanaceNFT)).fill([1]);
       setMorgan(list);
     }
-  }, [balanceTwo]);
+  }, [balanaceNFT]);
 
   async function getMegaNFT() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -70,7 +70,8 @@ function ZogChild({ userToken, successRes }) {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+    <>
+    <div className="grid grid-cols-2 lg:grid-cols-12 gap-10">
       {/*  */}
       <div className="flex justify-center lg:hidden">
         <Image
@@ -81,7 +82,7 @@ function ZogChild({ userToken, successRes }) {
         />
       </div>
       {/*  */}
-      {balanceTwo < 10 && lastNFT.map((index) => (
+      {balanaceNFT < 10 && lastNFT.map((index) => (
         <div className="hidden lg:flex lg:justify-center" key={index}>
           <Image
             src="/nfts/Fight_4.png"
@@ -92,7 +93,7 @@ function ZogChild({ userToken, successRes }) {
         </div>
       ))}
       {/*  */}
-      {balanceTwo > 9 && listData.map((index) => (
+      {balanaceNFT > 9 && listData.map((index) => (
         <div className="hidden lg:flex lg:justify-center" key={index} >
           <Image
             src="/nfts/Fight_4.png"
@@ -106,11 +107,11 @@ function ZogChild({ userToken, successRes }) {
       <div className="flex flex-col lg:justify-center items-center">
         <div className="py-5 lg:hidden">
           <span className="text-xs font-semibold  px-5 py-2 rounded-3xl bg-orange text-white ">
-            {balanceTwo}
+            {balanaceNFT}
           </span>
         </div>
         <div className="">
-          {balanceTwo > 9 && (
+          {balanaceNFT > 9 && (
             <button
               className="bg-emerald-500 text-white active:bg-emerald-600 font-bold  text-sm p-5 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
               type="button"
@@ -129,6 +130,8 @@ function ZogChild({ userToken, successRes }) {
       </div>
 
     </div>
+    <div className=" border-1px border-orange mt-5" />
+    </>
   );
 }
 
