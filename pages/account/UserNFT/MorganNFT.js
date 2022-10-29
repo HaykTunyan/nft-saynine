@@ -7,8 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import SendModal from "../../../components/Modal/SendModal";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
-
 
 const schema = yup.object().shape({
   amount: yup.number()
@@ -24,6 +24,7 @@ function MorganNFT({ balance, userToken, nftId, setSuccessRes }) {
   const [transferData, getTransferData] = useState();
   const [tokenData, getTokenData] = useState();
   const [errorMessage, setErrorMessage] = useState();
+  const [showSendModal, setShowSendModal] = useState(false);
 
   const toggleTransfer = () => {
     setShowTransfer(!showTransfer);
@@ -53,6 +54,7 @@ function MorganNFT({ balance, userToken, nftId, setSuccessRes }) {
     }
   };
 
+
   async function handleTransver(data) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
@@ -66,6 +68,7 @@ function MorganNFT({ balance, userToken, nftId, setSuccessRes }) {
         "0x"
       );
       getTransferData(response);
+      // setShowSendModal(true)
       toast.success(" Transfer NFT Morgan successfuly ", {
         position: "top-right",
         autoClose: 5000,
@@ -89,15 +92,7 @@ function MorganNFT({ balance, userToken, nftId, setSuccessRes }) {
     try {
       const response = await contract.useTokens(nftId, data.amount);
       getTokenData(response);
-      toast.success(" Used NFT Morgan successfuly ", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      setShowSendModal(true);
       setShowToken(false);
       setSuccessRes(true);
     } catch (error) {
@@ -113,9 +108,6 @@ function MorganNFT({ balance, userToken, nftId, setSuccessRes }) {
       }
     });
   }, []);
-
-
-  console.log(" errors ", errors.amount)
 
   return (
     <div className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col">
@@ -160,6 +152,7 @@ function MorganNFT({ balance, userToken, nftId, setSuccessRes }) {
             </div>
           </div>
           <div className="flex flex-col md:flex-row md:justify-end py-5  ">
+            <SendModal />
             <button
               className="bg-emerald-500 text-white active:bg-emerald-600 font-bold  text-sm px-10 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
               type="button"
@@ -278,6 +271,10 @@ function MorganNFT({ balance, userToken, nftId, setSuccessRes }) {
             </div>
           </form>
         </div>
+      )}
+
+      {showSendModal && (
+        <SendModal showSendModal={showSendModal} setShowSendModal={setShowSendModal} tokenData={tokenData} />
       )}
     </div>
   );

@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SendModal from "../../../components/Modal/SendModal";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
 function Cyberpunk({ balance, userToken, nftId, setSuccessRes }) {
@@ -13,6 +14,7 @@ function Cyberpunk({ balance, userToken, nftId, setSuccessRes }) {
   const [transferData, getTransferData] = useState();
   const [tokenData, getTokenData] = useState();
   const [errorMessage, setErrorMessage] = useState();
+  const [showSendModal, setShowSendModal] = useState(false);
 
   const toggleTransfer = () => {
     setShowTransfer(!showTransfer);
@@ -53,6 +55,7 @@ function Cyberpunk({ balance, userToken, nftId, setSuccessRes }) {
         "0x"
       );
       getTransferData(response);
+
       toast.success(" Transfer NFT Morgan successfuly ", {
         position: "top-right",
         autoClose: 5000,
@@ -76,15 +79,16 @@ function Cyberpunk({ balance, userToken, nftId, setSuccessRes }) {
     try {
       const response = await contract.useTokens(nftId, data.amount);
       getTokenData(response);
-      toast.success(" Used NFT Morgan successfuly ", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      setShowSendModal(true)
+      // toast.success(" Used NFT Morgan successfuly ", {
+      //   position: "top-right",
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      // });
       setShowToken(false);
       setSuccessRes(true);
     } catch (error) {
@@ -94,7 +98,10 @@ function Cyberpunk({ balance, userToken, nftId, setSuccessRes }) {
 
   useEffect(() => {
     reset({
-      data: "to",
+      data: {
+        do: "",
+        amount: "",
+      }
     });
   }, [transferData]);
 
@@ -187,7 +194,7 @@ function Cyberpunk({ balance, userToken, nftId, setSuccessRes }) {
                 </div>
                 <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
                   <input
-                   type="number"
+                    type="number"
                     className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                     defaultValue=""
                     placeholder="Amount ..."
@@ -222,7 +229,7 @@ function Cyberpunk({ balance, userToken, nftId, setSuccessRes }) {
                 </div>
                 <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
                   <input
-                   type="number"
+                    type="number"
                     className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                     defaultValue=""
                     placeholder="Amount ..."
@@ -243,6 +250,11 @@ function Cyberpunk({ balance, userToken, nftId, setSuccessRes }) {
             </div>
           </form>
         </div>
+      )}
+
+      {showSendModal && (
+        <SendModal showSendModal={showSendModal} setShowSendModal={setShowSendModal} tokenData={tokenData} />
+
       )}
     </div>
   );

@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SendModal from "../../../components/Modal/SendModal";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
 function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
@@ -13,7 +14,8 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
   const [transferData, getTransferData] = useState();
   const [tokenData, getTokenData] = useState();
   const [errorMessage, setErrorMessage] = useState();
-  
+  const [showSendModal, setShowSendModal] = useState(false);
+
   const toggleTransfer = () => {
     setShowTransfer(!showTransfer);
     setShowToken(false);
@@ -76,15 +78,16 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
     try {
       const response = await contract.useTokens(nftId, data.amount);
       getTokenData(response);
-      toast.success(" Used NFT Morgan successfuly ", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      setShowSendModal(true);
+      // toast.success(" Used NFT Morgan successfuly ", {
+      //   position: "top-right",
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      // });
       setShowToken(false);
       setSuccessRes(true);
     } catch (error) {
@@ -94,7 +97,10 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
 
   useEffect(() => {
     reset({
-      data: "to"
+      data: {
+        do: "",
+        amount: "",
+      }
     })
   }, [transferData])
 
@@ -112,7 +118,7 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
         <div className="w-8/12 pl-4">
           <div className="flex justify-between pt-0 xl:pt-5">
             <h4 className="text-2xl lg:text-4xl font-semibold text-white">
-            Master Dharma
+              Master Dharma
             </h4>
           </div>
           <div className="flex space-x-1 pt-2">
@@ -120,7 +126,7 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
               Links:
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft">
-            80 DR+
+              80 DR+
             </div>
           </div>
 
@@ -187,7 +193,7 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
                 </div>
                 <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
                   <input
-                   type="number"
+                    type="number"
                     className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                     defaultValue=""
                     placeholder="Amount ..."
@@ -216,7 +222,7 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
             className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col"
           >
             <div className="w-full ">
-            
+
               <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
                 <div className="text-base xl:text-2xl font-bold text-orange-alft ">
                   Amount:
@@ -242,6 +248,11 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
             </div>
           </form>
         </div>
+      )}
+
+      {showSendModal && (
+        <SendModal showSendModal={showSendModal} setShowSendModal={setShowSendModal} tokenData={tokenData} />
+
       )}
     </div>
   );
