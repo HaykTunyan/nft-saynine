@@ -7,12 +7,15 @@ import { vmContract } from "../../../web/Web3clinet";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
+import axios from 'axios';
 
 
-
-function CheckNFT() {
+function CheckNFT({ userToken }) {
     const [checkData, getcheckData] = useState();
     const [errorMessage, setErrorMessage] = useState();
+    const [post, setPost] = useState(null);
+    const [error, setError] = useState();
+    const setTxs = '0xd5efc06b165a427d628dca19a12d4133e474d4acc19e50585a23ce31f4b46ad5';
 
     const {
         register,
@@ -22,31 +25,77 @@ function CheckNFT() {
     } = useForm();
     const onSubmit = (data) => {
         console.log(" data ", data);
-        // onMint(data);
+        getHeshData(data);
     };
 
-    async function getHesh() {
+    // async function getHesh() {
 
-        const web3 = new Web3('https://goerli.etherscan.io/tx/');
-        const transactionHash = '0xd5efc06b165a427d628dca19a12d4133e474d4acc19e50585a23ce31f4b46ad5';
+    //     // 
+    //     //         https://api.etherscan.io/api
+    //     //    ?module=account
+    //     //    &action=txlistinternal
+    //     //    &txhash=0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
+    //     //    &apikey=YourApiKeyToken
 
-        try {
-            const response = await web3.eth.getTransaction(transactionHash);
-            console.log("response ", response)
+    //     const web3 = new Web3('https://goerli.etherscan.io/tx/');
+    //     const transactionHash = '0xd5efc06b165a427d628dca19a12d4133e474d4acc19e50585a23ce31f4b46ad5';
 
-        } catch (error) {
-            console.log("error ", error)
+    //     try {
+    //         const response = await web3.eth.getTransaction(transactionHash);
+    //         console.log("response ", response)
 
-        }
+    //     } catch (error) {
+    //         console.log("error ", error)
+
+    //     }
+    // }
+
+    function getHeshData(data) {
+        axios.request(
+            {
+                method: 'GET',
+                url: `https://deep-index.moralis.io/api/v2/transaction/${data.hash}`,
+
+                params: {
+                    chain: 'goerli',
+                },
+                headers: { accept: 'application/json', 'X-API-Key': 'test' }
+            }
+        )
+            .then(function (response) {
+                // console.log(response.data);
+                setPost(response.data);
+            })
+            .catch(function (error) {
+                // console.error(error);
+                setError(error)
+            });
     }
 
-    const getHeshData = () => {
-        const web3 = new Web3('https://goerli.etherscan.io/tx');
-        const transactionHash = '0xd5efc06b165a427d628dca19a12d4133e474d4acc19e50585a23ce31f4b46ad5';
-        web3.eth.getPendingTransactions().then(console.log()).catch;
-        const res = web3.eth.getTransaction('0xd5efc06b165a427d628dca19a12d4133e474d4acc19e50585a23ce31f4b46ad5')
-            .then(console.log(res));
-    }
+    // useEffect(() => {
+
+    //     axios.request(
+    //         {
+    //             method: 'GET',
+
+    //             url: 'https://deep-index.moralis.io/api/v2/transaction/0xd5efc06b165a427d628dca19a12d4133e474d4acc19e50585a23ce31f4b46ad5',
+    //             params: {
+    //                 chain: 'goerli',
+    //             },
+    //             headers: { accept: 'application/json', 'X-API-Key': 'test' }
+    //         }
+    //     )
+    //         .then(function (response) {
+    //             console.log(response.data);
+    //         })
+    //         .catch(function (error) {
+    //             console.error(error);
+    //         });
+
+    // }, []);
+
+
+    console.log(" post data ", post)
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -69,7 +118,7 @@ function CheckNFT() {
                                 className="shadow appearance-none border border-orange rounded w-full py-2 px-3 bg-transparent leading-tight focus:outline-none focus:shadow-outline"
                                 defaultValue=""
                                 placeholder="Hesh ..."
-                                {...register("token")}
+                                {...register("hash")}
                             />
                         </div>
                     </div>
@@ -85,13 +134,31 @@ function CheckNFT() {
                         Send
                     </button>
                 </div>
+                {post && (
+                    <div className="w-full mt-10">
+                        <div className="grid grid-cols-1 gap-4">
+                            <div className="flex space-x-2">
+                                <div className="text-sm lg:text-base font-bold text-yellow-alfa ">
+                                    From :
+                                </div>
+                                <div className="text-sm lg:text-base font-bold text-yellow-alfa">
+                                    {post?.from_address}
+                                </div>
+                            </div>
+                            <div className="flex space-x-2">
+                                <div className="text-sm lg:text-base font-bold text-yellow-alfa">
+                                    Data :
+                                </div>
+                                <div className="text-sm lg:text-base font-bold text-yellow-alfa">
+                                    {post?.block_timestamp}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                )}
+
             </form>
-            {/* <button
-                onClick={getHeshData}
-                className="py-2 px-10  bg-green-alfa text-xl xl:text-2xl rounded-lg text-white font-normal"
-            >
-                Send
-            </button> */}
             <ToastContainer
                 position="top-right"
                 autoClose={5000}

@@ -208,7 +208,7 @@ function Account() {
       <div className="pt-20" />
       <div className=" border-1px border-orange " />
       <div className="pt-20" />
-      <CheckNFT />
+      <CheckNFT userToken={userToken} />
       <div className="pt-20 xl:pt-64" />
       <h2 className="text-4xl xl:text-8xl font-normal text-white">Collected</h2>
       <div className="pt-5">
