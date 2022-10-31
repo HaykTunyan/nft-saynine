@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { ethers } from "ethers";
-import { ABI } from "../../../web/contracts";
-import Web3 from "web3";
-import { vmContract } from "../../../web/Web3clinet";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 import axios from 'axios';
+import moment from 'moment';
 
 
 function CheckNFT({ userToken }) {
-    const [checkData, getcheckData] = useState();
-    const [errorMessage, setErrorMessage] = useState();
     const [post, setPost] = useState(null);
     const [error, setError] = useState();
-    const setTxs = '0xd5efc06b165a427d628dca19a12d4133e474d4acc19e50585a23ce31f4b46ad5';
 
     const {
         register,
@@ -71,6 +63,7 @@ function CheckNFT({ userToken }) {
                 setError(error)
             });
     }
+
 
     // useEffect(() => {
 
@@ -150,7 +143,15 @@ function CheckNFT({ userToken }) {
                                     Data :
                                 </div>
                                 <div className="text-sm lg:text-base font-bold text-yellow-alfa">
-                                    {post?.block_timestamp}
+                                    {moment(post?.block_timestamp).format('DD/MM/YYYY hh:mm')}
+                                </div>
+                            </div>
+                            <div className="flex space-x-2">
+                                <div className="text-sm lg:text-base font-bold text-yellow-alfa">
+                                    Amount :
+                                </div>
+                                <div className="text-sm lg:text-base font-bold text-yellow-alfa">
+                                    {(post?.input).slice(-1)}
                                 </div>
                             </div>
 
@@ -159,17 +160,6 @@ function CheckNFT({ userToken }) {
                 )}
 
             </form>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
         </div>
     );
 }

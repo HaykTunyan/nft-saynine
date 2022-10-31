@@ -202,7 +202,7 @@ function Account() {
       </div>
       <div className="pt-10" />
       <div className=" border-1px border-orange " />
-      
+
       <div className="pt-20 xl:pt-20" />
       <MinNFT />
       <div className="pt-20" />
@@ -245,15 +245,15 @@ function Account() {
       </div>
       <div className="pt-10">
         <PimpChild userToken={userToken} successRes={successRes} />
-        
+
       </div>
       <div className="pt-10">
         <ZogChild userToken={userToken} successRes={successRes} />
-        
+
       </div>
       <div className="pt-10">
         <DharmaChild userToken={userToken} successRes={successRes} />
-        
+
       </div>
       <div className="pb-52" />
     </Container>
