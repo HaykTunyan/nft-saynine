@@ -23,7 +23,27 @@ function SendModal({ setShowSendModal, showSendModal, tokenData }) {
 // })
 
 
+  const urlGmail = "https://faas-fra1-afec6ce7.doserverless.co/api/v1/web/fn-14ae2079-d606-4a1c-8f85-e45079378cc1/notify/main?text=''" ;
+
+
   
+  useEffect( () => {
+    // {
+    //     "info": {
+    //       "accepted": ["tavardanyan@gmail.com"],
+    //       "envelope": {
+    //         "from": "georgi.mamajanyan@saynine.ai",
+    //         "to": ["tavardanyan@gmail.com"]
+    //       },
+    //       "envelopeTime": 182,
+    //       "messageId": "<caec122f-8abc-e08e-dfab-fdecf8a8290b@saynine.ai>",
+    //       "messageSize": 308,
+    //       "messageTime": 431,
+    //       "rejected": [],
+    //       "response": "250 2.0.0 OK  1667513238 ft34-20020a170907802200b0073022b796a7sm1004266ejc.93 - gsmtp"
+    //     }
+    //   }
+}, [] )
 
 
     const confirmationEmail = (data) => {
@@ -101,14 +121,14 @@ function SendModal({ setShowSendModal, showSendModal, tokenData }) {
                                     </div>
 
 
-                                    <div className="flex items-center justify-between p-6 ">
-                                        <button
+                                    <div className="flex items-center justify-center p-6 ">
+                                        {/* <button
                                             className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
                                             type="button"
                                             onClick={() => setShowSendModal(false)}
                                         >
                                             Close
-                                        </button>
+                                        </button> */}
                                         <button
                                             type="submit"
 
