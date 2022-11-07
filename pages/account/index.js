@@ -203,8 +203,8 @@ function Account() {
       <div className="pt-10" />
       <div className=" border-1px border-orange " />
 
-      <div className="pt-20 xl:pt-20" />
-      <MinNFT />
+      {/* <div className="pt-20 xl:pt-20" />
+      <MinNFT /> */}
       <div className="pt-20" />
       <div className=" border-1px border-orange " />
       <div className="pt-20" />
