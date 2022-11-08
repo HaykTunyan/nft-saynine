@@ -82,7 +82,7 @@ function ZogChild({ userToken, successRes }) {
         />
       </div>
       {/*  */}
-      {balanaceNFT < 10 && lastNFT.map((index) => (
+      {/* {balanaceNFT < 10 && lastNFT?.map((index) => (
         <div className="hidden lg:flex lg:justify-center" key={index}>
           <Image
             src="/nfts/Fight_4.png"
@@ -91,7 +91,7 @@ function ZogChild({ userToken, successRes }) {
             className={`w-full h-full object-cover`}
           />
         </div>
-      ))}
+      ))} */}
       {/*  */}
       {balanaceNFT > 9 && listData.map((index) => (
         <div className="hidden lg:flex lg:justify-center" key={index} >

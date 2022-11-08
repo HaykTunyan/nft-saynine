@@ -84,7 +84,7 @@ function MorganChild({ userToken, successRes }) {
         />
       </div>
       {/*  */}
-      {balanaceNFT < 10 && lastNFT.map((index) => (
+      {/* {balanaceNFT < 10 && lastNFT?.map((index) => (
         <div className="hidden lg:flex lg:justify-center" key={index} >
           <Image
             src="/nfts/Fight_1.png"
@@ -93,7 +93,7 @@ function MorganChild({ userToken, successRes }) {
             className={`w-full h-full object-cover `}
           />
         </div>
-      ))}
+      ))} */}
       {/*  */}
       {balanaceNFT > 9 && listData.map((index) => (
         <div className="hidden lg:flex  lg:justify-center" key={index} >
