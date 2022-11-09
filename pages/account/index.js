@@ -139,6 +139,20 @@ function Account() {
     getUserToken(token);
   }, []);
 
+  useEffect(() => {
+    if (userToken) {
+      vmContract.methods
+        .owner()
+        .call(function (err, res) {
+          if (err) {
+            console.log(err)
+            return;
+          }
+          console.log("ressposnse  ", res)
+        });
+    }
+  }, [])
+
   return (
     <Container className="lg:px-4">
       <div className="pt-20">
@@ -201,14 +215,26 @@ function Account() {
         )}
       </div>
       <div className="pt-10" />
-      <div className=" border-1px border-orange " />
 
-      {/* <div className="pt-20 xl:pt-20" />
-      <MinNFT /> */}
+      {userToken === "0xcc6330fbb00026E6F9eBbbA2F98E242c16EfE428" && (
+        <>
+          <div className=" border-1px border-orange " />
+          <div className="pt-20 xl:pt-20" />
+          <MinNFT />
+        </>
+
+      )}
+
       <div className="pt-20" />
-      <div className=" border-1px border-orange " />
-      <div className="pt-20" />
-      <CheckNFT userToken={userToken} />
+
+      {userToken === "0xcc6330fbb00026E6F9eBbbA2F98E242c16EfE428" && (
+        <>
+          <div className=" border-1px border-orange " />
+          <div className="pt-20" />
+          <CheckNFT userToken={userToken} />
+        </>
+
+      )}
       <div className="pt-20 xl:pt-64" />
       <h2 className="text-4xl xl:text-8xl font-normal text-white">Collected</h2>
       <div className="pt-5">
