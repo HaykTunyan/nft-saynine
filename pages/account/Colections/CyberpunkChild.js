@@ -1,17 +1,61 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import Image from "next/image";
 import { vmContract } from "../../../web/Web3clinet";
 import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
 import { toast } from "react-toastify";
+import { Line } from "rc-progress";
+import { theme } from "../../../tailwind.config";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
+export const useCyberpunkList = [
+  {
+    key: 1,
+    img: '/nfts/Fight_2.png',
+  },
+  {
+    key: 2,
+    img: '/nfts/Fight_2.png',
+  },
+  {
+    key: 3,
+    img: '/nfts/Fight_2.png',
+  },
+  {
+    key: 4,
+    img: '/nfts/Fight_2.png',
+  },
+  {
+    key: 5,
+    img: '/nfts/Fight_2.png',
+  },
+  {
+    key: 6,
+    img: '/nfts/Fight_2.png',
+  },
+  {
+    key: 7,
+    img: '/nfts/Fight_2.png',
+  },
+  {
+    key: 8,
+    img: '/nfts/Fight_2.png',
+  },
+  {
+    key: 9,
+    img: '/nfts/Fight_2.png',
+  },
+  {
+    key: 10,
+    img: '/nfts/Fight_2.png',
+  },
+];
+
 function CyberpunkChild({ userToken, successRes }) {
-  const [balanceTwo, getBalanceTwo] = useState();
-  const [morgan, setMorgan] = useState();
+  const [balanaceNFT, getBalanceNFT] = useState();
   const [megaData, getMegaData] = useState();
   const [errorMessage, setErrorMessage] = useState();
-  const listData = new Array(10).fill(["cyberpunk"]);
+  const [landing, setLanding] = useState();
 
   // NFT 4
   useEffect(() => {
@@ -22,17 +66,10 @@ function CyberpunkChild({ userToken, successRes }) {
           if (err) {
             return;
           }
-          getBalanceTwo(res);
+          getBalanceNFT(res);
         });
     }
   }, [userToken, successRes]);
-
-  useEffect(() => {
-    if (balanceTwo > 0) {
-      const list = Array(Number(balanceTwo)).fill([1]);
-      setMorgan(list);
-    }
-  }, [balanceTwo]);
 
   async function getMegaNFT() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -65,67 +102,102 @@ function CyberpunkChild({ userToken, successRes }) {
       });
     }
   }
-  
+
+  useEffect(() => {
+    if (balanaceNFT < 10) {
+      setLanding(balanaceNFT * 10);
+    };
+  }, [balanaceNFT]);
+
 
   return (
     <>
-    <div className="grid grid-cols-2 lg:grid-cols-12 gap-10">
-       <div className="flex justify-center lg:hidden">
-        <Image
-          src="/nfts/Fight_2.png"
-          width={300}
-          height={390}
-          className={`w-full h-full object-cover `}
+      <Fragment>
+        <Line
+          className="rounded-md bg-green-secta"
+          percent={balanaceNFT < 10 ? landing : 100}
+          strokeWidth={1}
+          strokeColor={theme.extend.colors.green.DEFAULT}
+          trailWidth={2}
+          trailColor={theme.extend.colors.green.secta}
         />
+      </Fragment>
+      <div className="pt-5" />
+      <div className="grid grid-cols-2 lg:grid-cols-12 gap-10">
+        {/* Balance NFT 10 */}
+        {balanaceNFT > 9 && useCyberpunkList.map((item) => (
+          <div className="hidden lg:flex  lg:justify-center" key={item.key} >
+            <Image
+              src="/nfts/Fight_2.png"
+              width={300}
+              height={390}
+              className={`w-full h-full object-cover `}
+            />
+          </div>
+        ))}
+
+        {/* Desktop */}
+        {balanaceNFT < 10 && useCyberpunkList
+          .slice(10 - balanaceNFT)
+          .map((use) => (
+            <div className="hidden lg:flex lg:justify-center" key={use.key}>
+              <Image
+                src="/nfts/Fight_2.png"
+                width={300}
+                height={390}
+                className={`w-full h-full object-cover grayscale`}
+              />
+            </div>
+          ))}
+
+        <div className="hidden lg:flex lg:justify-center lg:items-center">
+          <div className="py-5">
+            <span className="text-xs font-semibold  px-5 py-2 rounded-3xl bg-orange text-white ">
+              {balanaceNFT}
+            </span>
+          </div>
+        </div>
+        {/* Moblie Version */}
+        {balanaceNFT < 1 ? (
+          <>
+            <div className="flex py-5">
+              <div className="hidden text-xl lg:text-base font-bold text-yellow-alfa">
+                You don't use Cyberpunk NFT
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex justify-center lg:hidden ">
+              <Image
+                src="/nfts/Fight_2.png"
+                width={300}
+                height={390}
+                className={`w-full h-full object-cover grayscale`}
+              />
+            </div>
+            <div className="flex flex-col lg:justify-center items-center">
+              <div className="py-5 lg:hidden">
+                <span className="text-xs font-semibold  px-5 py-2 rounded-3xl bg-orange text-white ">
+                  {balanaceNFT}
+                </span>
+              </div>
+              <div className="">
+                {balanaceNFT > 9 && (
+                  <button
+                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold  text-sm p-5 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={getMegaNFT}
+                  >
+                    Send
+                  </button>
+                )}
+              </div>
+            </div>
+          </>
+        )}
       </div>
-      {/*  */}
-      {balanceTwo < 10 &&  (
-        <div className="hidden lg:flex lg:justify-center" >
-          <Image
-            src="/nfts/Fight_2.png"
-            width={300}
-            height={390}
-            className={`w-full h-full object-cover `}
-          />
-        </div>
-      )}
-      {/*  */}
-      {balanceTwo > 9 && listData.map((index) => (
-        <div className="hidden lg:flex  lg:justify-center" key={index} >
-          <Image
-            src="/nfts/Fight_2.png"
-            width={300}
-            height={390}
-            className={`w-full h-full object-cover `}
-          />
-        </div>
-      ))}
-      {/*  */}
-    
-      <div className="flex flex-col lg:justify-center items-center">
-      <div className="py-5 lg:hidden">
-          <span className="text-xs font-semibold  px-5 py-2 rounded-3xl bg-orange text-white ">
-            {balanceTwo}
-          </span>
-        </div>
-        <div className="">
-          {balanceTwo > 9 && (
-            <button
-              className="bg-emerald-500 text-white active:bg-emerald-600 font-bold  text-sm p-5 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150"
-              type="button"
-              onClick={getMegaNFT}
-            >
-              Send
-            </button>
-          )}
-        </div>
-      </div>
-      <div className="hidden lg:flex justify-center items-center">
-        <div className="">
-        </div>
-      </div>
-    </div>
-    <div className=" border-1px border-orange mt-5" />
+      <div className=" border-1px border-orange mt-5" />
     </>
   );
 }

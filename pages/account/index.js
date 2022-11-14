@@ -32,6 +32,13 @@ function Account() {
   const [successRes, setSuccessRes] = useState(false);
   const [errorMessagess, setErrorMessages] = useState();
 
+  // Use NFT.
+ 
+ 
+  
+  const [ useZog, setUseZog ]  = useState();
+ 
+
 
   // NFT 1 id = 1 => 2
   useEffect(() => {
@@ -52,7 +59,7 @@ function Account() {
     }
   }, [userToken, successRes]);
 
-  // NFT 2  id = 3  => 4
+  // NFT 3  id = 3  => 4
   useEffect(() => {
     if (userToken) {
       vmContract.methods
@@ -71,7 +78,7 @@ function Account() {
     }
   }, [userToken, successRes]);
 
-  // NFT 3  id = 5 => 6
+  // NFT 5  id = 5 => 6
   useEffect(() => {
     if (userToken) {
       vmContract.methods
@@ -89,7 +96,7 @@ function Account() {
     }
   }, [userToken, successRes]);
 
-  // NFT 4  id = 7 => 8
+  // NFT 7  id = 7 => 8
   useEffect(() => {
     if (userToken) {
       vmContract.methods
@@ -108,7 +115,7 @@ function Account() {
     }
   }, [userToken, successRes]);
 
-  // NFT 5 id = 9 = 10
+  // NFT 9 id = 9 = 10
   useEffect(() => {
     if (userToken) {
       vmContract.methods
@@ -126,6 +133,23 @@ function Account() {
         });
     }
   }, [userToken, successRes]);
+
+  // useEffect( () => {
+  //   if (userToken) {
+  //     vmContract.methods
+  //       .balanceOf(
+  //         String(userToken),
+  //         2
+  //       )
+  //       .call(function (err, res) {
+  //         if (err) {
+  //           setErrorMessages(err);
+  //           return;
+  //         }
+  //         setUseMorgan(res);
+  //       });
+  //   }
+  // }, [userToken, successRes] )
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -261,9 +285,8 @@ function Account() {
           />
         </div>
       </div>
-      <div className=" pt-10" />
-      <ProfressLine />
-      <div className="pt-10">
+    
+      <div className="pt-20">
         <MorganChild userToken={userToken} successRes={successRes} />
       </div>
       <div className="pt-10">
@@ -271,15 +294,12 @@ function Account() {
       </div>
       <div className="pt-10">
         <PimpChild userToken={userToken} successRes={successRes} />
-
       </div>
       <div className="pt-10">
         <ZogChild userToken={userToken} successRes={successRes} />
-
       </div>
       <div className="pt-10">
         <DharmaChild userToken={userToken} successRes={successRes} />
-
       </div>
       <div className="pb-52" />
     </Container>
