@@ -10,7 +10,7 @@
         "alt": "NFT-1",
         "count": "1",
         "number": "12",
-        "url": "https://testnets.opensea.io/account?tab=collected"
+        "url": "https://testnets.opensea.io/assets/goerli/0x951bf41e354e05e278d504cf13dae71302f94c0a/1"
     },
     {
         "key": 1,
@@ -23,7 +23,7 @@
         "alt": "NFT-2",
         "count": "1",
         "number": "",
-        "url": "https://testnets.opensea.io/account?tab=collected"
+        "url": "https://testnets.opensea.io/assets/goerli/0x951bf41e354e05e278d504cf13dae71302f94c0a/3"
     },
     {
         "key": 2,
@@ -36,7 +36,7 @@
         "alt": "NFT-3",
         "count": "1",
         "number": "",
-        "url": "https://testnets.opensea.io/account?tab=collected"
+        "url": "https://testnets.opensea.io/assets/goerli/0x951bf41e354e05e278d504cf13dae71302f94c0a/5"
     },
     {
         "key": 3,
@@ -49,7 +49,7 @@
         "alt": "NFT-SM-1000",
         "count": "1",
         "number": "",
-        "url": "https://testnets.opensea.io/account?tab=collected"
+        "url": "https://testnets.opensea.io/assets/goerli/0x951bf41e354e05e278d504cf13dae71302f94c0a/7"
     },
     {
         "key": 4,
@@ -62,6 +62,6 @@
         "alt": "NFT-5",
         "count": "1",
         "number": "",
-        "url": "https://testnets.opensea.io/account?tab=collected"
+        "url": "https://testnets.opensea.io/assets/goerli/0x951bf41e354e05e278d504cf13dae71302f94c0a/9"
     }
 ]
