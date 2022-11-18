@@ -55,7 +55,7 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
         "0x"
       );
       getTransferData(response);
-      toast.success(" Transfer NFT Morgan successfuly ", {
+      toast.success(" Transfer NFT Master Dharma successfuly ", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,

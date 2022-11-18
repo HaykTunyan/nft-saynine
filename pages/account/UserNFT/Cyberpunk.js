@@ -56,7 +56,7 @@ function Cyberpunk({ balance, userToken, nftId, setSuccessRes }) {
       );
       getTransferData(response);
 
-      toast.success(" Transfer NFT Morgan successfuly ", {
+      toast.success(" Transfer NFT Cyberpunk successfuly ", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,

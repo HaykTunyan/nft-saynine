@@ -55,7 +55,7 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
         "0x"
       );
       getTransferData(response);
-      toast.success(" Transfer NFT Morgan successfuly ", {
+      toast.success(" Transfer NFT PIMP successfuly ", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -79,15 +79,7 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
       const response = await contract.useTokens(nftId, data.amount);
       getTokenData(response);
       setShowSendModal(true);
-      // toast.success(" Used NFT Morgan successfuly ", {
-      //   position: "top-right",
-      //   autoClose: 5000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      // });
+     
       setShowToken(false);
       setSuccessRes(true);
     } catch (error) {

@@ -78,7 +78,7 @@ function SendModal({ setShowSendModal, showSendModal, tokenData }) {
             });
 
         setShowSendModal(false)
-        toast.success(" Transfer NFT Morgan successfuly ", {
+        toast.success(" Use NFT successfuly ", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,

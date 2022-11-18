@@ -79,7 +79,7 @@ function ZogChild({ userToken, successRes }) {
     const contract = new ethers.Contract(CONTACT_ADDRESS, ABI, signer);
     try {
       const response = await contract.getMegaNFTs(8, 10);
-      toast.success(" Get New NFT successfuly ", {
+      toast.success(" Get ZOG NFT successfuly ", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,

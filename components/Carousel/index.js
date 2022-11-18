@@ -17,7 +17,7 @@ function Carousel() {
   return (
     <>
       <Swiper
-        slidesPerView={1.2}
+        slidesPerView={1.22}
         slidesPerGroupSkip={1}
         centeredSlides={true}
         // spaceBetween={30}
@@ -67,7 +67,7 @@ function Carousel() {
         </div>
         {NFT.map((item) => (
           <SwiperSlide key={item.key}>
-            <div className="w-11/12 mx-auto lg:mx-16 border-2 lg:border border-orange-alft rounded-3xl brd ">
+            <div className="w-10/12 mx-auto border-2 lg:border border-orange-alft rounded-3xl brd ">
               <div className=" lg:px-20 lg:py-10 w-full flex flex-col lg:flex-row h-auto">
                 <div className="w-full md:h-full lg:mt-auto lg:mb-auto order-2 flex flex-col py-5 px-5 md:px-14 lg:px-5 lg:py-0 xl:pl-0 xl:py-0 xl:pr-5 lg:order-1 lg:w-7/12 ">
                   <div className="">

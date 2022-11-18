@@ -55,7 +55,7 @@ function ZogNFT({ balance, userToken, nftId, setSuccessRes }) {
         "0x"
       );
       getTransferData(response);
-      toast.success(" Transfer NFT Morgan successfuly ", {
+      toast.success(" Transfer NFT ZOG successfuly ", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
