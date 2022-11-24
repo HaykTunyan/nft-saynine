@@ -259,6 +259,8 @@ function CardNFT({ balance, userToken, nftId, setSuccessRes }) {
               </div>
             </div>
             <div className="full pt-5">
+
+              
               {errors.amount && (
                 <div class="p-3 text-sm bg-red-700 rounded-lg" role="alert">
                   <span className="font-extrabold text-white">Must be at least 1 NFT</span>

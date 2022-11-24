@@ -5,8 +5,17 @@ import { ethers } from "ethers";
 import { ABI } from "../../../web/contracts";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import SendModal from "../../../components/Modal/SendModal";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
+
+const schema = yup.object().shape({
+  amount: yup.number()
+    .min(1, "Must be at least 1 characters")
+    .max(255)
+    .required("Email is requried"),
+});
 
 function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
   const [showTransfer, setShowTransfer] = useState(false);
@@ -32,7 +41,9 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
     watch,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = (data) => {
     if (showTransfer) {
@@ -237,6 +248,15 @@ function DharmaNFT({ balance, userToken, nftId, setSuccessRes }) {
                 </div>
               </div>
             </div>
+            <div className="full pt-5 ">
+              {errors.amount && (
+                <div class="p-3 text-sm bg-red-700 rounded-lg" role="alert">
+                  <span className="font-extrabold text-white">Must be at least 1 NFT</span>
+                </div>
+              )}
+
+            </div>
+
             <div className="w-full flex justify-end pt-5">
               <div className="pt-6 md:pt-0" />
               <button
