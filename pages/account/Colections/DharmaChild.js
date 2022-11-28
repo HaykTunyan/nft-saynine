@@ -89,7 +89,6 @@ function DharmaChild({ userToken, successRes }) {
         progress: undefined,
       });
       getMegaData(response);
-      console.log(" successfuly ")
     } catch (error) {
       setErrorMessage(error);
       toast.success(" Get New NFT error ", {
@@ -101,7 +100,6 @@ function DharmaChild({ userToken, successRes }) {
         draggable: true,
         progress: undefined,
       });
-      console.log(" errorrs ")
     }
   }
 
@@ -127,12 +125,13 @@ function DharmaChild({ userToken, successRes }) {
       <div className="grid grid-cols-2 lg:grid-cols-12 gap-10">
         {/* Balance NFT 10 */}
         {balanaceNFT > 9 && useDharmaList.map((item) => (
-          <div className="hidden lg:flex  lg:justify-center" key={item.key} >
+          <div className="hidden lg:flex lg:justify-center" key={item.key} >
             <Image
               src="/nfts/Fight_5.png"
               width={300}
               height={390}
               className={`w-full h-full object-cover `}
+              loading="lazy"
             />
           </div>
         ))}
@@ -147,6 +146,7 @@ function DharmaChild({ userToken, successRes }) {
                 width={300}
                 height={390}
                 className={`w-full h-full object-cover grayscale`}
+                loading="lazy"
               />
             </div>
           ))}
@@ -176,6 +176,7 @@ function DharmaChild({ userToken, successRes }) {
                 width={300}
                 height={390}
                 className={`w-full h-full object-cover grayscale`}
+                loading="lazy"
               />
             </div>
             <div className="flex flex-col lg:justify-center items-center">

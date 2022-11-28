@@ -1,13 +1,8 @@
-import Container from "../../components/Container";
-import Image from "next/image";
-import ProfressLine from "../../components/ProgressLine";
 import { useEffect, useState } from "react";
-import { NFTread } from "../../web/contracts";
-import UseToken from "./UseToken";
-import GetMegaNFT from "./GetMegaNft";
+import Image from "next/image";
+import Container from "../../components/Container";
 import MinNFT from "./MintNft";
 import { vmContract } from "../../web/Web3clinet";
-import UseNFTComponent from "./UseNft/useNft";
 import MorganNFT from "./UserNFT/MorganNFT";
 import Cyberpunk from "./UserNFT/Cyberpunk";
 import PimpNFT from "./UserNFT/PimpNFT";
@@ -31,14 +26,6 @@ function Account() {
   const [balanceFive, getBalanceFive] = useState();
   const [successRes, setSuccessRes] = useState(false);
   const [errorMessagess, setErrorMessages] = useState();
-
-  // Use NFT.
- 
- 
-  
-  const [ useZog, setUseZog ]  = useState();
- 
-
 
   // NFT 1 id = 1 => 2
   useEffect(() => {

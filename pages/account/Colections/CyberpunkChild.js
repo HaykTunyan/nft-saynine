@@ -87,7 +87,6 @@ function CyberpunkChild({ userToken, successRes }) {
         progress: undefined,
       });
       getMegaData(response);
-      console.log(" successfuly ")
     } catch (error) {
       setErrorMessage(error);
       toast.error('invalid BigNumber value', {
@@ -126,12 +125,13 @@ function CyberpunkChild({ userToken, successRes }) {
       <div className="grid grid-cols-2 lg:grid-cols-12 gap-10">
         {/* Balance NFT 10 */}
         {balanaceNFT > 9 && useCyberpunkList.map((item) => (
-          <div className="hidden lg:flex  lg:justify-center" key={item.key} >
+          <div className="hidden lg:flex lg:justify-center" key={item.key} >
             <Image
               src="/nfts/Fight_2.png"
               width={300}
               height={390}
-              className={`w-full h-full object-cover `}
+              className={`w-full h-full object-cover`}
+              loading="lazy"
             />
           </div>
         ))}
@@ -146,13 +146,14 @@ function CyberpunkChild({ userToken, successRes }) {
                 width={300}
                 height={390}
                 className={`w-full h-full object-cover grayscale`}
+                loading="lazy"
               />
             </div>
           ))}
 
         <div className="hidden lg:flex lg:justify-center lg:items-center">
           <div className="py-5">
-            <span className="text-xs font-semibold  px-5 py-2 rounded-3xl bg-orange text-white ">
+            <span className="text-xs font-semibold  px-5 py-2 rounded-3xl bg-orange text-white">
               {balanaceNFT}
             </span>
           </div>
@@ -168,24 +169,25 @@ function CyberpunkChild({ userToken, successRes }) {
           </>
         ) : (
           <>
-            <div className="flex justify-center lg:hidden ">
+            <div className="flex justify-center lg:hidden">
               <Image
                 src="/nfts/Fight_2.png"
                 width={300}
                 height={390}
                 className={`w-full h-full object-cover grayscale`}
+                loading="lazy"
               />
             </div>
             <div className="flex flex-col lg:justify-center items-center">
               <div className="py-5 lg:hidden">
-                <span className="text-xs font-semibold  px-5 py-2 rounded-3xl bg-orange text-white ">
+                <span className="text-xs font-semibold px-5 py-2 rounded-3xl bg-orange text-white">
                   {balanaceNFT}
                 </span>
               </div>
               <div className="">
                 {balanaceNFT > 9 && (
                   <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold  text-sm p-5 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150"
+                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold text-sm p-5 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
                     type="button"
                     onClick={getMegaNFT}
                   >

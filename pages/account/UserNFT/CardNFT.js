@@ -119,7 +119,7 @@ function CardNFT({ balance, userToken, nftId, setSuccessRes }) {
 
   return (
     <div className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col">
-      <div className="flex  ">
+      <div className="flex">
         <div className="w-4/12">
           <Image
             src="/images/NFT-1.png"
@@ -135,7 +135,7 @@ function CardNFT({ balance, userToken, nftId, setSuccessRes }) {
             </h4>
           </div>
           <div className="flex space-x-1 pt-2">
-            <div className="text-base xl:text-2xl font-bold text-orange-alft ">
+            <div className="text-base xl:text-2xl font-bold text-orange-alft">
               Links:
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft">
@@ -144,7 +144,7 @@ function CardNFT({ balance, userToken, nftId, setSuccessRes }) {
           </div>
 
           <div className="flex space-x-1 pt-2">
-            <div className="text-base xl:text-2xl font-bold text-orange-alft ">
+            <div className="text-base xl:text-2xl font-bold text-orange-alft">
               Nft Id:
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft">
@@ -152,14 +152,14 @@ function CardNFT({ balance, userToken, nftId, setSuccessRes }) {
             </div>
           </div>
           <div className="flex space-x-1 pt-2">
-            <div className="text-base xl:text-2xl font-bold text-orange-alft ">
+            <div className="text-base xl:text-2xl font-bold text-orange-alft">
               Count:
             </div>
             <div className="text-base xl:text-2xl font-normal text-orange-alft">
               {balance}
             </div>
           </div>
-          <div className="flex flex-col md:flex-row md:justify-end py-5  ">
+          <div className="flex flex-col md:flex-row md:justify-end py-5">
             <button
               className="bg-emerald-500 text-white active:bg-emerald-600 font-bold  text-sm px-10 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
               type="button"
@@ -183,11 +183,11 @@ function CardNFT({ balance, userToken, nftId, setSuccessRes }) {
         <div className="">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="col-span-2  px-4 py-3 flex flex-col border-orange rounded-2xl border-1px"
+            className="col-span-2 px-4 py-3 flex flex-col border-orange rounded-2xl border-1px"
           >
             <div className="w-full ">
               <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
+                <div className="text-base xl:text-2xl font-bold text-orange-alft">
                   To:
                 </div>
                 <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
@@ -201,7 +201,7 @@ function CardNFT({ balance, userToken, nftId, setSuccessRes }) {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
+                <div className="text-base xl:text-2xl font-bold text-orange-alft">
                   Amount:
                 </div>
                 <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
@@ -227,7 +227,7 @@ function CardNFT({ balance, userToken, nftId, setSuccessRes }) {
               <div className="pt-6 md:pt-0" />
               <button
                 type="submit"
-                className="py-2 px-10  bg-green-alfa text-xl xl:text-2xl rounded-lg text-white font-normal"
+                className="py-2 px-10 bg-green-alfa text-xl xl:text-2xl rounded-lg text-white font-normal"
               >
                 Send
               </button>
@@ -242,9 +242,9 @@ function CardNFT({ balance, userToken, nftId, setSuccessRes }) {
             onSubmit={handleSubmit(onSubmit)}
             className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col"
           >
-            <div className="w-full ">
+            <div className="w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 pt-5">
-                <div className="text-base xl:text-2xl font-bold text-orange-alft ">
+                <div className="text-base xl:text-2xl font-bold text-orange-alft">
                   Amount:
                 </div>
                 <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
@@ -259,14 +259,11 @@ function CardNFT({ balance, userToken, nftId, setSuccessRes }) {
               </div>
             </div>
             <div className="full pt-5">
-
-              
               {errors.amount && (
                 <div class="p-3 text-sm bg-red-700 rounded-lg" role="alert">
                   <span className="font-extrabold text-white">Must be at least 1 NFT</span>
                 </div>
               )}
-
             </div>
             <div className="w-full flex justify-end pt-5">
               <div className="pt-6 md:pt-0" />

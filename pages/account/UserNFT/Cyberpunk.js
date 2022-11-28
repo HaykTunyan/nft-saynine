@@ -68,7 +68,7 @@ function Cyberpunk({ balance, userToken, nftId, setSuccessRes }) {
       );
       getTransferData(response);
 
-      toast.success(" Transfer NFT Cyberpunk successfuly ", {
+      toast.success(" Transfer NFT Cyberpunk successfuly", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -217,6 +217,14 @@ function Cyberpunk({ balance, userToken, nftId, setSuccessRes }) {
                   />
                 </div>
               </div>
+            </div>
+            <div className="full pt-5 ">
+              {errors.amount && (
+                <div class="p-3 text-sm bg-red-700 rounded-lg" role="alert">
+                  <span className="font-extrabold text-white">Must be at least 1 NFT</span>
+                </div>
+              )}
+
             </div>
             <div className="w-full flex justify-end pt-5">
               <div className="pt-6 md:pt-0" />

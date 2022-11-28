@@ -95,7 +95,7 @@ function SendModal({ setShowSendModal, showSendModal, tokenData }) {
                 <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                     <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                         <div class="relative bg-dark rounded-lg shadow dark:bg-gray-700">
-                            <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
+                            <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                                 <h3 className="text-3xl font-semibold text-orange-alft">Confirm Your Event</h3>
                             </div>
                             <div class="py-6 px-6 lg:px-8">
@@ -125,7 +125,7 @@ function SendModal({ setShowSendModal, showSendModal, tokenData }) {
                                             />
                                         </div>
                                     </div>
-                                    <div className="w-full ">
+                                    <div className="w-full">
                                         <div className="text-base xl:text-2xl font-normal text-orange-alft mt-2 md:mt-0">
                                             <input
                                                 type="text"
@@ -137,14 +137,7 @@ function SendModal({ setShowSendModal, showSendModal, tokenData }) {
                                             />
                                         </div>
                                     </div>
-                                    <div className="flex items-center justify-center p-6 ">
-                                        {/* <button
-                                            className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
-                                            type="button"
-                                            onClick={() => setShowSendModal(false)}
-                                        >
-                                            Close
-                                        </button> */}
+                                    <div className="flex items-center justify-center p-6">
                                         <button
                                             type="submit"
                                             className="py-2 px-10  bg-green-alfa text-xl xl:text-2xl rounded-lg text-white font-normal"

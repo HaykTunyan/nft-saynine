@@ -14,13 +14,13 @@ function NftCard({ nftId, key, title, img, link, price, count, router }) {
           />
         </div>
         <div className="pt-4" />
-        <h3 className="text-lg lg:text-3xl  font-semibold text-white">
+        <h3 className="text-lg lg:text-3xl font-semibold text-white">
           {title}
         </h3>
         <div className="pt-2" />
         <div className="grid grid-flow-col gap-4">
           <div className="flex space-x-1">
-            <div className="text-sm lg:text-base font-bold text-orange-alft ">
+            <div className="text-sm lg:text-base font-bold text-orange-alft">
               Links:
             </div>
             <div className="text-sm lg:text-base font-bold text-orange-alft">

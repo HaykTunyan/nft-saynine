@@ -8,7 +8,6 @@ import { Line } from "rc-progress";
 import { theme } from "../../../tailwind.config";
 const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 
-
 export const useZogList = [
   {
     key: 1,
@@ -79,7 +78,7 @@ function ZogChild({ userToken, successRes }) {
     const contract = new ethers.Contract(CONTACT_ADDRESS, ABI, signer);
     try {
       const response = await contract.getMegaNFTs(8, 10);
-      toast.success(" Get ZOG NFT successfuly ", {
+      toast.success(" Get ZOG NFT successfuly", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -130,7 +129,8 @@ function ZogChild({ userToken, successRes }) {
               src="/nfts/Fight_4.png"
               width={300}
               height={390}
-              className={`w-full h-full object-cover `}
+              className={`w-full h-full object-cover`}
+              loading="lazy"
             />
           </div>
         ))}
@@ -145,13 +145,14 @@ function ZogChild({ userToken, successRes }) {
                 width={300}
                 height={390}
                 className={`w-full h-full object-cover grayscale`}
+                loading="lazy"
               />
             </div>
           ))}
-
+          
         <div className="hidden lg:flex lg:justify-center lg:items-center">
           <div className="py-5">
-            <span className="text-xs font-semibold  px-5 py-2 rounded-3xl bg-orange text-white ">
+            <span className="text-xs font-semibold px-5 py-2 rounded-3xl bg-orange text-white">
               {balanaceNFT}
             </span>
           </div>
@@ -168,7 +169,7 @@ function ZogChild({ userToken, successRes }) {
           </>
         ) : (
           <>
-            <div className="flex justify-center lg:hidden ">
+            <div className="flex justify-center lg:hidden">
               <Image
                 src="/nfts/Fight_4.png"
                 width={300}
@@ -178,14 +179,14 @@ function ZogChild({ userToken, successRes }) {
             </div>
             <div className="flex flex-col lg:justify-center items-center">
               <div className="py-5 lg:hidden">
-                <span className="text-xs font-semibold  px-5 py-2 rounded-3xl bg-orange text-white ">
+                <span className="text-xs font-semibold px-5 py-2 rounded-3xl bg-orange text-white">
                   {balanaceNFT}
                 </span>
               </div>
               <div className="">
                 {balanaceNFT > 9 && (
                   <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold  text-sm p-5 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150"
+                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold text-sm p-5 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
                     type="button"
                     onClick={getMegaNFT}
                   >

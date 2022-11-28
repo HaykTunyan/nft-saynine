@@ -13,8 +13,8 @@ const CONTACT_ADDRESS = "0x951bf41E354E05e278d504cf13Dae71302f94c0a";
 const schema = yup.object().shape({
   amount: yup.number()
     .min(1, "Must be at least 1 characters")
-    .max(255)
-    .required("Email is requried"),
+    .max(100)
+    .required("Is requried"),
 });
 
 
@@ -110,7 +110,7 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
 
   return (
     <div className="col-span-2 px-4 py-3 border-orange rounded-2xl border-1px flex flex-col">
-      <div className="flex  ">
+      <div className="flex">
         <div className="w-4/12">
           <Image
             src="/images/NFT-3.png"
@@ -206,6 +206,15 @@ function PimpNFT({ balance, userToken, nftId, setSuccessRes }) {
                 </div>
               </div>
             </div>
+            <div className="full pt-5 ">
+              {errors.amount && (
+                <div class="p-3 text-sm bg-red-700 rounded-lg" role="alert">
+                  <span className="font-extrabold text-white">Must be at least 1 NFT</span>
+                </div>
+              )}
+
+            </div>
+
             <div className="w-full flex justify-end pt-5">
               <div className="pt-6 md:pt-0" />
               <button
